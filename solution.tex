@@ -1,0 +1,112 @@
+\documentclass[10pt,DIV12,a4paper,halfparskip]{scrartcl}
+\usepackage{amsmath}
+\usepackage{springervector}
+\usepackage[T1]{fontenc}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%% commands to facilitate units and temperature
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
+
+
+% ---------------------------------------------------------------------------------------
+% definition of header and footer
+% ---------------------------------------------------------------------------------------
+
+\usepackage[automark,headsepline,footsepline]{scrpage2}
+\clearscrheadings	% definition headings loeschen
+\ihead{Thermodynamics}
+\chead{McCarthy Summer School}
+\ohead{2010}
+\cfoot{\pagemark}
+\setkomafont{pagehead}{\normalfont}	% font kopfzeile
+\setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
+
+
+
+
+% ---------------------------------------------------------------------------------------
+% Koma-Script - Settings
+% ---------------------------------------------------------------------------------------
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+% \setkomafont{caption}{\sffamily}
+\setcapindent{1em}
+
+\pagestyle{scrheadings}
+
+
+\begin{document}
+\title{Thermodynamics of Glaciers \\
+\rule[1em]{\textwidth}{2pt}
+\LARGE{\sf Solutions to Exercise}
+}
+\date{}
+
+\maketitle
+
+
+\vspace{-5em}
+
+
+\section{Climate history}
+
+The initial amplitude is $\Delta T_0 = \cels{2}$ during an oscillation period of 50 years, thus $\omega = \frac{2\pi}{40\,\text{a}} = 3.9821\times 10^{-9}\,\text{s}^{-1}$. With Equation~(11) we get:
+
+ \begin{equation*}
+   \label{eq:temp-depth-amplitude}
+   \frac{\Delta T(h)}{\Delta T_0}= \exp\left(-h \sqrt{\frac{\omega}{2\kappa}}\right).
+ \end{equation*} The thermal diffusivity can be obtained from Equations~(2) and (3)
+\begin{equation*}
+\kappa(-\cels{3)} = \frac{k(-\cels{3})}{\rho\,c(-\cels{3})} = \frac{2.1\,\text{W}\,\text{m}^{-1}\,\text{K}^{-1}}{910\,\text{kg}\,\text{m}^{-3} \cdot 2105.7\,\text{J}\,\text{kg}^{-1}\,\text{K}^{-1}} = 1.34\times 10^{-6}\,\text{m}^{2}\,\text{s}^{-1}, 
+\end{equation*} or, just the value given in the script, $1.09\cdot 10^{-6}\unit{m}^{2}\unit{s}^{-1}$ (the result then may slightly vary).
+Therefore we get
+\begin{equation*}
+  h = -\sqrt{\frac{2\kappa}{\omega}}\,\text{ln}\left(\frac{\Delta T(h)}{\Delta T_0}\right)
+  = - \sqrt{\frac{2\cdot 1.34\times 10^{-6}\,\text{m}^{2}\,\text{s}^{-1}}{3.9821\times 10^{-9}\,\text{s}^{-1}}}\,\text{ln}\left( \frac{0.01}{2}\right) \approx 137\,\text{m}.
+\end{equation*}
+
+
+\section{Melting temperature depression}
+
+From Figure~(9) we see that the pressure melting temperature is $T_{\text{m}} = -\cels{0.34}$. We have $p = 910\,\text{kg}\,\text{m}^{3} \cdot 9.81\,\text{m}\,\text{s}^{-2}\cdot 300\,\text{m} + 75'000\,\text{Pa} = 2753130\,\text{Pa}$. Using Equation~(14) we obtain
+  \begin{equation*}
+    \gamma = -\frac{T_{\text{m}}-T_{\text{tp}}}{p - p_{\text{tp}}} = \frac{273.15\,\text{K} -0.34\,\text{K} -273.16\,\text{K}}{2753130\,\text{Pa} - 611.73\,\text{Pa}} = 1.202\times 10^{-7}\,\text{K}\,\text{Pa}^{-1}.
+  \end{equation*} In the literature we find the values $\gamma = 7.42 \times 10^{-8} \,\text{K}\,\text{Pa}^{-1}$ for pure ice and air-free water and $\gamma = 9.8 \times 10^{-7} \,\text{K}\,\text{Pa}^{-1}$ for pure ice and air-saturated water. The value calculated for Gornergletscher is even higher than $\gamma$ for air-saturated water which means we have ice with air-saturated water.
+
+
+\section{Lake Vostok}
+
+\begin{enumerate}
+\item Advection and diffusion
+\item The P\'eclet number Pe is a measure of the relative importance of advection and diffusion.
+\item First we calculate the pressure melting point at the base
+\begin{align*}
+ \label{eq:clausius-pure}
+ T_m &= T_{tp} - \gamma\, (p - p_{\text{tp}}) \\
+ & = 273.16\,\text{K} -  7.42 \times 10^{-8} \,\text{K}\,\text{Pa}^{-1} \left(  910\,\text{kg}\,\text{m}^{3} \cdot 9.81\,\text{m}\,\text{s}^{-2}\cdot 3300\,\text{m}- 611.73\,\text{Pa}\right) \\
+ & \approx 271\,\text{K}
+\end{align*} Then use Equation~(21) from the script:
+\begin{equation*}
+  T(z) = T_s + \frac{\sqrt\pi}{2} l \left(\frac{dT}{dz}\right)_{B} 
+ \left[ {\textrm{erf}} \left( \frac{z}{l} \right) - {\textrm{erf}} \left( \frac{H}{l} \right) \right]\,.
+\end{equation*} In order for a lake to form we need $T(0\,\text{m}) = T_{\text{m}}$.
+
+\begin{align*}
+  T(0\,\text{m}) & = T_s + \frac{\sqrt\pi}{2} l \left(\frac{dT}{dz}\right)_{B} 
+ \left[ {\textrm{erf}} \left( \frac{z}{l} \right) - {\textrm{erf}} \left( \frac{H}{l} \right) \right] \\
+ & = T_s + \frac{\sqrt\pi}{2} l \left(\frac{G}{k}\right) 
+ \left[ {\textrm{erf}} \left( \frac{z}{l} \right) - {\textrm{erf}} \left( \frac{H}{l} \right) \right]
+\end{align*}
+The geothermal flux at the base thus must be equal or larger:
+\begin{align*}
+ G & \ge \frac{T_s - T(0\,\text{m})}{\frac{\sqrt\pi}{2} l \left(\frac{1}{k}\right) 
+ \left[  - {\textrm{erf}} \left( \frac{H}{l} \right) \right]} \approx 0.5\,\text{W}\,\text{m}^{2}
+\end{align*}
+
+
+\end{enumerate}
+
+\end{document}

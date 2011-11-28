@@ -1,0 +1,80 @@
+ \documentclass[10pt,DIV12,a4paper,halfparskip]{scrartcl}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%% commands to facilitate units and temperature
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
+
+
+% ---------------------------------------------------------------------------------------
+% definition of header and footer
+% ---------------------------------------------------------------------------------------
+
+\usepackage[automark,headsepline,footsepline]{scrpage2}
+\clearscrheadings	% definition headings loeschen
+\ihead{Thermodynamics}
+\chead{McCarthy Summer School}
+\ohead{2010}
+\cfoot{\pagemark}
+\setkomafont{pagehead}{\normalfont}	% font kopfzeile
+\setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
+
+
+
+
+% ---------------------------------------------------------------------------------------
+% Koma-Script - Settings
+% ---------------------------------------------------------------------------------------
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+% \setkomafont{caption}{\sffamily}
+\setcapindent{1em}
+
+\pagestyle{scrheadings}
+
+
+\begin{document}
+
+\vspace{-5em}
+
+\title{Thermodynamics of Glaciers \\
+\rule[1em]{\textwidth}{2pt}
+\LARGE{\sf Exercise}
+}
+\date{}
+
+\vspace{-5em}
+
+\maketitle
+
+
+\vspace{-5em}
+
+\section{Climate history}
+
+Air temperatures in Alaska was oscillating with a period of about 50 years and an amplitude of about 2$\,^\circ\text{C}$ between 1950 and 2000. How deep down would you be able to detect such temperature variation in stagnant ice if the accuracy of your temperature sensors are 0.01$\,\text{K}$ assuming an ice temperature of $-\cels{3}$?
+
+
+\section{Melting temperature depression}
+
+What is the pressure melting temperature at the base of Gornergletscher (Fig.9)? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the melt water? The pressure $p$ is the sum of the hydrostatic pressure and the atmosperic pressure, $p = \rho g H + p_{\text{atm}}$. Assume $p_{\text{atm}} = 75'000\,\text{Pa}$.
+
+\section{Lake Vostok}
+
+\begin{enumerate}
+\item Describe 2 different ways how heat can be moved through a polar ice sheet.
+\item What is the P\'eclet Number, and how is it useful?
+\item The coldest temperature ever recorded is -\cels{89} at Vostok in East Antarctica (in July 1983). The mean annual temperature is -\cels{55}. However, deep under the ice is lake Vostok, a lake of the size of lake Ontario. Calculate the minimum geothermal flux needed for a lake to form. Possibly relevant quantities:
+  \begin{itemize}
+  \item Surface elevation $3488\,\text{m}$
+  \item Ice thickness $3300\,\text{m}$
+  \item Snow accumulation rate $2\,\text{cm}\,\text{a}^{-1}$ (water equivalent)
+  \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\text{W}\,\text{m}^{−1}\,\text{K}^{−1}$.
+  \end{itemize}
+\end{enumerate}
+
+\end{document}
