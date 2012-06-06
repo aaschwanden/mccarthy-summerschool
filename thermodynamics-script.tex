@@ -69,8 +69,7 @@
 
 \usepackage[automark,headsepline,footsepline]{scrpage2}
 \clearscrheadings	% definition headings loeschen
-\ihead{Thermodynamics}
-\ohead{McCarthy Summer School 2010}
+\ihead{Thermodynamics of Glaciers}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}	% font kopfzeile
 \setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
@@ -92,15 +91,14 @@
 
 \begin{document}
 \title{Thermodynamics of Glaciers\\[.5em]
-\rule[1.em]{\textwidth}{2pt}
-\Large{McCarthy Summer School 2010}}
+\rule[1.em]{\textwidth}{2pt}}
+\subtitle{McCarthy Summer School 2012}
 
-\date{June 2010}
+\date{June 2012}
 
 \author{
   \small Andy Aschwanden\\[-.5em] 
-  \small Arctic Region Supercomputing Center\\[-.5em] 
-  \small University of Alaska Fairbanks, USA}
+ \small University of Alaska Fairbanks, USA}
 
 
 \maketitle
@@ -270,7 +268,7 @@ conductivity $k$.  The heat flow equation
 %
 \begin{equation}
  \label{eq:diffusion-1d}
- \frac{d\partial^2T}{\partial z^2} = 0.
+ \frac{\partial^2T}{\partial z^2} = 0.
 \end{equation}
 %
 Integration with respect to $z$ gives
@@ -292,9 +290,9 @@ Ice temperature changes linearly with depth.  Choosing for example a
 temperature gradient of $G=1\unit{K}/ 100\unit{m} = 0.01\unit{K}\unit{m}^{-1}
 = 10 \unit{mK}\unit{m}^{-1}$ gives a heat flux of $Q = kG = 0.021\unit{W}
 \unit{m}^{-2} = 21\unit{mW} \unit{m}^{-2}$.  For comparison, typical
-geothermal heat fluxes are $40- 120 \unit{mW} \unit{m}^{-2}$.
+geothermal fluxes are $40- 120 \unit{mW} \unit{m}^{-2}$.
 
-To transport a geothermal heat flux of $80 \unit{mW} \unit{m}^{-2}$ through a
+To transport a geothermal flux of $80 \unit{mW} \unit{m}^{-2}$ through a
 glacier of $200\unit{m}$ thickness, the surface temperature has to be
 $8\unit{K}$ lower than the temperature at the glacier base.
 
@@ -814,7 +812,7 @@ temperature can be scaled by the dimensionless variables
 
 
 \newpage
-\bibliography{mccarthy}
+\bibliography{thermobib}
 
 
 \end{document}

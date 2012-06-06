@@ -1,0 +1,120 @@
+ \documentclass[11pt,a4paper,halfparskip]{scrartcl}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\bibliographystyle{andy}
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%% diverser Plunder
+\renewcommand{\refname}{Literature}
+\renewcommand{\appendixname}{Appendix}
+%\newcommand{\tnoocomment}[1]{\marginpar{\psshadowbox[framearc=0.3,shadowsize=2pt]{\footnotesize #1}}}
+\newcommand{\tnoocomment}[1]{\marginpar{\fbox{\footnotesize #1}}}
+\newcommand{\tinu}[1]{\marginpar{\fbox{\footnotesize #1}}}
+\newcommand{\todo}[1]{\fbox{#1}}
+\newcommand{\idea}[1]{\marginpar{\fbox{\parbox{2.2cm}{\tiny #1}}}}
+
+%% commands to facilitate units and temperature
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
+
+
+\newcommand{\hbe}{\hat{\mathbf{e}}}
+%\newcommand{\define}[1]{{\textbf{#1}}\marginpar{\psshadowbox[framearc=0.3,shadowsize=2pt]{\footnotesize #1}}}
+\newcommand{\define}[1]{{\textbf{#1}}\marginpar{\fbox{\footnotesize #1}}}
+\newcommand{\epsdot}{\dot{\varepsilon}}
+\newcommand{\bsigma}{\mbox{\boldmath$\sigma$\unboldmath}}
+\newcommand{\bepsdot}{\mbox{\boldmath$\epsdot$\unboldmath}}
+
+
+% Some useful commands (from ELB)
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bbf}{\mathbf{f}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\bn}{\mathbf{n}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bv}{\mathbf{v}}
+
+\newcommand{\ddx}[1]{\ensuremath{\frac{\partial #1}{\partial x}}}
+\newcommand{\ddy}[1]{\ensuremath{\frac{\partial #1}{\partial y}}}
+\newcommand{\ddz}[1]{\ensuremath{\frac{\partial #1}{\partial z}}}
+\newcommand{\ddt}[1]{\ensuremath{\frac{\partial #1}{\partial t}}}
+
+\newcommand{\DDt}[1]{\ensuremath{\frac{d #1}{d t}}}
+
+\newcommand{\Div}{\nabla\cdot}
+\newcommand{\eps}{\epsilon}
+\newcommand{\grad}{\nabla}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\trace}{\operatorname{tr}}
+
+\newcommand{\rinv}{\frac{1}{r}}
+\newcommand{\ar}{r^{-1}\alpha}
+\newcommand{\stress}{\ensuremath{\text{\Large$\sigma$\normalsize}}}
+\newcommand{\devstress}{\ensuremath{\text{\Large$\tau$\normalsize}}}
+
+
+% ---------------------------------------------------------------------------------------
+% definition of header and footer
+% ---------------------------------------------------------------------------------------
+
+\usepackage[automark,headsepline,footsepline]{scrpage2}
+\clearscrheadings	
+\ihead{Thermodynamics}
+\ohead{McCarthy Summer School 2012}
+\cfoot{\pagemark}
+\setkomafont{pagehead}{\normalfont}	% font kopfzeile
+\setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
+
+
+
+
+% ---------------------------------------------------------------------------------------
+% Koma-Script - Settings
+% ---------------------------------------------------------------------------------------
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+% \setkomafont{caption}{\sffamily}
+\setcapindent{1em}
+
+\pagestyle{scrheadings}
+
+
+
+\begin{document}
+\title{Dynamics of Glaciers\\[.5em]
+\rule[1.em]{\textwidth}{2pt}
+\subtitle{McCarthy Summer School 2010}}
+
+\date{June 2012}
+
+\author{
+  \small Andy Aschwanden\\[-.5em] 
+  \small Arctic Region Supercomputing Center\\[-.5em] 
+  \small University of Alaska Fairbanks, USA}
+
+
+\maketitle
+
+{\bf Note}: This script is largely based on the \emph{Physics of Glaciers I} lecture notes by Martin L\"uthi and Martin Funk, ETH Zurich, Switzerland, with additions from \cite{GreveBlatter_disg}.
+
+\vspace{1em}
+
+
+\section{Free Surface Flow}
+
+
+\newpage
+\bibliography{mccarthy}
+
+
+\end{document}
