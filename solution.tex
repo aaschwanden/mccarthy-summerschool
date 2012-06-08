@@ -1,7 +1,7 @@
-\documentclass[10pt,DIV12,a4paper,halfparskip]{scrartcl}
+\documentclass[parskip=half]{scrartcl}
 \usepackage{amsmath}
-\usepackage{springervector}
 \usepackage[T1]{fontenc}
+\usepackage{natbib}
 
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
@@ -16,13 +16,12 @@
 % ---------------------------------------------------------------------------------------
 
 \usepackage[automark,headsepline,footsepline]{scrpage2}
-\clearscrheadings	% definition headings loeschen
-\ihead{Thermodynamics}
-\chead{McCarthy Summer School}
-\ohead{2010}
+\clearscrheadings	
+\ihead{Dynamics and thermodynamics}
+\ohead{McCarthy Summer School 2012}
 \cfoot{\pagemark}
-\setkomafont{pagehead}{\normalfont}	% font kopfzeile
-\setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
+\setkomafont{pagehead}{\normalfont}	
+\setkomafont{pagenumber}{\normalfont\rmfamily}
 
 
 
@@ -39,7 +38,10 @@
 
 
 \begin{document}
-\title{Thermodynamics of Glaciers \\
+
+\vspace{-5em}
+
+\title{Dynamics and thermodynamics \\ of Glaciers \\[.2em]
 \rule[1em]{\textwidth}{2pt}
 \LARGE{\sf Solutions to Exercise}
 }
@@ -49,24 +51,6 @@
 
 
 \vspace{-5em}
-
-
-\section{Climate history}
-
-The initial amplitude is $\Delta T_0 = \cels{2}$ during an oscillation period of 50 years, thus $\omega = \frac{2\pi}{40\,\text{a}} = 3.9821\times 10^{-9}\,\text{s}^{-1}$. With Equation~(11) we get:
-
- \begin{equation*}
-   \label{eq:temp-depth-amplitude}
-   \frac{\Delta T(h)}{\Delta T_0}= \exp\left(-h \sqrt{\frac{\omega}{2\kappa}}\right).
- \end{equation*} The thermal diffusivity can be obtained from Equations~(2) and (3)
-\begin{equation*}
-\kappa(-\cels{3)} = \frac{k(-\cels{3})}{\rho\,c(-\cels{3})} = \frac{2.1\,\text{W}\,\text{m}^{-1}\,\text{K}^{-1}}{910\,\text{kg}\,\text{m}^{-3} \cdot 2105.7\,\text{J}\,\text{kg}^{-1}\,\text{K}^{-1}} = 1.34\times 10^{-6}\,\text{m}^{2}\,\text{s}^{-1}, 
-\end{equation*} or, just the value given in the script, $1.09\cdot 10^{-6}\unit{m}^{2}\unit{s}^{-1}$ (the result then may slightly vary).
-Therefore we get
-\begin{equation*}
-  h = -\sqrt{\frac{2\kappa}{\omega}}\,\text{ln}\left(\frac{\Delta T(h)}{\Delta T_0}\right)
-  = - \sqrt{\frac{2\cdot 1.34\times 10^{-6}\,\text{m}^{2}\,\text{s}^{-1}}{3.9821\times 10^{-9}\,\text{s}^{-1}}}\,\text{ln}\left( \frac{0.01}{2}\right) \approx 137\,\text{m}.
-\end{equation*}
 
 
 \section{Melting temperature depression}

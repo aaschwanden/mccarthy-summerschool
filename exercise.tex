@@ -1,6 +1,7 @@
- \documentclass[10pt,DIV12,a4paper,halfparskip]{scrartcl}
+\documentclass[parskip=half]{scrartcl}
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
+\usepackage{natbib}
 
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
@@ -15,13 +16,12 @@
 % ---------------------------------------------------------------------------------------
 
 \usepackage[automark,headsepline,footsepline]{scrpage2}
-\clearscrheadings	% definition headings loeschen
-\ihead{Thermodynamics}
-\chead{McCarthy Summer School}
-\ohead{2010}
+\clearscrheadings	
+\ihead{Dynamics and thermodynamics}
+\ohead{McCarthy Summer School 2012}
 \cfoot{\pagemark}
-\setkomafont{pagehead}{\normalfont}	% font kopfzeile
-\setkomafont{pagenumber}{\normalfont\rmfamily}	% font kopfzeile zahlen
+\setkomafont{pagehead}{\normalfont}	
+\setkomafont{pagenumber}{\normalfont\rmfamily}
 
 
 
@@ -41,7 +41,7 @@
 
 \vspace{-5em}
 
-\title{Thermodynamics of Glaciers \\
+\title{Dynamics and thermodynamics \\ of Glaciers \\[.2em]
 \rule[1em]{\textwidth}{2pt}
 \LARGE{\sf Exercise}
 }
@@ -54,14 +54,32 @@
 
 \vspace{-5em}
 
-\section{Climate history}
+\section{Surface evolution}
 
-Air temperatures in Alaska was oscillating with a period of about 50 years and an amplitude of about 2$\,^\circ\text{C}$ between 1950 and 2000. How deep down would you be able to detect such temperature variation in stagnant ice if the accuracy of your temperature sensors are 0.01$\,\text{K}$ assuming an ice temperature of $-\cels{3}$?
+Assume a cold glacier (no basal melt), and that the base of the glacier is not moving (i.e. $\partial b / \partial t = 0$). The evolution of the ice surface, $h$, is then given by
+\begin{equation} \label{eq:upper-surface-evolution}
+\frac{\partial h}{\partial t} = - \nabla \cdot \mathbf{Q} + a_{\textrm s},
+\end{equation}
+where $\nabla \cdot \mathbf{Q}$ and $a_{\textrm s}$ are the horizontal flux divergence and the accumulation-ablation function, respectively.
+\begin{enumerate}
+\item Explain the meaning of the above terms.
+\item If the flux divergence is constant throughout the year, describe the evolution of the ice surface over a hydrologic year (September to September):
+  \begin{itemize}
+    \item in the accumulation zone. Use the following values: $\nabla \cdot \mathbf{Q} = 2\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 4\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -1\,\text{m}\,\text{a}^{-1}$.
+    \item in the ablation zone. Use the following values: $\nabla \cdot \mathbf{Q} = -1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -3\,\text{m}\,\text{a}^{-1}$.
+    \item What happens at the equilibrium line?
+  \end{itemize}
+\item The 1912 eruption of Katmai volcano, Alaska, covered a nearby glacier completely with debris, thereby effectively shielding the glacier from ablation and accumulation. What will happen to this glacier? 
+\end{enumerate}
+
+\section{Mass balance, surface evolution, and vertical velocity}
+
+The terms mass balance, surface evolution, and vertical velocity are sometimes used incorrectly, even in peer-reviewed literature, as shown in the following example by \cite{Konrad1999}: ``The spatial mass balance is the change of elevation with time (i.e., vertical velocity) at every point on the surface.`` Think about it. What are the authors trying to say? Can you help them getting it right? What does repeated laser altimetry measure, mass balance, surface elevation, or vertical velocity?
 
 
 \section{Melting temperature depression}
 
-What is the pressure melting temperature at the base of Gornergletscher (Fig.9)? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the melt water? The pressure $p$ is the sum of the hydrostatic pressure and the atmosperic pressure, $p = \rho g H + p_{\text{atm}}$. Assume $p_{\text{atm}} = 75'000\,\text{Pa}$.
+What is the pressure melting temperature at the base of Gornergletscher (Fig.~9)? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the meltwater? The pressure $p$ is the sum of the hydrostatic pressure and the atmospheric pressure, $p = \rho g H + p_{\text{atm}}$. Assume $p_{\text{atm}} = 75\,\text{kPa}$.
 
 \section{Lake Vostok}
 
@@ -76,5 +94,8 @@ What is the pressure melting temperature at the base of Gornergletscher (Fig.9)?
   \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\text{W}\,\text{m}^{−1}\,\text{K}^{−1}$.
   \end{itemize}
 \end{enumerate}
+
+\bibliographystyle{agufull08}
+\bibliography{mccarthy}
 
 \end{document}
