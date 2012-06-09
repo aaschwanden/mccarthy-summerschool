@@ -54,7 +54,7 @@
 % title page
 \title[Glacier Thermodynamics] % (optional, use only with long paper titles)
 {Thermodynamics of Glaciers}
-\subtitle{McCarthy Summer School, June 2010}
+\subtitle{McCarthy Summer School}
 
 
 \author[Aschwanden] % (optional, use only with lots of authors)
@@ -72,7 +72,7 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{McCarthy Summer School, June 2010}
+\date{June 2012}
 
 \titlegraphic{\includegraphics[width=10cm]{figures/glaciers3}}
 
@@ -713,42 +713,58 @@
   \frametitle{Thermodynamics in ice sheet models}
   \begin{block}{Cold vs Polythermal for Greenland}
   \begin{itemize}
-     \item thinner temperate layer
-     \item but difference in total ice volume for steady-state run is $< 1\%$ (Greve, 1995)
-     \item SO WHAT?
-     \item better conservation of energy
-     \item temperate basal ice means ice is sliding at the base
-     \item new areas may become temperate
-     \end{itemize}
+  \item better conservation of energy
+    \item more realistic basal melt rates
+      well-defined interfaces to the atmosphere and subglacial hydrology
+    \end{itemize}
    \end{block}	
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Thermodynamics in ice sheet models}
- \begin{columns}
-    \column[c]{3.25cm}
-   \centering 
-    cold-ice method
-    \includegraphics[width=3.cm]{figures/g10km_cold_usurf}%
-    \\
-    \scriptsize $3.295\times 10^{6}$kg
-    \column[c]{3.25cm}
-    \centering
-    polythermal
-    \includegraphics[width=3.cm]{figures/g10km_control_usurf}%
-    \\
-    \scriptsize $3.025\times 10^{6}$kg
-   \column[c]{3.25cm}
-    \centering
-    cold - polythermal
-    \includegraphics[width=3.cm]{figures/g10km_diff_usurf}%
-    \\
-    \scriptsize $0.270\times 10^{6}$kg ($\approx 8\%$)
+\begin{frame}{Why polythermal is better: Antarctica}
+\begin{columns}[c]
+    \begin{column}{.3\linewidth}
+      \begin{itemize}
+      \item conservation of energy
+      \item more realistic basal melt rates
+      \item more realistic ice streams
+      \end{itemize}
+    \end{column}
+    \begin{column}{.7\linewidth}
+      \vspace{-.5cm}
+      \begin{figure}
+        \only<1>{\small{\alert{temperature equation}} \\}
+        \only<2>{\small{\alert{enthalpy equation}} \\}
+        {\footnotesize basal melt rate, meters per year}\\
+        \includegraphics<1>[width=\textwidth]{figures/ant_bmelt_temp}
+        \includegraphics<2>[width=\textwidth]{figures/ant_bmelt_enth} \\
+        {\small M. Martin, PIK}
+      \end{figure}
+    \end{column}
   \end{columns}
-  \begin{itemize}
-  \item ice upper surface elevation (masl) from 10km non-sliding SIA equilibrium run
-  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Why polythermal is better: Greenland}
+\begin{columns}[c]
+    \begin{column}{.3\linewidth}
+      \begin{itemize}
+      \item conservation of energy
+      \item more realistic basal melt rates
+      \item more realistic ice streams
+      \end{itemize}
+    \end{column}
+    \begin{column}{.7\linewidth}
+      \vspace{-.5cm}
+      \begin{figure}
+        \only<1>{\small{\alert{temperature equation}} \\}
+        \only<2>{\small{\alert{enthalpy equation}} \\}
+        {\footnotesize basal melt rate, meters per year}\\
+        \includegraphics<1>[width=.55\textwidth]{figures/grn_bmelt_temp}
+        \includegraphics<2>[width=.55\textwidth]{figures/grn_bmelt_enth} \\
+     \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}

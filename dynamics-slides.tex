@@ -7,6 +7,9 @@
 }
 
 % load packages
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows}
+
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -48,13 +51,19 @@
 \newcommand{\s}[1]{\ensuremath{\,\text{#1}}}
 \newcommand{\unit}[1]{\ensuremath{\,\text{#1}}}
 
+\newenvironment{transbox}{%
+\begin{tikzpicture}
+\node[drop shadow,rounded corners,text width=\textwidth,fill=white, fill opacity=0.75,text opacity=1] \bgroup
+}{
+\egroup;\end{tikzpicture}} 
 
+\setbeamercolor{boxed}{fg=black,bg=uaf yellow}
 
 
 % title page
 \title[Glacier Dynamics] % (optional, use only with long paper titles)
 {Dynamics of Glaciers}
-
+\subtitle{McCarthy Summer School}
 
 \author[Aschwanden] % (optional, use only with lots of authors)
 {Andy Aschwanden}
@@ -71,7 +80,7 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{McCarthy Summer School, June 2012}
+\date{June 2012}
 
 \titlegraphic{\includegraphics[width=10cm]{figures/glaciers3}}
 
@@ -94,21 +103,29 @@
   \titlepage
 \end{frame}
 
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[height=
+\paperheight,width=\paperwidth]{figures/yakutat_sunset}};}
+} 
 
 
-\section{Introduction}
-\label{sec:introduction}
-
-\begin{frame}
-  \frametitle{What's covered}
-  We will discuss the following points:
-  \begin{itemize}
-  \item Parallel sided slab
-  \item Flow through a cylindrical channel
-  \item Flow along a longitudinal profile
-  \item Free surface flow: ``The spatial mass balance is the change of elevation with time (i.e., vertical velocity) at every point on the surface.`` \emph{Konrad et. al.} (1999)
-\end{itemize}
+\begin{frame}[plain] % not in the handout
+  \begin{columns}
+    \column[C]{7.5cm}
+  \begin{transbox}
+    ``The tradition of glacier studies that we inherit draws upon two great legacies of the eighteenth and nineteenth centuries: classical physics and romatic enthusiasm for Nature.\\[.25em]
+\ldots It is easy to undervalue the romantic contribution, but in glaciology, it would be a mistake to do so'' \\[.5em]
+\emph{Garry Clark, J. Glaciol., 1987)}
+  \end{transbox}
+\end{columns}
 \end{frame}
+
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 
 \begin{frame}
@@ -125,91 +142,215 @@
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Measurements \& Observations}
+    \begin{block}{1779 Gravitation theory by de~Saussure}
+      H.~B. de~Saussure observes sliding
+      \begin{itemize}
+        \item ``\ldots the weight of the ice might be sufficient to urge it down the slope of the valley, if the sliding motion were aided by the water flowing at the bottom.''
+      \end{itemize}
+    \end{block}
+    \begin{block}{1827-1836 Hugi Block}
+      J.~Hugi observed that a boulder moved $1315\,\text{m}$ downstream between 1827 and 1836
+      \begin{itemize}
+        \item we would interpret this as clear evidence of glacier flow
+        \item but back then, some people argued that a boulder slides on the glacier surface, the glacier itself is motionless
+      \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Measurements \& Observations}
+  \begin{figure}
+    \includegraphics[width=8cm]{figures/agassi}%
+  \end{figure}
+    \begin{block}{1840-1846 Dilatation theory by L. Agassiz}
+      \begin{itemize}
+        \item glacier ice contains innumerable fissures and capillary tubes
+        \item during the day, these tubes absorb the water
+        \item and during the night, the water freezes
+        \item this distension exerts a force and propels the glacier in the direction of least resistance
+      \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Measurements \& Observations}
+  \begin{columns}
+    \column[C]{4.25cm}
+    \includegraphics[width=4cm]{figures/geschw_prof_oberfl}%
+    \vskip1em
+    \includegraphics[width=4cm]{figures/geschw_vert_prof}%
+    \column[C]{7.75cm}
+    \begin{block}{1864-1930 Viscous flow theory by J.~Forbes}
+      \begin{itemize}
+      \item made his own observations on Mer de Glace, France
+      \item glacier flows fastest in the center
+      \item opposes Agassi's theory
+      \item if the dilatation theory were true
+      \item then flow would be greatest at sunset
+      \item and near the glacier margins
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Pressure in a glacier}
+  mass $m = \rho V$
+     \begin{itemize}
+      \item $\rho$ = ice density $\approx$ 900\,kg\,m$^{-3}$
+      \item$V$ = Volume = Area $\times$ depth = $A \cdot z$
+     \end{itemize}
+     So pressure $p$ at depth $z$ is
+     \begin{displaymath}
+       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z
+     \end{displaymath}
+     How deep do we have to drill into a glacier before the ice pressure is 1 atmosphere?
+\end{frame}
+
+
+\begin{frame}{Depth for 1\,atm pressure?}
+    \begin{displaymath}
+       z = \frac{p}{\rho\cdot g} = ?
+     \end{displaymath}
+     \begin{itemize}
+     \item  So pressure rises by 1\,atm for every \alert{$x$}\,meters of depth in a glacier
+     \item Does ice deform in response to this pressure?
+     \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Shear stress $\tau$}
+  Total stress $t$ from ice column:
+    \begin{displaymath}
+       t = \rho V g = \rho\,g\,h
+     \end{displaymath}
+     \begin{itemize}
+     \item How much of this weight will contribute to shear deformation?
+     \item shear stress $\tau = \rho\,g\,h\,\sin{\alpha}$
+     \item normal stress $\sigma = \rho\,g\,h\,\cos{\alpha}$
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Shear stress in a glacier}
+  \begin{itemize}
+  \item $h$ = 130\,m
+  \item $\alpha$ = 5$^{\circ}$
+  \end{itemize}
+  \begin{displaymath}
+    \tau = \rho\,g\,h\,\sin{\alpha}
+  \end{displaymath}
+  \begin{beamercolorbox}[rounded=true,shadow=true]{boxed}
+    Shear stress at the glacier base, $\tau_{b}$, is $\approx$ 1\,bar, which is a typical value for basal shear stress under a glacier
+  \end{beamercolorbox}
+\end{frame}
+   
+
+\begin{frame}{Are glacier thickness and slope related?}
+  Suppose a glacier becomes thicker or steeper due to mass imbalance:
+  \begin{itemize}
+    \item it flows faster
+    \item it quickly reduces thickness $h$ or slope $\alpha$, until $\tau_{b} \approx$ 1\,bar again
+  \end{itemize}
+  Can we then estimate glacier thickness ($z=h$) from its slope if we know $\tau_{b} \approx$ 1\,bar?
+  \begin{displaymath}
+    \tau = \rho\,g\,z\,\sin{\alpha} \quad \Rightarrow \quad h \sim \frac{\tau_{b}}{\rho\,g\,\sin{\alpha}}
+  \end{displaymath}
+\end{frame}
+
 
 \begin{frame}{Parallel Sided Slab}
+  \vspace{-1em}
   \begin{figure}
-    \includegraphics[width=7cm]{figures/fig_3_11}
+    \includegraphics[width=7.5cm]{figures/fig_3_11}
   \end{figure}
+  \vspace{-1em}
+  \begin{block}{Assumptions}
+    \begin{itemize}
+    \item uniform in x- and y-direction $\Rightarrow \partial / \partial x = \partial / \partial y = 0$
+    \item steady-state $\Rightarrow \partial / \partial t = 0$
+    \item stress free surface $\Rightarrow \mathbf{T}\cdot \bn \vert_{z=H} = 0$
+    \item no-slip at the base $\bv \vert_{z=b} = 0$
+    \end{itemize}
+  \end{block}
+  \vspace{.5em}
   \begin{equation*}
+    \dot \varepsilon_{xz} = A\tau^{n-1} \sigma_{xz}^{(d)}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Parallel Sided Slab}
+\begin{equation*}
     \begin{array}{ccl}
-      \frac{\partial u}{\partial z}  & = &  2\,A(T,p)\,\tau^{n-1}\tau \qquad \Rightarrow \\[1em]
-      u_{h} - u_{b} &  = & \int_{0}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz =
+      \frac{\partial v_x}{\partial z}  & = &  2\,A(T,p)\,\tau^{n-1}\tau \qquad \Rightarrow \\[.5em]
+      v_x (z) &  = & \int_{b}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
+& = &\frac{2\,A}{n=1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(H^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
     \end{array}
   \end{equation*}
-  \\[.75em]
-  We assume $u_b=0$, i.e. glacier is frozen to the bed
+See script p. 4--10 for a derivation
+\begin{block}{Noteworthy}
+\begin{itemize}
+\item horizontal velocity grows with \alert{n}-th power of surface slope
+\item horizontal velocity grows with \alert{n+1}-th power of ice thickness
+\item this is an analytical solution, can be used for code verification (Ed's lecture)
+\end{itemize}
+\end{block}
 \end{frame}
 
-\begin{frame}{Flow Through a Cylindrical Channel}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{figures/fig_channel}
-  \caption{Coordinate system for a cross section through a valley glacier.  }
-  \label{fig:valley-glacier-coord}
-\end{figure}
-
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Free Surface}
+\begin{frame}{Flow of a Glacier in a Semi-Circular Valley}
+  \vspace{-1em}
   \begin{figure}
-    \includegraphics[width=4cm]{figures/fig_5_03}%
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/fig_channel}
+    \label{fig:valley-glacier-coord}
   \end{figure}
-  \begin{itemize}
-  \item on the black-board
-  \item or p. 65\,--70 in the book
-  \item $\mathbf{w}$ and $\mathbf{v}$ are the velocity of the free surface and the ice velocity, respectively
-  \item $\mathbf{n}$ is the outward-pointing normal vector
-    \begin{equation*}
-      \mathbf{n} = \frac{\nabla F_{s}}{\vert \nabla F_{s} \vert}
-    \end{equation*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Kinematic Boundary Condition}
-  \begin{block}{Surface}
-    \begin{equation}
-      \frac{\partial h}{\partial t} + v_{x}\frac{\partial h}{\partial x} + v_{y}\frac{\partial h}{\partial y} - v_{z} = a_{s}
-    \end{equation}
+  \begin{block}{Assumptions}
     \begin{itemize}
-    \item $a_{s}$ is the \alert{accumulation-ablation} function
-      \item climatic input from measurements or (melt) models
-    \end{itemize}
-  \end{block}
-  \begin{block}{Base}
-    \begin{equation}
-     \frac{\partial b}{\partial t} + v_{x}\frac{\partial b}{\partial x} + v_{y}\frac{\partial b}{\partial y} - v_{z} = a_{b}
-    \end{equation}
-    \begin{itemize}
-    \item $a_{b}$ is the \alert{basal melt rate}
-      \item often $\partial b/\partial t = 0$
-    \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Ice-Thickness Equation}
-  By combining the basal and surface kinematical equation we can obtain
-  \begin{equation}
-    \frac{\partial H}{\partial t} = - \nabla \cdot \mathbf{Q} + a_{s} - a_{b}
-  \end{equation}
-    \begin{itemize}
-    \item $ a_{s}$ and $a_{b}$ are in the vertical direction
-    \item the volume flux $\mathbf{Q}$ is defined as
+    \item uniform in x- and $\varphi$-direction, steady-state $\Rightarrow \partial / \partial x = \partial / \partial \varphi = \partial / \partial t = 0$
+    \item body force has to be balanced by tractions acting on the circumerence in distance $r$ from the center
       \begin{equation*}
-        \mathbf{Q} =
-        \left(
-          \begin{array}{c}
-            \int_{b}^{h} v_{x} \,\text{d} z \\[.25em]
-          \int_{b}^{h} v_{y} \,\text{d} z
-        \end{array}
-      \right)
-    \end{equation*}
-  \item derivation on p. 70\,--\,72
-  \item this is the central evolution equation in ice sheet dynamics
-  \end{itemize}
+        \sigma_{rx} \pi r \Delta x = - \rho\,g\,\frac{\pi r^2}{2} \Delta x \sin \alpha
+      \end{equation*}
+\end{itemize}
+  \end{block}
+  \note[item]{Valley glacier: drag of the side walls}
+\end{frame}
+
+\begin{frame}{Flow of a Glacier in a Semi-Circular Valley}
+ Similar to the parallel-sided slab, an analytical solution for the flow through a cylindrical channel can be obtained.
+\begin{equation*}
+v_x (r) = v_x (0) - \frac{2A}{n+1}\,\left( \frac{1}{2}\rho\,g\,\sin\alpha\right)^{n} r^{n+1}
+\end{equation*}
+\begin{block}{Noteworthy}
+\begin{equation*}
+v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
+\end{equation*}
+\begin{itemize}
+\item here, the radius $R$ plays the role of the ice thickness $H$
+\item center line velocity is \alert{eight} times slower than in an ice sheet of the same thickness
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Longitudinal Profile of a Valley Glacier}
+  \begin{figure}
+    \includegraphics[width=\textwidth]{figures/flow_acc_abl}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evolution of the Glacier Surface}
+  \begin{figure}
+    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
+  \end{figure}
+  Derivation on p. 12--14. Assuming $\partial b / \partial t = 0$ and no basal melt:
+  \begin{equation*}
+    \frac{\partial h}{\partial t} = - \underbrace{\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} + \underbrace{a_{\text{s}}}_{\text{climatic changes}}
+  \end{equation*}
 \end{frame}
 
 \end{document}
