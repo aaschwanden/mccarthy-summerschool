@@ -103,6 +103,17 @@
   \titlepage
 \end{frame}
 
+\begin{frame}
+  \frametitle{Overview}
+    \begin{itemize}
+    \item \alert{selected} examples of glacier flow, using concepts from
+      Continuum Mechanics
+    \item leave out boundary conditions
+    \item no tensors, yeah
+    \end{itemize}
+\end{frame}
+
+
 \setbeamertemplate{background canvas}
   {
      \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[height=
@@ -135,12 +146,13 @@
   }
   \begin{block}{In a nut shell:}
     \begin{itemize}
+    \item Well-described by continuum mechanics (Martin's lecture on Monday)
     \item The ice can deform as a viscous fluid
     \item The ice can slide over its substrate
-    \item Well-described by continuum mechanics (Martin's lecture)
     \end{itemize}
   \end{block}
 \end{frame}
+
 
 \begin{frame}
   \frametitle{Measurements \& Observations}
@@ -196,6 +208,51 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Forces}
+  \begin{itemize}
+  \item a force is any influence that causes an object to undergo a change in speed, a change in direction, or a change in shape
+  \item forces exist inside continuous bodies such as a glacier
+  \item these forces can cause a glacier to deform
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What is stress?}
+  ``Stress'' is the force per unit area acting on a material
+  \begin{displaymath}
+    \sigma = \frac{F}{A}
+  \end{displaymath}
+  Inside a glacier, stresses are due to
+  \begin{itemize}
+  \item weight of the overlying ice (overburden pressure)
+  \item shape of the glacier surface (pressure gradients)
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Types of stress}
+  As a force per unit area, stress has a direction
+  \begin{columns}
+    \column[c]{5cm}
+    \begin{figure}
+      \includegraphics[width=4.75cm]{figures/fig_3_08}
+    \end{figure}
+    \column[c]{6.5cm}
+   \begin{block}{}
+      Force can be directed normal to the area
+      \begin{itemize}
+      \item Result is \alert{pressure} if the force is the same on all faces of a cube.
+      \item Result is \alert{normal stress} if forces are different on different faces
+      \end{itemize}
+    \end{block}
+    \begin{block}{} 
+      Force can be directed parallel to the area
+      \begin{itemize}
+      \item Result is \alert{shear stress}
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Pressure in a glacier}
   mass $m = \rho V$
      \begin{itemize}
@@ -235,11 +292,26 @@
 
 
 \begin{frame}{Shear stress in a glacier}
+\begin{columns}[c]
+  \begin{column}{.5\textwidth}
+    \begin{block}{Valley Glacier}
+      \begin{itemize}
+      \item $h$ = 130\,m
+      \item $\alpha$ = 5$^{\circ}$
+      \end{itemize}
+    \end{block}
+  \end{column}
+  \begin{column}{.5\textwidth}
+    \begin{block}{Ice Sheet}
   \begin{itemize}
-  \item $h$ = 130\,m
-  \item $\alpha$ = 5$^{\circ}$
+  \item $h$ = 1300\,m
+  \item $\alpha$ = 0.5$^{\circ}$
   \end{itemize}
-  \begin{displaymath}
+\end{block}
+\end{column}
+\end{columns}
+\vspace{1em}
+\begin{displaymath}
     \tau = \rho\,g\,h\,\sin{\alpha}
   \end{displaymath}
   \begin{beamercolorbox}[rounded=true,shadow=true]{boxed}
@@ -258,6 +330,18 @@
   \begin{displaymath}
     \tau = \rho\,g\,z\,\sin{\alpha} \quad \Rightarrow \quad h \sim \frac{\tau_{b}}{\rho\,g\,\sin{\alpha}}
   \end{displaymath}
+\end{frame}
+
+
+\begin{frame}{An ice sheet of infinite height?}
+\begin{itemize}
+  \item power-law stress-strain relationship $\Rightarrow$ ice softens
+    rapidly as the shear stress exceeds 1\,bar.
+  \item ice flow also increases rapidly $\Rightarrow$ glacier expands
+    and thins
+  \item that 1\,bar is a typical stress is a result of $A$ and $n$
+\end{itemize}
+
 \end{frame}
 
 
@@ -286,7 +370,7 @@
     \begin{array}{ccl}
       \frac{\partial v_x}{\partial z}  & = &  2\,A(T,p)\,\tau^{n-1}\tau \qquad \Rightarrow \\[.5em]
       v_x (z) &  = & \int_{b}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
-& = &\frac{2\,A}{n=1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(H^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
+& = &\frac{2\,A}{n+1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(H^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
     \end{array}
   \end{equation*}
 See script p. 4--10 for a derivation
@@ -309,7 +393,7 @@ See script p. 4--10 for a derivation
   \begin{block}{Assumptions}
     \begin{itemize}
     \item uniform in x- and $\varphi$-direction, steady-state $\Rightarrow \partial / \partial x = \partial / \partial \varphi = \partial / \partial t = 0$
-    \item body force has to be balanced by tractions acting on the circumerence in distance $r$ from the center
+    \item body force has to be balanced by tractions acting on the circumference in distance $r$ from the center
       \begin{equation*}
         \sigma_{rx} \pi r \Delta x = - \rho\,g\,\frac{\pi r^2}{2} \Delta x \sin \alpha
       \end{equation*}
@@ -329,7 +413,8 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 \end{equation*}
 \begin{itemize}
 \item here, the radius $R$ plays the role of the ice thickness $H$
-\item center line velocity is \alert{eight} times slower than in an ice sheet of the same thickness
+\item center line velocity is \alert{eight} times slower than in an
+  ice sheet of the same thickness (side wall drag)
 \end{itemize}
 \end{block}
 \end{frame}
@@ -351,6 +436,58 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
   \begin{equation*}
     \frac{\partial h}{\partial t} = - \underbrace{\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} + \underbrace{a_{\text{s}}}_{\text{climatic changes}}
   \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evolution of the Glacier Surface}
+ ``The spatial mass balance is the change of elevation with time
+ (i.e., vertical velocity) at every point on the surface.``
+ \emph{Konrad} (1999)
+\end{frame}
+
+\begin{frame}{Why is it so hard to predict the future of an ice
+    sheet?}
+  \vspace{-.5em}
+  \begin{block}{It's easy because}
+   \begin{itemize}
+    \item composed of a single, largely homogenous material
+    \item viscous flow is governed by the Navier-Stokes equations (19th century physics)
+    \item move very slowly (turbulence, Coriolis force, and other inertial effects can be ignored)
+   \end{itemize}
+  \end{block}
+  \begin{block}{It's so hard because}
+   \begin{itemize}
+    \item the stress resisting ice flow at the base can vary by orders of magnitude
+    \item ocean interactions could trigger instabilities
+    \item difficult to observe boundary condition
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Now and then}
+     \begin{figure}
+       \includegraphics[width=8.25cm]{figures/bed_elev_speeds}
+     \end{figure}
+\end{frame}
+
+
+\begin{frame}{Now and then}
+ \begin{columns}[c]
+    \begin{column}{.24\linewidth}
+      \vspace{-.5cm}
+      \begin{figure}
+        EISMINT Greenland \\
+        \includegraphics[height=6.5cm]{figures/greencbar-SSL2}
+     \end{figure}
+    \end{column}
+    \begin{column}{.24\linewidth}
+      \vspace{-.5cm}
+      \begin{figure}
+        today \\
+        \includegraphics[height=6.5cm]{figures/grn1km}
+     \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}
