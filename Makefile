@@ -25,7 +25,7 @@ thermodynamics-slides-handout: thermodynamics-slides.tex $(figures)
 	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < thermodynamics-slides.tex > thermodynamics-slides-handout.tex	
 	pdflatex thermodynamics-slides-handout
 	pdflatex thermodynamics-slides-handout
-	@pdfnup --nup 1x2 --delta "1cm 1cm" thermodynamics-slides-handout.pdf
+	@pdfnup --nup 2x2 --delta "1cm 1cm" thermodynamics-slides-handout.pdf
 
 dynamics-script: dynamics-script.tex $(figures)  
 	pdflatex dynamics-script
@@ -41,13 +41,16 @@ dynamics-slides-handout: dynamics-slides.tex $(figures)
 	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides.tex > dynamics-slides-handout.tex	
 	pdflatex dynamics-slides-handout
 	pdflatex dynamics-slides-handout
-	@pdfnup --nup 1x2 --delta "1cm 1cm" dynamics-slides-handout.pdf
+	@pdfnup --nup 2x2 --delta "1cm 1cm" dynamics-slides-handout.pdf
 
-dynamics-script: dynamics-script.tex $(figures)  
-	pdflatex dynamics-script
-	bibtex dynamics-script
-	pdflatex dynamics-script
-	pdflatex dynamics-script
+zips: all
+	rm -rf aschwanden_mccarthy/	 # clean out if prior existence
+	mkdir aschwanden_mccarthy/
+	cp thermodynamics-script.pdf thermodynamics-slides-handout-nup.pdf dynamics-slides-handout-nup.pdf dynamics-script.pdf exercise.pdf solution.pdf aschwanden_mccarthy/
+	cp README aschwanden_mccarthy/
+	zip -r aschwanden_mccarthy.zip aschwanden_mccarthy/
+	tar -cvzf aschwanden_mccarthy.tar.gz aschwanden_mccarthy/*
+	rm -rf aschwanden_mccarthy/
 
 .PHONY: clean
 

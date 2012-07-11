@@ -10,6 +10,8 @@
 \newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
 \newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,decorations.pathmorphing,calc}
 
 % ---------------------------------------------------------------------------------------
 % definition of header and footer
@@ -51,6 +53,42 @@
 
 
 \vspace{-5em}
+
+\section{Surface evolution}
+
+\begin{enumerate}
+\item In simple terms the surface responds to changes in dynamics (flux divergence) and climate (accumulation-ablation function)
+\item
+\begin{itemize}
+\item in the accumulation zone, the surface rises 1\,m from September to March, and lowers by 1.5\,m from March to September. At the end of the hydrological year, the surface is thus 0.5\,m lower.
+\item in the ablation zone, the surface rises 1\,m from September to March, and lowers by 1\,m from March to September. At the end of the hydrological year, the surface is thus the same.
+\end{itemize}
+
+% \begin{tikzpicture}[>=stealth,scale=1]
+%       \coordinate (origin) at (0,0);
+%       \coordinate (Tstart) at (-0.2,0);
+%       \coordinate (Tend) at (9,0);
+%       \coordinate (aplus) at +(0,2);
+%       \coordinate (aminus) at +(0,-2);
+%       \coordinate (start) at (0.1,0);
+%       \coordinate (a2) at (4.1,1);
+%       \coordinate (a3) at (8.1,-.5);
+%       \coordinate (b2) at (4.1,1);
+%       \coordinate (b3) at (8.1,0);
+%    \draw[->] (Tstart) -- (Tend) node[anchor=north] {$t$};
+%     \draw[->] (origin) -- (aplus) node[anchor=west] {$h$};
+%     \draw[->] (origin) -- (aminus);
+%     \draw[line width=1.5pt, color=blue] (start) -- (a2) -- (a3);
+%     \draw[line width=1.5pt, color=red] (start) -- (b2) -- (b3);
+% \end{tikzpicture}
+
+\item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
+\end{enumerate}
+
+
+\section{Mass balance, surface evolution, and vertical velocity}
+
+Well, the example was taken slightly out of context, as the paper deals with rock glaciers. In this special case, the vertical velocity is indeed equal to the change of elevation with time. The term ``spatial mass balance'' is, however, an unlucky choice. Laser altimetry measures the surface elevation.
 
 
 \section{Melting temperature depression}
