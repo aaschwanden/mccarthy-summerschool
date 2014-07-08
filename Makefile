@@ -33,9 +33,9 @@ dynamics-script: dynamics-script.tex $(figures)
 	pdflatex dynamics-script
 	pdflatex dynamics-script
 
-dynamics-slides: dynamics-slides.tex $(figures)  
-	pdflatex dynamics-slides
-	pdflatex dynamics-slides
+dynamics-slides: dynamics-slides-2014.tex $(figures)  
+	pdflatex dynamics-slides-2014
+	pdflatex dynamics-slides-2014
 
 dynamics-slides-handout: dynamics-slides.tex $(figures)  
 	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides.tex > dynamics-slides-handout.tex	
