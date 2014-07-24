@@ -2,7 +2,7 @@
 
 \mode<presentation>
 {
-  \usetheme[headline,footline]{UAFshade}
+  \usetheme[footline]{UAFshade}
   \setbeamercovered{transparent}
 }
 
@@ -98,10 +98,20 @@
 }
 
 
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[width=\paperwidth]{uaf_beamer_shade_bg}};}
+} 
+
 % insert titlepage
 \begin{frame}
   \titlepage
 \end{frame}
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 \begin{frame}
   \frametitle{Overview}
@@ -126,13 +136,24 @@
 }
 \end{frame}
 
+\begin{frame}
+  \frametitle{Glacier flow}
+  \begin{figure}
+    \scriptsize{speeds by Evan Burgess (Wrangell) and Roman Motyka (Jakobshavn)}
+    \includegraphics[width=.95\textwidth]{figures/speeds-scale}
+  \end{figure}
+  \begin{itemize}
+    \item observed speeds range from 20\,m\,a$^{-1}$ for a valley glacier to 15\,km\,a$^{-1}$
+  \end{itemize}
+  \note[itemize]{
+}
+\end{frame}
 
 \setbeamertemplate{background canvas}
   {
      \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[height=
 \paperheight,width=\paperwidth]{figures/yakutat_sunset}};}
 } 
-
 
 \begin{frame}[plain] % not in the handout
   \begin{columns}
@@ -168,14 +189,63 @@
 
 \begin{frame}
   \frametitle{Water plays an important role}
-  \centering{
-    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
-  }
+  \begin{figure}
+    \includegraphics[height=4cm]{figures/black-rapids-1} \vspace{0.25em}
+    \includegraphics[height=4cm]{figures/black-rapids-2}
+  \end{figure}
   \begin{block}{Rule of thumb}
     \begin{itemize}
-    \item whenever something intersting happens in/on a glacier, liquid water is involved
+    \item whenever something interesting happens in/on a glacier, liquid water is involved
     \end{itemize}
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Water plays an important role}
+  at all three interfaces: lateral, basal, surface
+  \begin{itemize}
+  \item acts as a lubricant at the base (e.g. surging glaciers)
+  \item attacks ice shelfs from below (sub-shelf basal melting)
+  \item drives calving and frontal ablation of lake and ocean terminating glaciers
+  \item liquid water within the ice matrix softens the ice
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=0.70] {\includegraphics[height=
+\paperheight,width=\paperwidth]{figures/dawes_calving_alaska}};}
+} 
+
+% \begin{frame}[plain] % not in the handout
+\begin{frame}{The role of liquid water}
+  \begin{columns}
+    \column[C]{7.5cm}
+    \begin{transbox}
+      \begin{block}{Rule of thumb}
+        whenever something interesting happens in/on a glacier, liquid water is involved
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
+
+
+\begin{frame}
+  \frametitle{Water plays an important role}
+  \begin{figure}
+    \scriptsize{Landsat 5 image of Hubbard Glacier, Alaska}
+    \includegraphics<1>[height=6cm]{figures/hubbard-0} 
+    \includegraphics<2>[height=6cm]{figures/hubbard-1}
+    \\
+    \only<1>{August 7, 1985}
+    \only<2>{September 11, 1986}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -416,7 +486,7 @@ See script p. 4--10 for a derivation
   \vspace{-1em}
   \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/fig_channel}
+    \includegraphics[width=0.4\textwidth]{figures/fig_channel}
     \label{fig:valley-glacier-coord}
   \end{figure}
   \begin{block}{Assumptions}
@@ -470,14 +540,21 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 
 \begin{frame}{Why is it so hard to predict the future of an ice
     sheet?}
-  \vspace{-.5em}
   \begin{block}{It's easy because}
    \begin{itemize}
     \item composed of a single, largely homogenous material
     \item viscous flow is governed by the Navier-Stokes equations (19th century physics)
     \item move very slowly (turbulence, Coriolis force, and other inertial effects can be ignored)
    \end{itemize}
+  \begin{beamercolorbox}[rounded=true,shadow=true]{boxed}
+``I am an old man now, and when I die and go to heaven there are two matters on which I hope for enlightenment. One is quantum electrodynamics, and the other is the turbulent motion of fluids. And about the former I am rather optimistic.'' (O.~Reynolds)
+  \end{beamercolorbox}
+
   \end{block}
+\end{frame}
+
+\begin{frame}{Why is it so hard to predict the future of an ice
+    sheet?}
   \begin{block}{It's so hard because}
    \begin{itemize}
     \item the stress resisting ice flow at the base can vary by orders of magnitude
@@ -485,6 +562,9 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
     \item difficult to observe boundary condition
   \end{itemize}
   \end{block}
+  \begin{figure}
+    \includegraphics[width=4cm]{figures/jakobshavn_calving}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Now and then}
@@ -495,22 +575,9 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 
 
 \begin{frame}{Now and then}
- \begin{columns}[c]
-    \begin{column}{.24\linewidth}
-      \vspace{-.5cm}
       \begin{figure}
-        EISMINT Greenland \\
-        \includegraphics[height=6.5cm]{figures/greencbar-SSL2}
+        \includegraphics[height=6.5cm]{figures/greenland-sar-ar4-today}
      \end{figure}
-    \end{column}
-    \begin{column}{.24\linewidth}
-      \vspace{-.5cm}
-      \begin{figure}
-        today \\
-        \includegraphics[height=6.5cm]{figures/grn1km}
-     \end{figure}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \end{document}
