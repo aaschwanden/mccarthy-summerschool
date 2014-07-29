@@ -2,9 +2,13 @@
 
 \mode<presentation>
 {
-  \usetheme[headline,footline]{UAFshade}
+  \usetheme[footline]{UAFshade}
   \setbeamercovered{transparent}
 }
+
+% load packages
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows}
 
 % load packages
 \usepackage[english]{babel}
@@ -39,16 +43,10 @@
 \newcommand{\half}{\frac{1}{2}}
 \newcommand{\trace}{\operatorname{tr}}
 
-\newcommand{\rinv}{\frac{1}{r}}
-\newcommand{\ar}{r^{-1}\alpha}
-\newcommand{\stress}{\ensuremath{\text{\Large$\sigma$\normalsize}}}
-\newcommand{\devstress}{\ensuremath{\text{\Large$\tau$\normalsize}}}
 
 % Some useful commands (from MPL)
 \newcommand{\s}[1]{\ensuremath{\,\text{#1}}}
 \newcommand{\unit}[1]{\ensuremath{\,\text{#1}}}
-
-
 
 
 % title page
@@ -63,16 +61,16 @@
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[ARSC] % (optional, but mostly needed)
+\institute[GI] % (optional, but mostly needed)
 {
   %
-  Arctic Region Supercomputing Center\\
+  Geophysical Institute\\
   University of Alaska Fairbanks, USA
 }
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{June 2012}
+\date{August 2014}
 
 \titlegraphic{\includegraphics[width=10cm]{figures/glaciers3}}
 
@@ -90,10 +88,20 @@
 }
 
 
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[width=\paperwidth]{uaf_beamer_shade_bg}};}
+} 
+
 % insert titlepage
 \begin{frame}
   \titlepage
 \end{frame}
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 
 
@@ -174,7 +182,7 @@
   \item A temperature profile from a cold glacier contains information on past
     climate conditions.
   \item Ice deformation is strongly dependent on temperature (temperature
-    dependence of the rate factor $A$ in Glen's flow law); 
+    dependence of the rate factor $A$ in Glen's flow law).
   \item The routing of meltwater through a glacier is affected by ice
     temperature.  Cold ice is essentially impermeable, except for discrete
     cracks and channels.
@@ -202,7 +210,7 @@
   \begin{columns}
     \column[c]{7cm}
     \begin{equation*}
-      \rho \left(\ddt{u} + \bv \cdot \grad u\right) = - \Div \bq + Q
+      \rho \left(\ddt{u} + \underbrace{\bv \cdot \grad u}_{\textsf{advection}}\right) = - \underbrace{\Div \bq}_{\textsf{diffusion}} + \underbrace{Q}_{\textsf{production}}
     \end{equation*}
    \vspace{2em}
     \column[c]{6cm}

@@ -29,27 +29,11 @@
 \newcommand{\bU}{\mathbf{U}}
 \newcommand{\bv}{\mathbf{v}}
 
-\newcommand{\ddx}[1]{\ensuremath{\frac{\partial #1}{\partial x}}}
-\newcommand{\ddy}[1]{\ensuremath{\frac{\partial #1}{\partial y}}}
-\newcommand{\ddz}[1]{\ensuremath{\frac{\partial #1}{\partial z}}}
-\newcommand{\ddt}[1]{\ensuremath{\frac{\partial #1}{\partial t}}}
 
-\newcommand{\DDt}[1]{\ensuremath{\frac{d #1}{d t}}}
 
-\newcommand{\Div}{\nabla\cdot}
-\newcommand{\eps}{\epsilon}
-\newcommand{\grad}{\nabla}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\trace}{\operatorname{tr}}
 
-\newcommand{\rinv}{\frac{1}{r}}
-\newcommand{\ar}{r^{-1}\alpha}
-\newcommand{\stress}{\ensuremath{\text{\Large$\sigma$\normalsize}}}
-\newcommand{\devstress}{\ensuremath{\text{\Large$\tau$\normalsize}}}
 
-% Some useful commands (from MPL)
-\newcommand{\s}[1]{\ensuremath{\,\text{#1}}}
-\newcommand{\unit}[1]{\ensuremath{\,\text{#1}}}
+\graphicspath{{figures/}}
 
 \newenvironment{transbox}{%
 \begin{tikzpicture}
@@ -82,7 +66,7 @@
 
 \date{August 2014}
 
-\titlegraphic{\includegraphics[width=10cm]{figures/glaciers3}}
+\titlegraphic{\includegraphics[width=10cm]{glaciers3}}
 
 
 \subject{Glaciers}
@@ -126,7 +110,7 @@
 \begin{frame}
   \frametitle{What is a glacier?}
   \centering{
-    \includegraphics[width=.85\textwidth]{figures/landice}
+    \includegraphics[width=.85\textwidth]{landice}
   }
   \begin{itemize}
   \item Glaciers flow slowly under their own weight
@@ -140,7 +124,7 @@
   \frametitle{Glacier flow}
   \begin{figure}
     \scriptsize{speeds by Evan Burgess (Wrangell) and Roman Motyka (Jakobshavn)}
-    \includegraphics[width=.95\textwidth]{figures/speeds-scale}
+    \includegraphics[width=.95\textwidth]{speeds-scale}
   \end{figure}
   \begin{itemize}
     \item observed speeds range from 20\,m\,a$^{-1}$ for a valley glacier to 15\,km\,a$^{-1}$
@@ -152,7 +136,7 @@
 \setbeamertemplate{background canvas}
   {
      \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[height=
-\paperheight,width=\paperwidth]{figures/yakutat_sunset}};}
+\paperheight,width=\paperwidth]{yakutat_sunset}};}
 } 
 
 \begin{frame}[plain] % not in the handout
@@ -176,7 +160,7 @@
 \begin{frame}
   \frametitle{How does a glacier move?}
   \centering{
-    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=.65\textwidth]{flow_acc_abl}
   }
   \begin{block}{In a nut shell:}
     \begin{itemize}
@@ -190,8 +174,8 @@
 \begin{frame}
   \frametitle{Water plays an important role}
   \begin{figure}
-    \includegraphics[height=4cm]{figures/black-rapids-1} \vspace{0.25em}
-    \includegraphics[height=4cm]{figures/black-rapids-2}
+    \includegraphics[height=4cm]{black-rapids-1} \vspace{0.25em}
+    \includegraphics[height=4cm]{black-rapids-2}
   \end{figure}
   \begin{block}{Rule of thumb}
     \begin{itemize}
@@ -203,7 +187,7 @@
 \setbeamertemplate{background canvas}
   {
      \tikz{\node[inner sep=0pt,opacity=0.60] {\includegraphics[height=
-\paperheight,width=\paperwidth]{figures/dawes_calving_alaska}};}
+\paperheight,width=\paperwidth]{dawes_calving_alaska}};}
 } 
 
 
@@ -215,7 +199,7 @@
         \begin{columns}
           \column[C]{2.5cm}
           \begin{figure}
-            \includegraphics[width=\textwidth]{figures/calving-close-up}
+            \includegraphics[width=\textwidth]{calving-close-up}
           \end{figure}
           \column[C]{7cm}
           drives calving and frontal ablation of lake and ocean terminating glaciers\\
@@ -234,7 +218,7 @@
         \begin{columns}
           \column[C]{2.5cm}
           \begin{figure}
-            \includegraphics[width=\textwidth]{figures/pig}
+            \includegraphics[width=\textwidth]{pig}
           \end{figure}
           \column[C]{7cm}
           attacks ice shelfs from below (sub-shelf basal melting) \\
@@ -253,7 +237,7 @@
         \begin{columns}
           \column[C]{2.5cm}
           \begin{figure}
-            \includegraphics[width=\textwidth]{figures/root-glacier-cave-1}
+            \includegraphics[width=\textwidth]{root-glacier-cave-1}
           \end{figure}
           \column[C]{7cm}
           acts as a lubricant at the base (sliding) \\
@@ -272,7 +256,7 @@
         \begin{columns}
           \column[C]{2.5cm}
           \begin{figure}
-            \includegraphics[width=\textwidth]{figures/ice-matrix}
+            \includegraphics[width=\textwidth]{ice-matrix}
           \end{figure}
           \column[C]{7cm}
           softens the ice (decreases viscosity) \\
@@ -287,19 +271,6 @@
 {
 %
 } 
-
-
-% \begin{frame}
-%   \frametitle{Water plays an important role}
-%   \begin{figure}
-%     \scriptsize{Landsat 5 image of Hubbard Glacier, Alaska}
-%     \includegraphics<1>[height=6cm]{figures/hubbard-0} 
-%     \includegraphics<2>[height=6cm]{figures/hubbard-1}
-%     \\
-%     \only<1>{August 7, 1985}
-%     \only<2>{September 11, 1986}
-%   \end{figure}
-% \end{frame}
 
 \begin{frame}
   \frametitle{Measurements \& Observations}
@@ -321,7 +292,7 @@
 \begin{frame}
   \frametitle{Measurements \& Observations}
   \begin{figure}
-    \includegraphics[width=8cm]{figures/agassi}%
+    \includegraphics[width=8cm]{agassi}%
   \end{figure}
     \begin{block}{1840-1846 Dilatation theory by L. Agassiz}
       \begin{itemize}
@@ -338,9 +309,9 @@
   \frametitle{Measurements \& Observations}
   \begin{columns}
     \column[C]{4.25cm}
-    \includegraphics[width=4cm]{figures/geschw_prof_oberfl}%
+    \includegraphics[width=4cm]{geschw_prof_oberfl}%
     \vskip1em
-    \includegraphics[width=4cm]{figures/geschw_vert_prof}%
+    \includegraphics[width=4cm]{geschw_vert_prof}%
     \column[C]{7.75cm}
     \begin{block}{1864-1930 Viscous flow theory by J.~Forbes}
       \begin{itemize}
@@ -386,7 +357,7 @@
   \begin{columns}
     \column[c]{5cm}
     \begin{figure}
-      \includegraphics[width=4.75cm]{figures/fig_3_08}
+      \includegraphics[width=4.75cm]{fig_3_08}
     \end{figure}
     \column[c]{6.5cm}
    \begin{block}{}
@@ -500,7 +471,7 @@
 \begin{frame}{Parallel Sided Slab}
   \vspace{-1em}
   \begin{figure}
-    \includegraphics[width=7.5cm]{figures/fig_3_11}
+    \includegraphics[width=7.5cm]{fig_3_11}
   \end{figure}
   \vspace{-1em}
   \begin{block}{Assumptions}
@@ -539,7 +510,7 @@ See script p. 4--10 for a derivation
   \vspace{-1em}
   \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{figures/fig_channel}
+    \includegraphics[width=0.4\textwidth]{fig_channel}
     \label{fig:valley-glacier-coord}
   \end{figure}
   \begin{block}{Assumptions}
@@ -575,14 +546,14 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 \begin{frame}
   \frametitle{Longitudinal Profile of a Valley Glacier}
   \begin{figure}
-    \includegraphics[width=\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=\textwidth]{flow_acc_abl}
   \end{figure}
 \end{frame}
 
 \begin{frame}
   \frametitle{Evolution of the Glacier Surface}
   \begin{figure}
-    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=.65\textwidth]{flow_acc_abl}
   \end{figure}
   Derivation on p. 12--14. Assuming $\partial b / \partial t = 0$ and no basal melt:
   \begin{equation*}
@@ -616,20 +587,49 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
   \end{itemize}
   \end{block}
   \begin{figure}
-    \includegraphics[width=4cm]{figures/jakobshavn_calving}
+    \includegraphics[width=4cm]{jakobshavn_calving}
   \end{figure}
 \end{frame}
 
 \begin{frame}{Now and then}
-     \begin{figure}
-       \includegraphics[width=8.25cm]{figures/bed_elev_speeds}
-     \end{figure}
+  \begin{columns}
+    \column[c]{6cm}
+    \begin{figure}
+      \includegraphics[height=7.5cm]{today}
+    \end{figure}
+    \column[c]{6cm}
+    \begin{itemize}
+      \item model physics is better
+      \item grid resolution is finer
+      \item spatially-rich time-series of a multitude of observables is available for forcing and validation
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Now and then}
+  \begin{columns}
+    \column[c]{8cm}
+    \begin{figure}
+      \includegraphics[height=8cm]{greenland_bed}
+    \end{figure}
+    \column[c]{4cm}
+    \begin{itemize}
+    \item from 5\,km to 150\,m horizontal grid resolution
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Now and then}
+  \begin{figure}
+    Bamber (2001) \hspace{4em} Morlighem (2014)
+    \includegraphics[width=12cm]{jako_bed}
+ \end{figure}
 \end{frame}
 
 
 \begin{frame}{Now and then}
       \begin{figure}
-        \includegraphics[height=6.5cm]{figures/greenland-sar-ar4-today}
+        \includegraphics[height=6.5cm]{greenland-sar-ar4-today}
      \end{figure}
 \end{frame}
 
