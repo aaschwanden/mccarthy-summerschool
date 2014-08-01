@@ -1,9 +1,13 @@
+# Needs the pdfnup package
+
 all: thermodynamics-slides thermodynamics-slides-handout thermodynamics-script dynamics-slides dynamics-slides-handout dynamics-script exercise solution
 
 figures := figures/*.jpg figures/*.pdf
 
 
 exercise: exercise.tex $(figures)  
+	pdflatex exercise
+	bibtex exercise
 	pdflatex exercise
 	pdflatex exercise
 
@@ -37,8 +41,8 @@ dynamics-slides: dynamics-slides-2014.tex $(figures)
 	pdflatex dynamics-slides-2014
 	pdflatex dynamics-slides-2014
 
-dynamics-slides-handout: dynamics-slides.tex $(figures)  
-	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides.tex > dynamics-slides-handout.tex	
+dynamics-slides-handout: dynamics-slides-2014.tex $(figures)  
+	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides-2014.tex > dynamics-slides-handout.tex	
 	pdflatex dynamics-slides-handout
 	pdflatex dynamics-slides-handout
 	@pdfnup --nup 2x2 --delta "1cm 1cm" dynamics-slides-handout.pdf

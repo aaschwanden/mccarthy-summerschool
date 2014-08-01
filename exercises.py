@@ -4,11 +4,16 @@ import numpy as np
 
 rho = 910
 g = 9.81
-alphas = [1, 2, 5, 10]
+alpha = 1.7
 A = 2.4e-24
-
+n = 3
 secpera = 31556926
 
-R = 2000
+R = 1500
+H = 800
 
-u_def_channel = 2 * A * (1/2 * rho * g * np.sin(alpha)**n * ((R**(n+1))/(n+1))
+u_def_channel = 2 * A * (0.5 * rho * g * np.sin(alpha*np.pi/180.))**n * ((R**(n+1))/(n+1)) * secpera
+u_def_slab = 2 * A * (rho * g * np.sin(alpha*np.pi/180.))**n * ((H**(n+1))/(n+1)) * secpera
+
+print('channel speed for radius {}m: {:3.0f} m/yr'.format(R, u_def_channel))
+print('slab speed for thickness {}m: {:3.0f} m/yr'.format(H, u_def_slab))

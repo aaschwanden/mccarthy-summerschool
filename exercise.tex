@@ -1,8 +1,12 @@
 \documentclass[parskip=half]{scrartcl}
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+
 \usepackage{natbib}
 
+\bibliographystyle{agufull08}
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
 %% commands to facilitate units and temperature
@@ -17,8 +21,8 @@
 
 \usepackage[automark,headsepline,footsepline]{scrpage2}
 \clearscrheadings	
-\ihead{Dynamics and thermodynamics}
-\ohead{McCarthy Summer School 2012}
+\ihead{Dynamics of glaciers}
+\ohead{McCarthy Summer School 2014}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}	
 \setkomafont{pagenumber}{\normalfont\rmfamily}
@@ -41,7 +45,7 @@
 
 \vspace{-5em}
 
-\title{Dynamics and thermodynamics \\ of Glaciers \\[.2em]
+\title{Dynamics of Glaciers \\[.2em]
 \rule[1em]{\textwidth}{2pt}
 \LARGE{\sf Exercise}
 }
@@ -54,28 +58,32 @@
 
 \vspace{-5em}
 
-\section{Surface evolution}
+\section{Flow speeds}
 
-Assume a cold glacier (no basal melt), and that the base of the glacier is not moving (i.e. $\partial b / \partial t = 0$). The evolution of the ice surface, $h$, is then given by
-\begin{equation} \label{eq:upper-surface-evolution}
-\frac{\partial h}{\partial t} = - \nabla \cdot \mathbf{Q} + a_{\textrm s},
+Will and Carl are two grad students in glaciology who are really excited about their first opportunity to do field work on Kennicott Glacier, Alaska. Arriving in the town of McCarthy, their spirits are slightly dampened by heavy fog that makes it impossible to see Root Glacier from their tent. They decide to get started by going through the scribbles left by former grad student Tim. In Tim's field book they discover a sketch of Kennicott and Root Glacier (see Figure~\ref{fig:map}) and a note that the average ice thickness is 900\,m. Later that evening, at the bar,  Will and Carl make a bet who can better guess the surface speed of Kennicott Glacier between Hidden Creek Lake and Donahue Falls Lake. Recalling the glacier dynamics course they took the previous semester, Will assumes that Root Glacier can be approximated by an inclined parallel-sided slab and that half of the surface motion is due to basal sliding. Carl, on the other hand, opts for a cylindrical channel. 
+
+\paragraph{Question} During the second day, Will and Carl find a hard disk with GPS velocities from GPS station 3. They're surprised to discover that the average surface speed is around 0.5 meters per day. Who made the better guess and won the beer at the bar that night?
+\\[1em]
+Hint: assume a rate factor $A=2.4\cdot 10^{-24}\,\textrm{s}^{-1}\,\textrm{Pa}^{-3}$
+
+
+\begin{figure}
+  \centering
+   \includegraphics[width=14cm]{figures/barth-map} 
+   \label{fig:map}
+   \caption{Map from \cite{Bartholomaus2008}}
+\end{figure}
+
+\section{Mass flux}
+
+Fortunately the weather clears up and Will and Carl spend the better part of a week collecting additional ice thickness measurments with their ground penetrating radar. Since it's late summer, they have to carry the radar around by hand, a really laborious task. They conclude that collecting radar data is easier in spring when you can ski or snowmachine, simply draggin the radar behind. Nonetheless, with an ice thickness profile across the glacier, passing through GPS site 3 and the velocity readings from the same GPS, Will and Carl intend to calculate the mass flux through site 3. They know that the mass flux $Q$ is given by
+
+\begin{equation}
+Q = \bar v H = \int \limits_0^H v\, \mathrm{d}z,
 \end{equation}
-where $\nabla \cdot \mathbf{Q}$ and $a_{\textrm s}$ are the horizontal flux divergence and the accumulation-ablation function, respectively.
-\begin{enumerate}
-\item Explain the meaning of the above terms.
-\item If the flux divergence is constant throughout the year, describe the evolution of the ice surface over a hydrologic year (September to September):
-  \begin{itemize}
-    \item in the accumulation zone. Use the following values: $\nabla \cdot \mathbf{Q} = 2\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 4\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -1\,\text{m}\,\text{a}^{-1}$.
-    \item in the ablation zone. Use the following values: $\nabla \cdot \mathbf{Q} = -1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -3\,\text{m}\,\text{a}^{-1}$.
-    \item What happens at the equilibrium line?
-  \end{itemize}
-\item The 1912 eruption of Katmai volcano, Alaska, covered a nearby glacier completely with debris, thereby effectively shielding the glacier from ablation and accumulation. What will happen to this glacier? 
-\end{enumerate}
+where $\bar v$ is the vertically-averaged horizontal flow speed and $H$ is the ice thickness. Will and Carl only know the surface speed but not the depth distribution. Will realizes that in the case of plug flow (i.e. all horizontal motion is due to basal sliding) the vertically-averaged velocity is equal to the surface velocity. Carl then suggests that in the case of no basal sliding (i.e. vertical shearing only), the vertically-averaged horizontal velocity should be lower than for plug flow.
 
-\section{Mass balance, surface evolution, and vertical velocity}
-
-The terms mass balance, surface evolution, and vertical velocity are sometimes used incorrectly, even in peer-reviewed literature, as shown in the following example by \cite{Konrad1999}: ``The spatial mass balance is the change of elevation with time (i.e., vertical velocity) at every point on the surface.`` Think about it. What are the authors trying to say? Can you help them getting it right? What does repeated laser altimetry measure, mass balance, surface elevation, or vertical velocity?
-
+\paragraph{Question} Is Carl right, and if so, by how much?
 
 \section{Melting temperature depression}
 
@@ -94,8 +102,5 @@ What is the pressure melting temperature at the base of Gornergletscher (Fig.~9)
   \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\text{W}\,\text{m}^{−1}\,\text{K}^{−1}$.
   \end{itemize}
 \end{enumerate}
-
-\bibliographystyle{agufull08}
-\bibliography{mccarthy}
-
+\bibliography{thermobib}
 \end{document}
