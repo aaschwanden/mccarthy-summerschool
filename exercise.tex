@@ -1,7 +1,7 @@
 \documentclass[parskip=half]{scrartcl}
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
-
+\usepackage{gensymb}
 \usepackage{graphicx}
 
 \usepackage{natbib}
@@ -21,7 +21,7 @@
 
 \usepackage[automark,headsepline,footsepline]{scrpage2}
 \clearscrheadings	
-\ihead{Dynamics of glaciers}
+\ihead{Dynamics and thermodynamics of glaciers}
 \ohead{McCarthy Summer School 2014}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}	
@@ -85,6 +85,47 @@ where $\bar v$ is the vertically-averaged horizontal flow speed and $H$ is the i
 
 \paragraph{Question} Is Carl right, and if so, by how much?
 
+\section{Surface evolution}
+
+Assume a cold glacier (no basal melt), and that the base of the glacier is not moving (i.e. $\partial b / \partial t = 0$). The evolution of the ice surface, $h$, is then given by
+\begin{equation} \label{eq:upper-surface-evolution}
+\frac{\partial h}{\partial t} = - \nabla \cdot \mathbf{Q} + a_{\textrm s},
+\end{equation}
+where $\nabla \cdot \mathbf{Q}$ and $a_{\textrm s}$ are the horizontal flux divergence and the climatic mass balance (i.e. sum of surface and internal mass balances), respectively.
+\begin{enumerate}
+\item Explain the meaning of the above terms.
+\item If the flux divergence is constant throughout the year, describe the evolution of the ice surface over a hydrologic year (September to September):
+  \begin{itemize}
+    \item in the accumulation zone. Use the following values: $\nabla \cdot \mathbf{Q} = 2\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 4\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -1\,\text{m}\,\text{a}^{-1}$.
+    \item in the ablation zone. Use the following values: $\nabla \cdot \mathbf{Q} = -1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{winter}}= 1\,\text{m}\,\text{a}^{-1}$, $a_{\text{s}}^{\text{summer}} = -3\,\text{m}\,\text{a}^{-1}$.
+    \item What happens at the equilibrium line?
+  \end{itemize}
+\item The 1912 eruption of Katmai volcano, Alaska, covered a nearby glacier completely with debris, thereby effectively shielding the glacier from ablation and accumulation. What will happen to this glacier? 
+\end{enumerate}
+
+\section{Mass balance, surface evolution, and vertical velocity}
+
+The terms mass balance, surface evolution, and vertical velocity are sometimes used incorrectly, even in peer-reviewed literature, as shown in the following example by \cite{Konrad1999}: ``The spatial mass balance is the change of elevation with time (i.e., vertical velocity) at every point on the surface.`` Think about it. What are the authors trying to say? Can you help them getting it right? What does repeated laser altimetry measure, mass balance, surface elevation, or vertical velocity?
+
+\section{Climate history}
+
+Air temperatures in Alaska was oscillating with a period of about 50 years and an amplitude of about 2$\,^\circ\text{C}$ between 1950 and 2000. 
+
+\paragraph{Question} How deep down would you be able to detect such temperature variation in stagnant ice if the accuracy of your temperature sensors are 0.01$\,\text{K}$ assuming an ice temperature of $-\cels{3}$?
+
+\section{Cold content}
+
+A vertical profile of snow/firn temperatures down to 12\,m have been measured on McCall glacier (Figure~\ref{fig:mccall-temps}. The average density is 500 km/m$^{2}$. Rain and melt water will increase the firn temperatures due to refreezing and the associated release of latent heat, and eventually the snow/firn column becomes temperate, i.e. the temperature is 0\,\celsius{} throughout the firn column.
+
+\paragraph{Question} How much melt in m\,w.e. (water equivalent) or km/m$^{2}$ is needed to completely eliminate the cold content?
+
+\begin{figure}
+  \centering
+   \includegraphics[width=10cm]{figures/mccall-temps} 
+   \label{fig:mccall-temps}
+   \caption{Temperature profile for McCall Glacier, Alaska.}
+\end{figure}
+
 \section{Melting temperature depression}
 
 What is the pressure melting temperature at the base of Gornergletscher (Fig.~9)? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the meltwater? The pressure $p$ is the sum of the hydrostatic pressure and the atmospheric pressure, $p = \rho g H + p_{\text{atm}}$. Assume $p_{\text{atm}} = 75\,\text{kPa}$.
@@ -102,5 +143,7 @@ What is the pressure melting temperature at the base of Gornergletscher (Fig.~9)
   \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\text{W}\,\text{m}^{−1}\,\text{K}^{−1}$.
   \end{itemize}
 \end{enumerate}
+
+
 \bibliography{thermobib}
 \end{document}
