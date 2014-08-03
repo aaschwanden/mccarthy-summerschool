@@ -238,12 +238,10 @@
       \item only the sum of \alert{internal energy} and \alert{kinetic energy} is a conserved quantity
       \end{itemize}
     \end{block}
+    \note[itemize]{
+    \item explain advection, diffusion, production from an Eulerian perspective
+    }
 \end{frame}
-
-
-\section{Cold Ice}
-\label{sec:cold-ice}
-
 
 \setbeamertemplate{background canvas}
   {
@@ -258,11 +256,19 @@
     \begin{transbox}
       \begin{itemize}
         \item uppermost part of Grenzgletscher, Monte Rosa, at an altitude of $\sim$ 4500\,m
-        \item mean annual air temperature of $\sim$-14\,\celsius
+        \item mean annual air temperature of $\sim$-13\,\celsius
+        \item amplitude of $\sim$7\,\celsius
       \end{itemize}
-      \begin{figure}
-        \includegraphics[width=3.5cm]{temp-profile-illustrated}
-      \end{figure}
+      \begin{columns}
+        \column[c]{4cm}
+        \begin{figure}
+          \includegraphics[width=3.5cm]{temp-profile-illustrated}
+        \end{figure}
+        \column[c]{5.8cm}
+        \begin{itemize}
+        \item how does a temperature in the first 15\,look like?
+        \end{itemize}
+      \end{columns}
     \end{transbox}
   \end{columns}
 \end{frame}
@@ -272,6 +278,9 @@
 {
 %
 } 
+
+\section{Cold Ice}
+\label{sec:cold-ice}
 
 
 
@@ -445,23 +454,32 @@
   \end{columns}  
 \end{frame}
 
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=0.6] {\includegraphics[height=
+\paperheight,width=\paperwidth]{colle}};}
+} 
 
-% \begin{frame}
-%   \frametitle{Ice temperatures close to the glacier surface}
-%   \begin{columns}
-%     \column[T]{1.75cm} 
-%     \vspace{1cm}
-%     {\includegraphics<1>[width=1.5cm]{glaciersv_c}}%
-%     \vspace{2.5cm}
-%     \column[T]{10.25cm}
-%     \vspace{-1em}
-%     \begin{figure}
-%       \movie[width=7.cm,showcontrols=true]{\includegraphics[width=7.cm]{temp-variation}}{heat-flow-sinus-forcing.avi}
-%       \caption{Simulated variation of temperature with depth for the conditions at Colle
-%         Gnifetti. Numbers next to curves indicate months (1 corresponds to January).}
-%     \end{figure}
-%  \end{columns}  
-% \end{frame}
+\begin{frame}
+  \frametitle{Case study: Colle Gnifetti}
+  \begin{columns}
+    \column[C]{10cm}
+    \begin{transbox}
+      \begin{block}{Observation vs analytical solution}
+        \begin{figure}
+          \includegraphics[width=4.85cm]{temp-variation}
+          \includegraphics[width=4.85cm]{colle-analytical}
+        \end{figure}
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 
 \begin{frame}
@@ -693,7 +711,7 @@
   \item Scandinavia
   \item Svalbard
   \item Rocky Mountains
-  \item Alaska
+  \item Alaska (e.g. McCall Glacier, see exercise)
   \item Antarctic Peninsula
   \end{itemize}
   \end{columns}
