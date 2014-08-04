@@ -2,7 +2,7 @@
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
-
+\usepackage{listings}
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
 %% commands to facilitate units and temperature
@@ -54,6 +54,46 @@
 
 \vspace{-5em}
 
+\section{Flow speeds}
+
+This little python snippet does the job:
+\vspace{1em}
+
+ \small{
+\lstinputlisting[language=Python]{exercises.py}
+}
+\section{Mass flux}
+
+Yes Carl is right because in the shearing case the surface velocity $v_h$ is given by
+\begin{equation*}
+ v_h = \int \limits_0^h v\,\mathrm{d}z  = \frac{A_0}{n+1}H^{n+1}
+\end{equation*}
+and the vertically-average velocity by
+\begin{equation*}
+\bar v = \frac{1}{H}\int \limits_0^ v\,\mathrm{d}z = \frac{1}{H}\int \limits_0^h A_0\frac{1}{n+1}h^{n+1}\,\mathrm{d}z = \frac{A_0}{H}\frac{1}{n+2}H^{n+2} = \frac{A_0}{n+2}H^{n+1}
+\end{equation*} It thus follows that the ratio $\bar v / v_h$ is
+\begin{equation*}
+\frac{\bar v}{v_h} = \frac{n+1}{n+2} = 0.8
+\end{equation*} for $n=3$.
+
+\section{Surface evolution}
+
+\begin{enumerate}
+\item In simple terms the surface responds to changes in dynamics (flux divergence) and climate (climatic mass balance)
+\item
+\begin{itemize}
+\item in the accumulation zone, the surface rises 1\,m from September to March, and lowers by 1.5\,m from March to September. At the end of the hydrological year, the surface is thus 0.5\,m lower.
+\item in the ablation zone, the surface rises 1\,m from September to March, and lowers by 1\,m from March to September. At the end of the hydrological year, the surface is thus the same.
+\end{itemize}
+
+\item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
+\end{enumerate}
+
+
+\section{Mass balance, surface evolution, and vertical velocity}
+
+Well, the example was taken slightly out of context, as the paper deals with rock glaciers. In this special case, the vertical velocity is indeed equal to the change of elevation with time. The term ``spatial mass balance'' is, however, an unlucky choice. Laser altimetry measures the surface elevation.
+
 \section{Climate history}
 
 The initial amplitude is $\Delta T_0 = \cels{2}$ during an oscillation period of 50 years, thus $\omega = \frac{2\pi}{40\,\text{a}} = 3.9821\times 10^{-9}\,\text{s}^{-1}$. With Equation~(11) we get:
@@ -71,41 +111,17 @@ Therefore we get
   = - \sqrt{\frac{2\cdot 1.34\times 10^{-6}\,\text{m}^{2}\,\text{s}^{-1}}{3.9821\times 10^{-9}\,\text{s}^{-1}}}\,\text{ln}\left( \frac{0.01}{2}\right) \approx 137\,\text{m}.
 \end{equation*}
 
-\section{Surface evolution}
-
-\begin{enumerate}
-\item In simple terms the surface responds to changes in dynamics (flux divergence) and climate (climatic mass balance)
-\item
-\begin{itemize}
-\item in the accumulation zone, the surface rises 1\,m from September to March, and lowers by 1.5\,m from March to September. At the end of the hydrological year, the surface is thus 0.5\,m lower.
-\item in the ablation zone, the surface rises 1\,m from September to March, and lowers by 1\,m from March to September. At the end of the hydrological year, the surface is thus the same.
-\end{itemize}
-
-% \begin{tikzpicture}[>=stealth,scale=1]
-%       \coordinate (origin) at (0,0);
-%       \coordinate (Tstart) at (-0.2,0);
-%       \coordinate (Tend) at (9,0);
-%       \coordinate (aplus) at +(0,2);
-%       \coordinate (aminus) at +(0,-2);
-%       \coordinate (start) at (0.1,0);
-%       \coordinate (a2) at (4.1,1);
-%       \coordinate (a3) at (8.1,-.5);
-%       \coordinate (b2) at (4.1,1);
-%       \coordinate (b3) at (8.1,0);
-%    \draw[->] (Tstart) -- (Tend) node[anchor=north] {$t$};
-%     \draw[->] (origin) -- (aplus) node[anchor=west] {$h$};
-%     \draw[->] (origin) -- (aminus);
-%     \draw[line width=1.5pt, color=blue] (start) -- (a2) -- (a3);
-%     \draw[line width=1.5pt, color=red] (start) -- (b2) -- (b3);
-% \end{tikzpicture}
-
-\item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
-\end{enumerate}
-
-
-\section{Mass balance, surface evolution, and vertical velocity}
-
-Well, the example was taken slightly out of context, as the paper deals with rock glaciers. In this special case, the vertical velocity is indeed equal to the change of elevation with time. The term ``spatial mass balance'' is, however, an unlucky choice. Laser altimetry measures the surface elevation.
+\section{Cold content}
+ 
+The cold content can be obtained by
+\begin{equation*}
+E = -\int \limits_0^z \rho c_p T(z) \,\mathrm{d} z'
+\end{equation*}
+This can be approximated by the area under the depth profile:
+\begin{equation*}
+E \approx \frac{1}{2}\rho c_p\Delta T\Delta z = 105 \cdot 10^5\,\mathrm{J\,kg}^{-1},
+\end{equation*} where $\rho=500\,$kg\,m$^{-3}$ and $c_p=2009$\,J\,kg$^{-1}$\,K$^{-1}$.
+Divide by the latent heat of fusion $L=3.34\cdot10^5\,\mathrm{J\,kg}^{-1}$ and you get 32\,kg\,m$^{-2}$ = 32 mm w.e..
 
 
 \section{Melting temperature depression}
