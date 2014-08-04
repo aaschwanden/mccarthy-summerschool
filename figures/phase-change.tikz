@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=stealth,scale=7.5]
+      \coordinate (origin) at (0,0);
+      \coordinate (Hend) at +(1,0);
+      \coordinate (Tend) at +(0,0.5);
+      \coordinate (Tm) at +(0,0.2);
+      \coordinate (Hs) at ( $ (origin)!0.2!(Hend) $ );
+      \coordinate (Hl) at ( $ (origin)!0.7!(Hend) $ );
+      \coordinate (TmHs) at (0.2,0.2);
+      \coordinate (TmHl) at (0.7,0.2);
+      \coordinate (omega) at ( $ (origin)!0.9!(Hend) $ );
+     \draw[->] (origin) -- (Hend) node[anchor=north] {$E$};
+      \draw[->,densely dotted] (omega) -- +(0,0.5) node[anchor=west] {$\omega$};
+      \draw[->] (origin) -- (Tend) node[anchor=east] {$T$};
+      \draw[dashed] (Hs) node[anchor=north] {$E_{\text s}$} -- +(0,0.45);
+      \draw[dashed] (Hl) node[anchor=north] {$E_{\text l}$} -- +(0,0.45);
+      \draw[dashed] (Tm) node[anchor=east] {$T_{\text m}$} -- +(1,0);
+      \draw[thick] (origin) -- (TmHs) -- (TmHl) -- +(60:0.2);
+      \draw[dotted,thick] (Hs) -- (0.7,0.42) -- +(.22,0) node[anchor=west] (one) {1} ;
+\end{tikzpicture}

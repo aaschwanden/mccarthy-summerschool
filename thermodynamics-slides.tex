@@ -1,4 +1,4 @@
-\documentclass[hide notes,intlimits]{beamer}
+\documentclass[hide notes,intlimits,unknownkeysallowed]{beamer}
 
 \mode<presentation>
 {
@@ -219,13 +219,13 @@
   \begin{columns}
     \column[c]{7cm}
     \begin{equation*}
-      \rho \left(\ddt{u} + \underbrace{\bv \cdot \grad u}_{\textsf{advection}}\right) = - \underbrace{\Div \bq}_{\textsf{diffusion}} + \underbrace{Q}_{\textsf{production}}
+      \rho \left(\ddt{U} + \underbrace{\bv \cdot \grad U}_{\textsf{advection}}\right) = - \underbrace{\Div \bq}_{\textsf{diffusion}} + \underbrace{Q}_{\textsf{production}}
     \end{equation*}
    \vspace{2em}
     \column[c]{6cm}
       \begin{tabular}{cl}
         $\rho$ \quad & ice density \\
-        u \quad & internal energy \\
+        $U$ \quad & internal energy \\
         $\bv$ \quad & velocity \\
         $\bq$ \quad & heat flux \\
         $Q$ \quad & dissipation power \\
