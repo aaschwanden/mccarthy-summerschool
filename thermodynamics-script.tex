@@ -473,6 +473,83 @@ snow or firn cover in spring, and is the most important process
 altering the thermal structure of high accumulation areas and of the
 polar ice sheets.
 
+\subsection{Advection -- diffusion}
+\label{sec:advection-diffusion}
+
+Close to the ice divides in the central parts of an ice sheet, the ice
+velocity is mainly vertical down.  Under the assumptions of only
+vertical advection, no heat generation, and a frozen base we can
+calculate the steady state temperature profile with the simplified
+Equation (\ref{eq:heat-diffusion-advection-1d})
+%
+\begin{equation}
+ \label{eq:heat-diffusion-advection-1d-steady} \kappa \frac{d^2T}{d
+z^2} = w(z) \frac{d T}{d z}
+\end{equation}
+%
+The boundary conditions are
+\begin{align*} \text{surface:} \qquad & z=H: &\qquad
+\text{temperature}\;T_s = \text{const}\\ \text{bedrock:} \qquad & z=0:
+&\qquad \text{heat flux}\;-k \left(\frac{dT}{dz}\right)_{B} = G =
+\text{const}
+\end{align*}
+%
+For the first integration we substitute $f = \frac{dT}{dz}$ so that
+$\kappa f' = wf \; \Longrightarrow \; \frac{f' }{f} = \frac{1}{\kappa}
+w$ with the solution
+%
+\begin{equation}
+ \label{eq:8} \frac{dT(z)}{dz} = \left(\frac{dT}{dz}\right)_{B} \exp
+\left( \frac{1}{\kappa} \int_0^z w(z)\, dz \right)\,.
+\end{equation}
+%
+Now we make the assumption that the vertical velocity is $w(z) = -b
+z/H$, with the vertical velocity at the surface equal to the net mass
+balance rate $w_{s} = -\dot{b}$.  With the definition $l^2 := 2\kappa
+H /\dot{b}$ we get
+%
+\begin{equation}
+ \label{eq:10} T(z) - T(0) = \left(\frac{dT}{dz}\right)_{B} \int_0^z
+\exp \left(-\frac{z^2}{l^2} \right) \,dz
+\end{equation}
+%
+which has the solution
+%
+\begin{equation}
+ \label{eq:11} T(z) - T_s = \frac{\sqrt\pi}{2} l
+\left(\frac{dT}{dz}\right)_{B} \left[ {\textrm{erf}} \left(
+\frac{z}{l} \right) - {\textrm{erf}} \left( \frac{H}{l} \right)
+\right]\,.
+\end{equation}
+%
+The so-called \emph{error function} is tabulated and implemented in
+any mathematical software (usually as \texttt{erf}), and is defined as
+%
+\begin{equation*}
+ \label{eq:12} {\textrm{erf}}(x) = \frac{2}{\sqrt{\pi}} \int_0^x
+\exp(-x^2) \, dx.
+\end{equation*}
+
+We now introduce the useful definition of the \emph{P{\'e}clet Number}
+$\text{Pe} = w H/\kappa$ which is a measure of the relative importance
+of advection and diffusion.  The shape of the temperature profiles in
+Figure \ref{fig:advection-diffusion} only depends on the P{\'e}clet
+Number.  Depth and temperature can be scaled by the dimensionless
+variables
+%
+\begin{align*} &\text{scaled distance above bed} & \xi &=
+\frac{z}{H}\,,\\ &\text{scaled temperature} & \Theta &= \frac{k
+(T-T_s)}{G H}\,.\\
+\end{align*}
+%
+\begin{figure}[tbhp] \centering
+ \includegraphics[width=0.9\textwidth]{figures/advection-diffusion}
+  \caption{Dimensionless steady temperature profiles in terms of the
+dimensionless variables $\xi$ and $\Theta$ for various values of the
+P{\'e}clet number $\mathrm{Pe}$ (next to curves). }
+   \label{fig:advection-diffusion}
+\end{figure}
+
 
 \subsection{Cold glaciers}
 \label{sec:cold-glaciers}
@@ -552,83 +629,6 @@ this was accomplished with freezing/thawing ice within the rock
 (permafrost), which is a reaction to climate changes since the last
 ice age.  The lowest calculated permafrost margin was at about
 $2900\unit{m}$ elevation.
-
-\subsection{Advection -- diffusion}
-\label{sec:advection-diffusion}
-
-Close to the ice divides in the central parts of an ice sheet, the ice
-velocity is mainly vertical down.  Under the assumptions of only
-vertical advection, no heat generation, and a frozen base we can
-calculate the steady state temperature profile with the simplified
-Equation (\ref{eq:heat-diffusion-advection-1d})
-%
-\begin{equation}
- \label{eq:heat-diffusion-advection-1d-steady} \kappa \frac{d^2T}{d
-z^2} = w(z) \frac{d T}{d z}
-\end{equation}
-%
-The boundary conditions are
-\begin{align*} \text{surface:} \qquad & z=H: &\qquad
-\text{temperature}\;T_s = \text{const}\\ \text{bedrock:} \qquad & z=0:
-&\qquad \text{heat flux}\;-k \left(\frac{dT}{dz}\right)_{B} = G =
-\text{const}
-\end{align*}
-%
-For the first integration we substitute $f = \frac{dT}{dz}$ so that
-$\kappa f' = wf \; \Longrightarrow \; \frac{f' }{f} = \frac{1}{\kappa}
-w$ with the solution
-%
-\begin{equation}
- \label{eq:8} \frac{dT(z)}{dz} = \left(\frac{dT}{dz}\right)_{B} \exp
-\left( \frac{1}{\kappa} \int_0^z w(z)\, dz \right)\,.
-\end{equation}
-%
-Now we make the assumption that the vertical velocity is $w(z) = -b
-z/H$, with the vertical velocity at the surface equal to the net mass
-balance rate $w_{s} = -\dot{b}$.  With the definition $l^2 := 2\kappa
-H /\dot{b}$ we get
-%
-\begin{equation}
- \label{eq:10} T(z) - T(0) = \left(\frac{dT}{dz}\right)_{B} \int_0^z
-\exp \left(-\frac{z^2}{l^2} \right) \,dz
-\end{equation}
-%
-which has the solution
-%
-\begin{equation}
- \label{eq:11} T(z) - T_s = \frac{\sqrt\pi}{2} l
-\left(\frac{dT}{dz}\right)_{B} \left[ {\textrm{erf}} \left(
-\frac{z}{l} \right) - {\textrm{erf}} \left( \frac{H}{l} \right)
-\right]\,.
-\end{equation}
-%
-The so-called \emph{error function} is tabulated and implemented in
-any mathematical software (usually as \texttt{erf}), and is defined as
-%
-\begin{equation*}
- \label{eq:12} {\textrm{erf}}(x) = \frac{2}{\sqrt{\pi}} \int_0^x
-\exp(-x^2) \, dx.
-\end{equation*}
-
-We now introduce the useful definition of the \emph{P{\'e}clet Number}
-$\text{Pe} = w H/\kappa$ which is a measure of the relative importance
-of advection and diffusion.  The shape of the temperature profiles in
-Figure \ref{fig:advection-diffusion} only depends on the P{\'e}clet
-Number.  Depth and temperature can be scaled by the dimensionless
-variables
-%
-\begin{align*} &\text{scaled distance above bed} & \xi &=
-\frac{z}{H}\,,\\ &\text{scaled temperature} & \Theta &= \frac{k
-(T-T_s)}{G H}\,.\\
-\end{align*}
-%
-\begin{figure}[tbhp] \centering
- \includegraphics[width=0.9\textwidth]{figures/advection-diffusion}
-  \caption{Dimensionless steady temperature profiles in terms of the
-dimensionless variables $\xi$ and $\Theta$ for various values of the
-P{\'e}clet number $\mathrm{Pe}$ (next to curves). }
-   \label{fig:advection-diffusion}
-\end{figure}
 
 
 \section{Temperate ice}
