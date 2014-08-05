@@ -108,8 +108,8 @@
 
 {\bf Note}: This script is largely based on the \emph{Physics of
 Glaciers I} lecture notes by Martin L\"uthi and Martin Funk, ETH
-Zurich, Switzerland, with additions from \cite{GreveBlatter_disg} and
-\cite{Gusmeroli2010}.
+Zurich, Switzerland, with additions from \cite{GreveBlatter_disg},
+\cite{Gusmeroli2010} and \cite{Aschwanden2012}.
 
 \vspace{1em}
 
@@ -214,7 +214,7 @@ for the temperature range from \cels{-50} until \cels{0}. After
 %
 For constant thermal conductivity $k$ and in one dimension (the
 vertical direction $z$ and vertical velocity $w$) the energy balance
-equation (\ref{eq:heat-diffusion-advection}) reduces to
+equation (\ref{eq:temperature-equation}) reduces to
 %
 \begin{equation}
  \label{eq:heat-diffusion-advection-1d} \rho\, c \left(\ddt{T} + w
@@ -230,7 +230,7 @@ processes (see Figure~\ref{fig:energy-sources}):\\[-1em]
 internal friction, often called strain heating) is
 $P=\mathrm{tr}({\bepsdot\bsigma})= \epsdot_{ij}\sigma_{ji}$, where
 $\bepsdot$ and $\bsigma$ are the strain rate tensor and the stress
-tensor, respecitively..  Because usually the shearing deformation
+tensor, respectively..  Because usually the shearing deformation
 dominates glacier flow
  \begin{equation*} P_{\text{def}} \simeq 2
 \;\epsdot_{xz}\sigma_{xz}\,.
@@ -488,7 +488,7 @@ lower latitudes.
 In the Alps, for example, cold glaciers were observed at altitudes
 above $3900\unit{m}\unit{a.s.l.}$.  The most famous of these is Colle
 Gnifetti ($4550 \unit{m}\unit{a.s.l.}$), the highest accumulation
-basin of the Gorner-/Grenzletscher system.  At temperatures of about
+basin of the Gorner-/Grenzgletscher system.  At temperatures of about
 \cels{-13} the ice conserves atmospheric conditions such as impurities
 and air bubbles.  Surface melting only takes place on exceptionally
 hot days and leads to formation of ice lenses.  Many ice cores have
@@ -706,11 +706,6 @@ pure, the value of $\gamma$ can be as high as $\gamma_a = 9.8 \cdot
 10^{-5} \unit{K}\unit{kPa}^{-1}$ for air saturated water
 \citep{Harrison1975a}.
 
-% The melting temperature temperature can vary quite rapidly due to
-changing water % pressure.  An example from a borehole in
-Gornergletscher is shown in Figure %
-\ref{fig:druck-temperatur-gorner}.
-
 
  \begin{figure}[tbhp] \centering
   \includegraphics[width=12.cm]{figures/mws}
@@ -721,9 +716,6 @@ separating temperate ice (b) from the cold ice (c). Modified after
 \cite{Gusmeroli2010}}
   \label{fig:mws}
 \end{figure}
-
-% The pressure dependence of melting temperature temperature is
-important for thick % ice masses: under the Antarctica
 
 
 \section{Polythermal glaciers and ice sheets}
@@ -913,48 +905,81 @@ through melting at the glacier base.
 
 \section{An enthalpy formulation for glaciers and ice sheets}
 
-To model polythermal ice masses, ideally one would solve the temperature equation (Eq.~\ref{eq:temperature-equation}) in cold ice and the water content equation (Eq.~\ref{eq:water-content-equation}) in temperate ice, and applying Stefan-type matching conditions at the CTS. The CTS is a free boundary in such models and may be treated with front-tracking methods.  Because they require an explicit representation of the CTS as a surface, however, such methods are somewhat cumbersome to implement. 
+To model polythermal ice masses, ideally one would solve the
+temperature equation (Eq.~\ref{eq:temperature-equation}) in cold ice
+and the water content equation (Eq.~\ref{eq:water-content-equation})
+in temperate ice, and applying Stefan-type matching conditions at the
+CTS. The CTS is a free boundary in such models and may be treated with
+front-tracking methods.  Because they require an explicit
+representation of the CTS as a surface, however, such methods are
+somewhat cumbersome to implement.
 
-Enthalpy methods describe the CTS as a level set of the enthalpy variable.  No explicit surface-representation scheme is required and no \emph{a priori} restrictions apply to CTS shape.  Transitions between thermal structures caused by changing climatic conditions can be modeled even if nontrivial CTS topology arises at intermediate stages.
+Enthalpy methods describe the CTS as a level set of the enthalpy
+variable.  No explicit surface-representation scheme is required and
+no \emph{a priori} restrictions apply to CTS shape.  Transitions
+between thermal structures caused by changing climatic conditions can
+be modeled even if nontrivial CTS topology arises at intermediate
+stages.
 
-The specific enthalpy is often defined as $E = U + p/\rho$ where $U$ is the specific internal energy and $p$ is the pressure.  (Note $E$ and $U$ have SI units $\text{J}\,\text{kg}^{-1}$.) Here we use ``enthalpy'' synonymous with ``internal energy'', $E=U$, because we do not include the work associated with changing the volume, namely the $p/\rho$ term in the specific (per volume) case. The functional relationships between enthalpy, liquid water fraction, and temperature is given by
+The specific enthalpy is often defined as $E = U + p/\rho$ where $U$
+is the specific internal energy and $p$ is the pressure.  (Note $E$
+and $U$ have SI units $\text{J}\,\text{kg}^{-1}$.) Here we use
+``enthalpy'' synonymous with ``internal energy'', $E=U$, because we do
+not include the work associated with changing the volume, namely the
+$p/\rho$ term in the specific (per volume) case. The functional
+relationships between enthalpy, liquid water fraction, and temperature
+is given by
 \begin{align}
-\label{eq:temp-from-enthalpy}
-T(E,p) &= \begin{cases}
-          T_{\text i}(E),     & E < E_{\text s}(p), \\
-          T_{\text m}(p),     & E_{\text s}(p) \le E,
+\label{eq:temp-from-enthalpy} T(E,p) &= \begin{cases} T_{\text i}(E),
+& E < E_{\text s}(p), \\ T_{\text m}(p), & E_{\text s}(p) \le E,
         \end{cases} \\
-\label{eq:omega-from-enthalpy}
-\omega(E,p) &= \begin{cases}
-          0,                       & E < E_{\text s}(p), \\
-          L^{-1} ( E-E_\text{s}(p) ), & E_{\text s}(p) \le E,
+\label{eq:omega-from-enthalpy} \omega(E,p) &= \begin{cases} 0, & E <
+E_{\text s}(p), \\ L^{-1} ( E-E_\text{s}(p) ), & E_{\text s}(p) \le E,
         \end{cases}
-\end{align} where $E_{\text{s}}(p)$ is the enthalpy of $\omega=$ ice at the pressure-melting temperature $T_{\text{m}}(p)$. Schematic plots of temperature and water content as functions of enthalpy are shown in Figure~\ref{fig:enthalpy-function}, with points $E_{\text s}$ and $E_{\text l}(p) = E_{\text w}(T_{\text m}(p),p) = E_{\text s}(p) + L$ noted.   Equations \eqref{eq:temp-from-enthalpy} and \eqref{eq:omega-from-enthalpy} will only be applied to cold or temperate ice (mixtures), and therefore $E<E_{\text l}(p)$ in all cases.
+\end{align} where $E_{\text{s}}(p)$ is the enthalpy of $\omega=0$ ice
+at the pressure-melting temperature $T_{\text{m}}(p)$. Schematic plots
+of temperature and water content as functions of enthalpy are shown in
+Figure~\ref{fig:enthalpy-function}, with points $E_{\text s}$ and
+$E_{\text l}(p) = E_{\text w}(T_{\text m}(p),p) = E_{\text s}(p) + L$
+noted.  Equations \eqref{eq:temp-from-enthalpy} and
+\eqref{eq:omega-from-enthalpy} will only be applied to cold or
+temperate ice (mixtures), and therefore $E<E_{\text l}(p)$ in all
+cases.
 
-\begin{figure}
-  \centering{
-    \input{figures/phase-change.tikz}
-  }
-  \caption{At fixed pressure $p$ the temperature of the ice/liquid water mixture is a function of enthalpy, $T=T(E,p)$ (solid line), as is the liquid water fraction, $\omega=\omega(E,p)$ (dotted line).  Points $E_{\text s}(p)$ and $E_{\text l}(p)$ are the enthalpy of pure ice and pure liquid water, respectively, at temperature $T_{\text m}(p)$.}
+\begin{figure} \centering{ \input{figures/phase-change.tikz} }
+  \caption{At fixed pressure $p$ the temperature of the ice/liquid
+water mixture is a function of enthalpy, $T=T(E,p)$ (solid line), as
+is the liquid water fraction, $\omega=\omega(E,p)$ (dotted line).
+Points $E_{\text s}(p)$ and $E_{\text l}(p)$ are the enthalpy of pure
+ice and pure liquid water, respectively, at temperature $T_{\text
+m}(p)$.}
   \label{fig:enthalpy-function}
 \end{figure}
 
 We can then write the enthalpy balance equation as
 \begin{equation}
-  \label{eq:energy-balance} \rho \left(\ddt{E} + \bv \cdot
-\grad E\right) = - \Div \bq + Q.
-\end{equation}
-with
-\begin{equation}\label{eq:enthalpy-flux}
-  {\mathbf q} = \left\{
-    \begin{array}{rl}
-      - K_{\text i}(E)\, \nabla E, & \qquad \text{cold},\\
-      - k(E,p) \nabla T_{\text m}(p) - K_0 \nabla E, & \qquad \text{temperate},
-    \end{array} 
-  \right.
-\end{equation} where $K_{\text{i}}$ and $K_0$ are the enthalpy diffusivity of cold and temperate ice, respectivley, and $k$ is the heat conductivity expressed in terms of enthalpy.
+  \label{eq:energy-balance} \rho \left(\ddt{E} + \bv \cdot \grad
+E\right) = - \Div \bq + Q
+\end{equation} with
+\begin{equation}\label{eq:enthalpy-flux} {\mathbf q} = \left\{
+    \begin{array}{rl} - K_{\text i}(E)\, \nabla E, & \qquad
+\text{cold},\\ - k(E,p) \nabla T_{\text m}(p) - K_0 \nabla E, & \qquad
+\text{temperate},
+    \end{array} \right.
+\end{equation} where $K_{\text{i}}$ and $K_0$ are the enthalpy
+diffusivity of cold and temperate ice, respectively, and $k$ is the
+heat conductivity expressed in terms of enthalpy.
 
-In writing the above enthalpy equations, we have assumed that we're dealing with incompressible ice. It is, however, important to note that the enthalpy framework is more general, and can be easily extended to the compressible case. As so often, the devil lies in specifying the boundary conditions. For a comprehensive (and lengthy) discussion of an enthalpy formulation for glaciers and ice sheets, see \cite{Aschwanden2012}.
+In writing the above enthalpy equations, we have assumed that we're
+dealing with incompressible ice. It is, however, important to note
+that the enthalpy framework is more general, and can be easily
+extended to the compressible case.  Because the enthalpy equation is
+the same type of partial differential equation as the temperature
+equation, rendering an existing numerical model polythermal is quite
+straigth-forward. As so often, the devil lies in specifying the
+boundary conditions. For a comprehensive (and lengthy) discussion of
+an enthalpy formulation for glaciers and ice sheets, see
+\cite{Aschwanden2012}.
 
 
 \newpage \bibliography{thermobib}
