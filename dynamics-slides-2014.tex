@@ -1,4 +1,4 @@
-\documentclass[hide notes,intlimits]{beamer}
+\documentclass[hide notes,intlimits,unknownkeysallowed]{beamer}
 
 \mode<presentation>
 {
@@ -145,7 +145,7 @@
   \begin{transbox}
     ``The tradition of glacier studies that we inherit draws upon two great legacies of the eighteenth and nineteenth centuries: classical physics and romatic enthusiasm for Nature.\\[.25em]
 \ldots It is easy to undervalue the romantic contribution, but in glaciology, it would be a mistake to do so'' \\[.5em]
-\emph{Garry Clark, J. Glaciol., 1987)}
+\emph{Garry Clark, J. Glaciol. (1987)}
   \end{transbox}
 \end{columns}
 \end{frame}
@@ -203,7 +203,7 @@
           \end{figure}
           \column[C]{7cm}
           drives calving and frontal ablation of lake and ocean terminating glaciers\\
-          lecture on \alert{calving} by Doug Benn
+          lecture on \alert{calving} by Doug Benn (\alert{cancelled})
         \end{columns}
       \end{block}
     \end{transbox}
@@ -242,11 +242,15 @@
           \column[C]{7cm}
           acts as a lubricant at the base (sliding) \\
           lecture on \alert{tidewater glaciers and submarine melt} by Martin Truffer?
+          \\
+          surging glaciers
         \end{columns}
       \end{block}
     \end{transbox}
   \end{columns}
 \end{frame}
+
+
 
 \begin{frame}{The role of liquid water}
   \begin{columns}
@@ -384,15 +388,15 @@
      \end{itemize}
      So pressure $p$ at depth $z$ is
      \begin{displaymath}
-       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z
+       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z + p_{\textsf{air}}
      \end{displaymath}
-     How deep do we have to drill into a glacier before the ice pressure is 1 atmosphere?
+     How deep do we have to drill into a glacier before the ice pressure is 2 atmosphere?
 \end{frame}
 
 
-\begin{frame}{Depth for 1\,atm pressure?}
+\begin{frame}{Depth for 2\,atm pressure?}
     \begin{displaymath}
-       z = \frac{p}{\rho\cdot g} = ?
+       z = \frac{p-p_{\textsf{air}}}{\rho\cdot g} = ?
      \end{displaymath}
      \begin{itemize}
      \item  So pressure rises by 1\,atm for every \alert{$x$}\,meters of depth in a glacier
@@ -404,7 +408,7 @@
 \begin{frame}{Shear stress $\tau$}
   Total stress $t$ from ice column:
     \begin{displaymath}
-       t = \rho V g = \rho\,g\,h
+       t = \frac{\rho V g}{A} = \rho\,g\,h
      \end{displaymath}
      \begin{itemize}
      \item How much of this weight will contribute to shear deformation?
@@ -553,11 +557,11 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 \begin{frame}
   \frametitle{Evolution of the Glacier Surface}
   \begin{figure}
-    \includegraphics[width=.65\textwidth]{flow_acc_abl}
+    \includegraphics[width=.75\textwidth]{flow_acc_abl}
   \end{figure}
   Derivation on p. 12--14. Assuming $\partial b / \partial t = 0$ and no basal melt:
   \begin{equation*}
-    \frac{\partial h}{\partial t} = - \underbrace{\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} + \underbrace{a_{\text{s}}}_{\text{climatic changes}}
+    \frac{\partial h}{\partial t} = - \underbrace{\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} + \underbrace{B_{\text{clim}}}_{\text{climatic changes}}
   \end{equation*}
 \end{frame}
 
@@ -629,7 +633,7 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 
 \begin{frame}{Now and then}
       \begin{figure}
-        \includegraphics[height=6.5cm]{greenland-sar-ar4-today}
+        \includegraphics[height=7cm]{greenland-sar-ar4-today}
      \end{figure}
 \end{frame}
 
