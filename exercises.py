@@ -12,10 +12,10 @@ secpera = 31556926
 R = 1500
 H = 900
 
-f = np.sin(alpha*np.pi/180.)
+f = np.sin(alpha*np.pi/180)
 
-u_def_channel = 2 * A * (0.5 * rho * g * f)**n * ((R**(n+1))/(n+1)) * secpera
-u_def_slab = 2 * A * (rho * g * f)**n * ((H**(n+1))/(n+1)) * secpera
+u_def_channel = 2 * A * (0.5 * rho * g * f)**n * ((R**(n+1))/(n+1)) * secpera / 365.
+u_def_slab = 2 * A * (rho * g * f)**n * ((H**(n+1))/(n+1)) * secpera / 365.
 
 print('channel speed for radius {}m: {:3.0f} m/yr'.format(R, u_def_channel))
 print('channel speed for thickness {}m: {:3.0f} m/yr'.format(H, u_def_channel/8))

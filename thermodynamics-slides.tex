@@ -61,7 +61,7 @@
 % title page
 \title[Glacier Thermodynamics] % (optional, use only with long paper titles)
 {Thermodynamics of Glaciers}
-\subtitle{McCarthy Summer School}
+%\subtitle{McCarthy Summer School}
 
 
 \author[Aschwanden] % (optional, use only with lots of authors)
@@ -79,10 +79,8 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{August 2014}
-
-\titlegraphic{\includegraphics[width=10cm]{glaciers3}}
-
+\date{}
+\titlegraphic{\includegraphics[width=.9\textwidth]{ice-crystals-water}}
 
 \subject{Glaciers}
 
@@ -125,7 +123,7 @@
   \item notation following Greve \& Blatter: Dynamics of Ice Sheets and Ice Sheets
   \end{itemize}
   \begin{figure}
-    \includegraphics[scale=1.25]{greveblatter_disg}
+    \includegraphics[scale=1.75]{greveblatter_disg}
   \end{figure}
 \end{frame}
 
@@ -251,6 +249,10 @@
 
 \begin{frame}
   \frametitle{Case study: Colle Gnifetti}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Case study: Colle Gnifetti}
   \begin{columns}
     \column[C]{10cm}
     \begin{transbox}
@@ -266,13 +268,12 @@
         \end{figure}
         \column[c]{5.8cm}
         \begin{itemize}
-        \item how does a temperature in the first 15\,look like?
+        \item how does a temperature in the first 15\,m look like?
         \end{itemize}
       \end{columns}
     \end{transbox}
   \end{columns}
 \end{frame}
-
 
 \setbeamertemplate{background canvas}
 {
@@ -315,6 +316,7 @@
       $k(T)$ & thermal conductivity \\
     \end{tabular}
   \end{columns}  
+  \note[item]{MAAT at Colle is below freezing, we thus expect cold ice}
 \end{frame}
 
 \subsection{Thermal properties}
@@ -448,7 +450,8 @@
         \sin\Big(\omega t - \underbrace{h \sqrt{\frac{\omega}{2\kappa}}}_{\varphi(h)}\Big).
       \end{equation*}
       \begin{tabular}{cl}
-        $\Delta T(h)$ & amplitude variation with depth 
+        $\Delta T(h)$ & amplitude variation with depth \\
+        $\varphi(h)$ & time-lag with depth
       \end{tabular}
     \end{block}
   \end{columns}  
@@ -600,10 +603,10 @@
     \includegraphics[width=8cm]{mws}
   \end{figure}
   \begin{enumerate} \small
-  \item<1-2> water trapped in the ice as water-filled pores
-  \item<1-2> water entering the glacier through cracks and crevasses at the ice surface in the ablation area
-  \item<1,3> changes in the pressure melting point due to changes in lithostatic pressure
-  \item<1,3> melting due energy dissipation by internal friction (strain heating) 
+  \item water trapped in the ice as water-filled pores
+  \item water entering the glacier through cracks and crevasses at the ice surface in the ablation area
+  \item changes in the pressure melting point due to changes in lithostatic pressure
+  \item melting due energy dissipation by internal friction (strain heating) 
   \end{enumerate}  
 \end{frame}
 
@@ -618,6 +621,7 @@
       T_m = T_{\text{tp}} - \gamma\, (p - p_{\text{tp}})\,,
     \end{equation}
     \begin{itemize}
+    \item $T_m$ \; melting point (line) temperature
     \item $T_{\text{tp}}=273.16\unit{K}$ triple point temperature of water
     \item $p_{\text{tp}}=611.73\unit{Pa}$ triple point pressure of water
     \item Temperature follows the pressure field
@@ -637,7 +641,8 @@
 \begin{frame}
   \frametitle{Temperate Glaciers}
   \begin{figure}
-    \includegraphics[width=5cm]{forno}
+    \includegraphics<1>[width=8cm]{mccarthy-group-2014}
+    \includegraphics<2>[width=8cm]{root-glacier}
   \end{figure}
   Temperate glaciers are widespread, e.g.:
   \begin{itemize}
@@ -763,7 +768,8 @@
   \end{itemize}
       \begin{align*}
        \rho c(T)\left(\ddt{T} + {\bf v}\cdot\nabla T\right) & =  \nabla \cdot k \nabla T + Q \\
-       \rho\,L\left(\ddt{\omega} + {\bf v}\cdot\nabla \omega \right) & =   Q
+       \rho\,L\left(\ddt{\omega} + {\bf v}\cdot\nabla \omega \right) & =   Q \\
+        \textsf{Stefan-type matching conditions at the CTS}
       \end{align*}
       or
      \begin{align*}
