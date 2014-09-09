@@ -626,7 +626,7 @@ tensor is
 %
 \begin{align}
   \epsdot_{xz} &= A \tau^{n-1}\sigma^{(d)}_{xz}
-  = A \left( \rho g (h-z) \sin\alpha \right)^{n-1}\rho g (h-z) \sin\alpha
+  = A \left( \rho g (h-z) \sin\alpha \right)^{n-1}\rho g (H-z) \sin\alpha
   \notag\\
   &= A\left( \rho g (h-z) \sin\alpha \right)^{n}.
 \end{align}
@@ -641,7 +641,7 @@ where the second term vanishes.  Integration with respect to $z$ leads to
 %
 \begin{align*}
   v_x(z) &= 2 \int_0^z \epsdot_{xz}(z)\; dz\\
-         &= - \frac{2A}{n+1} (\rho g \sin\alpha)^n (h-z)^{n+1} + k
+         &= - \frac{2A}{n+1} (\rho g \sin\alpha)^n (H-z)^{n+1} + k
 \end{align*}
 %
 With the boundary condition at the glacier base $v_x(0)=u_b$ we can determine
@@ -655,7 +655,7 @@ and finally arrive at the velocity distribution in a parallel sided slab
 %
 \begin{equation}
   \label{eq:parallel-slab-velocity}
- u(z) = v_x(z) = \underbrace{\frac{2A}{n+1} (\rho g \sin\alpha)^n \left( H^{n+1}-(h-z)^{n+1}
+ u(z) = v_x(z) = \underbrace{\frac{2A}{n+1} (\rho g \sin\alpha)^n \left( H^{n+1}-(H-z)^{n+1}
   \right)}_{\text{deformation velocity}}\quad + \underbrace{u_b\rule[-1.9ex]{0ex}{1ex}}_{\text{sliding velocity}}
 \end{equation}
 %
