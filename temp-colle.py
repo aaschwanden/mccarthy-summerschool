@@ -12,8 +12,8 @@ scalarMap = cmx.ScalarMappable(norm=cNorm, cmap=jet)
 # better use udunits
 secpera = 31556925.9747
 
-c_i = 2009  # J kg-1 K-1
-k_i = 2.1  # J m-1 K-1 s-1
+c_i = 2009   # J kg-1 K-1
+k_i = 2.1    # J m-1 K-1 s-1
 rho_i = 910  # kg m-3
 kappa = k_i/(c_i*rho_i) * secpera
 

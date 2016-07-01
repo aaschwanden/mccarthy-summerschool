@@ -1,0 +1,96 @@
+\documentclass[DIV15,11pt,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{listings}
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%% commands to facilitate units and temperature
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,decorations.pathmorphing,calc}
+
+% ---------------------------------------------------------------------------------------
+% definition of header and footer
+% ---------------------------------------------------------------------------------------
+
+\usepackage[automark,headsepline,footsepline]{scrpage2}
+\clearscrheadings	
+\ihead{Dynamics and thermodynamics of glaciers}
+\ohead{McCarthy Summer School 2016}
+\cfoot{\pagemark}
+\setkomafont{pagehead}{\normalfont}	
+\setkomafont{pagenumber}{\normalfont\rmfamily}
+
+
+
+
+% ---------------------------------------------------------------------------------------
+% Koma-Script - Settings
+% ---------------------------------------------------------------------------------------
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+% \setkomafont{caption}{\sffamily}
+\setcapindent{1em}
+
+\pagestyle{scrheadings}
+
+
+\begin{document}
+
+\vspace{-5em}
+
+\title{Dynamics of Glaciers \\[.2em]
+\rule[1em]{\textwidth}{2pt}
+\LARGE{\sf Solutions to Exercise}
+}
+\date{}
+
+\maketitle
+
+
+\vspace{-5em}
+
+\section{Flow speeds}
+
+You can either use the fact that the flow velocity on the center line of a cylindrical channel is eight times slower than in an ice sheet of the same ice thickness (Eq.~32 in the script) or you estimate the radius by eye-balling the map. One method underestimates the flow speed, the other two overestimate it. This little python snippet does the job:
+\vspace{1em}
+
+ \small{
+\lstinputlisting[language=Python]{exercises.py}
+}
+\section{Mass flux}
+
+Yes Carl is right because in the shearing case the surface velocity $v_h$ is given by
+\begin{equation*}
+ v_h = \int \limits_0^h v\,\mathrm{d}z  = \frac{A_0}{n+1}H^{n+1}
+\end{equation*}
+and the vertically-average velocity by
+\begin{equation*}
+\bar v = \frac{1}{H}\int \limits_0^ v\,\mathrm{d}z = \frac{1}{H}\int \limits_0^h A_0\frac{1}{n+1}h^{n+1}\,\mathrm{d}z = \frac{A_0}{H}\frac{1}{n+2}H^{n+2} = \frac{A_0}{n+2}H^{n+1}
+\end{equation*} It thus follows that the ratio $\bar v / v_h$ is
+\begin{equation*}
+\frac{\bar v}{v_h} = \frac{n+1}{n+2} = 0.8
+\end{equation*} for $n=3$.
+
+\section{Surface evolution}
+
+\begin{enumerate}
+\item In simple terms the surface responds to changes in dynamics (flux divergence) and climate (climatic mass balance)
+\item
+\begin{itemize}
+\item in the accumulation zone, the surface rises 1\,m from September to March, and lowers by 1.5\,m from March to September. At the end of the hydrological year, the surface is thus 0.5\,m lower.
+\item in the ablation zone, the surface rises 1\,m from September to March, and lowers by 1\,m from March to September. At the end of the hydrological year, the surface is thus the same.
+\end{itemize}
+\item at the ELA
+\item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
+\end{enumerate}
+
+\section{Ice thickness}
+
+TBC
+
+\end{document}

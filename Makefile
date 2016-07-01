@@ -1,19 +1,29 @@
 # Needs the pdfnup package
 
-all: thermodynamics-slides thermodynamics-slides-handout thermodynamics-script dynamics-slides dynamics-slides-handout dynamics-script exercise solution
+all: thermodynamics-slides thermodynamics-slides-handout thermodynamics-script dynamics-slides dynamics-slides-handout dynamics-script exercise-d exercise-t solution-dynamics solution-thermodynamics
 
 figures := figures/*.jpg figures/*.pdf
 
 
-exercise: exercise.tex $(figures)  
-	pdflatex exercise
-	bibtex exercise
-	pdflatex exercise
-	pdflatex exercise
+exercise-d: exercise-dynamics.tex $(figures)  
+	pdflatex exercise-dynamics
+	bibtex exercise-dynamics
+	pdflatex exercise-dynamics
+	pdflatex exercise-dynamics
 
-solution: solution.tex $(figures)  
-	pdflatex solution
-	pdflatex solution
+exercise-t: exercise-thermodynamics.tex $(figures)  
+	pdflatex exercise-thermodynamics
+	bibtex exercise-thermodynamics
+	pdflatex exercise-thermodynamics
+	pdflatex exercise-thermodynamics
+
+solution-dynamics: solution-dynamics.tex $(figures)  
+	pdflatex solution-dynamics
+	pdflatex solution-dynamics
+
+solution-thermodynamics: solution-thermodynamics.tex $(figures)  
+	pdflatex solution-thermodynamics
+	pdflatex solution-thermodynamics
 
 thermodynamics-script: thermodynamics-script.tex $(figures)  
 	pdflatex thermodynamics-script
@@ -37,12 +47,12 @@ dynamics-script: dynamics-script.tex $(figures)
 	pdflatex dynamics-script
 	pdflatex dynamics-script
 
-dynamics-slides: dynamics-slides-2014.tex $(figures)  
-	pdflatex dynamics-slides-2014
-	pdflatex dynamics-slides-2014
+dynamics-slides: dynamics-slides-2016.tex $(figures)  
+	pdflatex dynamics-slides-2016
+	pdflatex dynamics-slides-2016
 
-dynamics-slides-handout: dynamics-slides-2014.tex $(figures)  
-	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides-2014.tex > dynamics-slides-handout.tex	
+dynamics-slides-handout: dynamics-slides-2016.tex $(figures)  
+	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides-2016.tex > dynamics-slides-handout.tex	
 	pdflatex dynamics-slides-handout
 	pdflatex dynamics-slides-handout
 	@pdfnup --nup 2x2 --delta "1cm 1cm" dynamics-slides-handout.pdf

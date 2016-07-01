@@ -43,7 +43,7 @@
 
 \vspace{-5em}
 
-\title{Dynamics and thermodynamics \\ of Glaciers \\[.2em]
+\title{Thermodynamics of Glaciers \\[.2em]
 \rule[1em]{\textwidth}{2pt}
 \LARGE{\sf Solutions to Exercise}
 }
@@ -54,45 +54,6 @@
 
 \vspace{-5em}
 
-\section{Flow speeds}
-
-You can either use the fact that the flow velocity on the center line of a cylindrical channel is eight times slower than in an ice sheet of the same ice thickness (Eq.~32 in the script) or you estimate the radius by eye-balling the map. One method underestimates the flow speed, the other two overestimate it. This little python snippet does the job:
-\vspace{1em}
-
- \small{
-\lstinputlisting[language=Python]{exercises.py}
-}
-\section{Mass flux}
-
-Yes Carl is right because in the shearing case the surface velocity $v_h$ is given by
-\begin{equation*}
- v_h = \int \limits_0^h v\,\mathrm{d}z  = \frac{A_0}{n+1}H^{n+1}
-\end{equation*}
-and the vertically-average velocity by
-\begin{equation*}
-\bar v = \frac{1}{H}\int \limits_0^ v\,\mathrm{d}z = \frac{1}{H}\int \limits_0^h A_0\frac{1}{n+1}h^{n+1}\,\mathrm{d}z = \frac{A_0}{H}\frac{1}{n+2}H^{n+2} = \frac{A_0}{n+2}H^{n+1}
-\end{equation*} It thus follows that the ratio $\bar v / v_h$ is
-\begin{equation*}
-\frac{\bar v}{v_h} = \frac{n+1}{n+2} = 0.8
-\end{equation*} for $n=3$.
-
-\section{Surface evolution}
-
-\begin{enumerate}
-\item In simple terms the surface responds to changes in dynamics (flux divergence) and climate (climatic mass balance)
-\item
-\begin{itemize}
-\item in the accumulation zone, the surface rises 1\,m from September to March, and lowers by 1.5\,m from March to September. At the end of the hydrological year, the surface is thus 0.5\,m lower.
-\item in the ablation zone, the surface rises 1\,m from September to March, and lowers by 1\,m from March to September. At the end of the hydrological year, the surface is thus the same.
-\end{itemize}
-
-\item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
-\end{enumerate}
-
-
-\section{Mass balance, surface evolution, and vertical velocity}
-
-Well, the example was taken slightly out of context, as the paper deals with rock glaciers. In this special case, the vertical velocity is indeed equal to the change of elevation with time. The term ``spatial mass balance'' is, however, an unlucky choice. Laser altimetry measures the surface elevation.
 
 \section{Climate history}
 

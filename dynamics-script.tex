@@ -1,4 +1,4 @@
-\documentclass[11pt,DIV12,a4paper,halfparskip]{scrartcl}
+\documentclass[11pt,halfparskip]{scrartcl}
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage[T1]{fontenc}
@@ -11,7 +11,6 @@
 
 %% diverser Plunder
 \renewcommand{\refname}{Literature}
-\renewcommand{\appendixname}{Appendix}
 %\newcommand{\tnoocomment}[1]{\marginpar{\psshadowbox[framearc=0.3,shadowsize=2pt]{\footnotesize #1}}}
 \newcommand{\tnoocomment}[1]{\marginpar{\fbox{\footnotesize #1}}}
 \newcommand{\tinu}[1]{\marginpar{\fbox{\footnotesize #1}}}
@@ -72,7 +71,7 @@
 \usepackage[automark,headsepline,footsepline]{scrpage2}
 \clearscrheadings	
 \ihead{Glacier Dynamics}
-\ohead{McCarthy Summer School 2014}
+\ohead{McCarthy Summer School 2016}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}
 \setkomafont{pagenumber}{\normalfont\rmfamily}
@@ -95,7 +94,7 @@
 \begin{document}
 \title{Dynamics of Glaciers\\[.5em]
 \rule[1.em]{\textwidth}{2pt}
-\subtitle{McCarthy Summer School 2014}}
+\subtitle{McCarthy Summer School 2016}}
 
 \date{}
 
@@ -132,9 +131,9 @@ $\tau$ is the second invariant of the deviatoric stress tensor.
 Several properties of Equation (\ref{eq:Glen}) are noteworthy:
 \begin{itemize}
 \item Elastic effects are neglected.  This is reasonable if processes on the
-  time scale of days and longer are considered.
+  time scale of days and longer are considered. But elastic effects are relevant to understand tidal flexure of ice shelves.
 \item Stress and strain rate are collinear, i.e.~a shear stress leads to
-  shearing strain rate, a compressive stress to a compression strain rate, and
+  shearing strain rate, a compressive stress to a compressive strain rate, and
   so on.
 \item Only deviatoric stresses lead to deformation rates, isotropic pressure
   alone cannot induce deformation. Ice is an \emph{incompressible} material
