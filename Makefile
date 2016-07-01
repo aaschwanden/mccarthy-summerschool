@@ -60,7 +60,7 @@ dynamics-slides-handout: dynamics-slides-2016.tex $(figures)
 zips: all
 	rm -rf aschwanden_mccarthy/	 # clean out if prior existence
 	mkdir aschwanden_mccarthy/
-	cp thermodynamics-script.pdf thermodynamics-slides-handout-nup.pdf dynamics-slides-handout-nup.pdf dynamics-script.pdf exercise.pdf solution.pdf aschwanden_mccarthy/
+	cp thermodynamics-script.pdf thermodynamics-slides-handout-nup.pdf dynamics-slides-handout-nup.pdf dynamics-script.pdf exercise-dynamics.pdf solution-dynamics.pdf exercise-thermodynamics.pdf solution-thermodynamics.pdf aschwanden_mccarthy/
 	cp README aschwanden_mccarthy/
 	zip -r aschwanden_mccarthy.zip aschwanden_mccarthy/
 	tar -cvzf aschwanden_mccarthy.tar.gz aschwanden_mccarthy/*
