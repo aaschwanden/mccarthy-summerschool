@@ -1,7 +1,8 @@
 \documentclass[hide notes,intlimits,unknownkeysallowed]{beamer}
+
 \mode<presentation>
 {
-  \usetheme[headline,footline]{UAFshade}
+  \usetheme[footline]{UAFshade}
   \setbeamercovered{transparent}
 }
 
@@ -14,6 +15,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{multimedia}
+\usepackage[multidot]{grffile}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows, calc}
+
 %\usepackage{hyperref}
 
 % Some useful commands (from ELB)
@@ -28,27 +34,67 @@
 \newcommand{\bU}{\mathbf{U}}
 \newcommand{\bv}{\mathbf{v}}
 
-\newcommand{\ddx}[1]{\ensuremath{\frac{\partial #1}{\partial x}}}
-\newcommand{\ddy}[1]{\ensuremath{\frac{\partial #1}{\partial y}}}
-\newcommand{\ddz}[1]{\ensuremath{\frac{\partial #1}{\partial z}}}
-\newcommand{\ddt}[1]{\ensuremath{\frac{\partial #1}{\partial t}}}
 
-\newcommand{\DDt}[1]{\ensuremath{\frac{d #1}{d t}}}
 
-\newcommand{\Div}{\nabla\cdot}
-\newcommand{\eps}{\epsilon}
-\newcommand{\grad}{\nabla}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\trace}{\operatorname{tr}}
+% some parameters for customization
+\def\shadowshift{3pt,-3pt}
+\def\shadowradius{6pt}
 
-\newcommand{\rinv}{\frac{1}{r}}
-\newcommand{\ar}{r^{-1}\alpha}
-\newcommand{\stress}{\ensuremath{\text{\Large$\sigma$\normalsize}}}
-\newcommand{\devstress}{\ensuremath{\text{\Large$\tau$\normalsize}}}
+\colorlet{innercolor}{black!60}
+\colorlet{outercolor}{gray!05}
 
-% Some useful commands (from MPL)
-\newcommand{\s}[1]{\ensuremath{\,\text{#1}}}
-\newcommand{\unit}[1]{\ensuremath{\,\text{#1}}}
+% this draws a shadow under a rectangle node
+\newcommand\drawshadow[1]{
+    \begin{pgfonlayer}{shadow}
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+        \shade[top color=innercolor,bottom color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+        \shade[left color=innercolor,right color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+        \shade[bottom color=innercolor,top color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+        \shade[outercolor,right color=innercolor,left color=outercolor] ($(#1.south west)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+        \filldraw ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)-(\shadowradius/2,\shadowradius/2)$);
+    \end{pgfonlayer}
+}
+
+% create a shadow layer, so that we don't need to worry about overdrawing other things
+\pgfdeclarelayer{shadow} 
+\pgfsetlayers{shadow,main}
+
+\newsavebox\mybox
+\newlength\mylen
+
+\newcommand\shadowimage[2][]{%
+\setbox0=\hbox{\includegraphics[#1]{#2}}
+\setlength\mylen{\wd0}
+\ifnum\mylen<\ht0
+\setlength\mylen{\ht0}
+\fi
+\divide \mylen by 120
+\def\shadowshift{\mylen,-\mylen}
+\def\shadowradius{\the\dimexpr\mylen+\mylen+\mylen\relax}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[#1]{#2}};
+\drawshadow{image}
+\end{tikzpicture}}
+
+\newcommand\shadowimagec[3][]{%
+\setbox0=\hbox{\includegraphics<#1>[#2]{#3}}
+\setlength\mylen{\wd0}
+\ifnum\mylen<\ht0
+\setlength\mylen{\ht0}
+\fi
+\divide \mylen by 120
+\def\shadowshift{\mylen,-\mylen}
+\def\shadowradius{\the\dimexpr\mylen+\mylen+\mylen\relax}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics<#1>[#2]{#3}};
+\drawshadow{image}
+\end{tikzpicture}}
+
+
+\graphicspath{{figures/}}
 
 \newenvironment{transbox}{%
 \begin{tikzpicture}
@@ -62,7 +108,7 @@
 % title page
 \title[Glacier Dynamics] % (optional, use only with long paper titles)
 {Dynamics of Glaciers}
-\subtitle{McCarthy Summer School}
+\subtitle{McCarthy Summer School, June 2016}
 
 \author[Aschwanden] % (optional, use only with lots of authors)
 {Andy Aschwanden}
@@ -70,20 +116,17 @@
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[ARSC] % (optional, but mostly needed)
+\institute[GI] % (optional, but mostly needed)
 {
-  %
-  Arctic Region Supercomputing Center\\
+  Geophysical Institute\\
   University of Alaska Fairbanks, USA
 }
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{June 2012}
+\titlegraphic{\shadowimage[width=.95\textwidth]{gris-nw-speed-exp-600m}}
 
-\titlegraphic{\includegraphics[width=10cm]{figures/glaciers3}}
-
-
+\date{}
 \subject{Glaciers}
 
 \begin{document}
@@ -97,28 +140,61 @@
 }
 
 
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[width=\paperwidth]{uaf_beamer_shade_bg}};}
+} 
+
 % insert titlepage
 \begin{frame}
   \titlepage
 \end{frame}
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 \begin{frame}
   \frametitle{Overview}
     \begin{itemize}
     \item \alert{selected} examples of glacier flow, using concepts from
       Continuum Mechanics
-    \item leave out boundary conditions
-    \item no tensors, yeah
+    \item and some historical background
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{What is a glacier?}
+  \centering{
+    \includegraphics[width=.85\textwidth]{landice}
+  }
+  \begin{itemize}
+  \item Glaciers flow slowly under their own weight
+  \end{itemize}
+  \note[itemize]{
+    \item glaciers are the landice part of the cryosphere
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Glacier flow}
+  \begin{figure}
+    \scriptsize{speeds by Evan Burgess (Wrangell) and Roman Motyka (Jakobshavn)}
+    \includegraphics[width=.95\textwidth]{speeds-scale}
+  \end{figure}
+  \begin{itemize}
+    \item observed speeds range from 20\,m\,a$^{-1}$ for a valley glacier to 15\,km\,a$^{-1}$
+  \end{itemize}
+  \note[itemize]{
+}
+\end{frame}
 
 \setbeamertemplate{background canvas}
   {
      \tikz{\node[inner sep=0pt,opacity=1.0] {\includegraphics[height=
-\paperheight,width=\paperwidth]{figures/yakutat_sunset}};}
+\paperheight,width=\paperwidth]{yakutat_sunset}};}
 } 
-
 
 \begin{frame}[plain] % not in the handout
   \begin{columns}
@@ -126,7 +202,7 @@
   \begin{transbox}
     ``The tradition of glacier studies that we inherit draws upon two great legacies of the eighteenth and nineteenth centuries: classical physics and romatic enthusiasm for Nature.\\[.25em]
 \ldots It is easy to undervalue the romantic contribution, but in glaciology, it would be a mistake to do so'' \\[.5em]
-\emph{Garry Clark, J. Glaciol., 1987)}
+\emph{Garry Clark, J. Glaciol. (1987)}
   \end{transbox}
 \end{columns}
 \end{frame}
@@ -141,17 +217,121 @@
 \begin{frame}
   \frametitle{How does a glacier move?}
   \centering{
-    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=.65\textwidth]{flow_acc_abl}
   }
   \begin{block}{In a nut shell:}
     \begin{itemize}
-    \item Well-described by continuum mechanics (Martin's lecture on Thursday)
+    \item Well-described by continuum mechanics (Martin's lecture yesterday)
     \item The ice can deform as a viscous fluid
     \item The ice can slide over its substrate
     \end{itemize}
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Water plays an important role}
+  \begin{figure}
+    \includegraphics[height=5cm]{black-rapids-1} \vspace{0.25em}
+    \includegraphics[height=5cm]{black-rapids-2}
+  \end{figure}
+  \begin{block}{Truffer's Law}
+    \begin{itemize}
+    \item whenever something interesting happens in a glacier, liquid water is involved
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=0.60] {\includegraphics[height=
+\paperheight,width=\paperwidth]{dawes_calving_alaska}};}
+} 
+
+
+\begin{frame}{The role of liquid water}
+  \begin{columns}
+    \column[C]{10cm}
+    \begin{transbox}
+      \begin{block}{at the lateral margin}
+        \begin{columns}
+          \column[C]{2.5cm}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{calving-close-up}
+          \end{figure}
+          \column[C]{7cm}
+          drives calving and frontal melt of lake and ocean terminating glaciers\\
+          lecture on \alert{tidewater glaciers and submarine melt} by Martin Truffer
+        \end{columns}
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The role of liquid water}
+  \begin{columns}
+    \column[C]{10cm}
+    \begin{transbox}
+      \begin{block}{at the shelf base}
+        \begin{columns}
+          \column[C]{2.5cm}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{pig}
+          \end{figure}
+          \column[C]{7cm}
+          attacks ice shelfs from below (sub-shelf basal melting) \\
+          lecture on \alert{tidewater glaciers and submarine melt} by Martin Truffer
+        \end{columns}
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The role of liquid water}
+  \begin{columns}
+    \column[C]{10cm}
+    \begin{transbox}
+      \begin{block}{at glacier base}
+        \begin{columns}
+          \column[C]{2.5cm}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{root-glacier-cave-1}
+          \end{figure}
+          \column[C]{7cm}
+          acts as a lubricant at the base (sliding) \\
+          lecture on \alert{subglacial hydrology} by Gwenn Flowers
+          \\
+          surging glaciers
+        \end{columns}
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+
+
+\begin{frame}{The role of liquid water}
+  \begin{columns}
+    \column[C]{10cm}
+    \begin{transbox}
+      \begin{block}{within temperate ice}
+        \begin{columns}
+          \column[C]{2.5cm}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{ice-matrix}
+          \end{figure}
+          \column[C]{7cm}
+          softens the ice (decreases viscosity) \\
+          lecture on \alert{thermodynamics} by Andy
+        \end{columns}
+      \end{block}
+    \end{transbox}
+  \end{columns}
+\end{frame}
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 \begin{frame}
   \frametitle{Measurements \& Observations}
@@ -173,7 +353,7 @@
 \begin{frame}
   \frametitle{Measurements \& Observations}
   \begin{figure}
-    \includegraphics[width=8cm]{figures/agassi}%
+    \includegraphics[width=8cm]{agassi}%
   \end{figure}
     \begin{block}{1840-1846 Dilatation theory by L. Agassiz}
       \begin{itemize}
@@ -190,9 +370,9 @@
   \frametitle{Measurements \& Observations}
   \begin{columns}
     \column[C]{4.25cm}
-    \includegraphics[width=4cm]{figures/geschw_prof_oberfl}%
+    \includegraphics[width=4cm]{geschw_prof_oberfl}%
     \vskip1em
-    \includegraphics[width=4cm]{figures/geschw_vert_prof}%
+    \includegraphics[width=4cm]{geschw_vert_prof}%
     \column[C]{7.75cm}
     \begin{block}{1864-1930 Viscous flow theory by J.~Forbes}
       \begin{itemize}
@@ -208,6 +388,11 @@
 \end{frame}
 
 \begin{frame}{Forces}
+  \begin{itemize}
+  \item a force is a push or pull upon an object resulting from the object's interaction with another object
+  \item whenever there is an interaction between two objects, there is a force upon each of the objects. 
+  \end{itemize}
+  In other words
   \begin{itemize}
   \item a force is any influence that causes an object to undergo a change in speed, a change in direction, or a change in shape
   \item forces exist inside continuous bodies such as a glacier
@@ -233,7 +418,7 @@
   \begin{columns}
     \column[c]{5cm}
     \begin{figure}
-      \includegraphics[width=4.75cm]{figures/fig_3_08}
+      \includegraphics[width=4.75cm]{fig_3_08}
     \end{figure}
     \column[c]{6.5cm}
    \begin{block}{}
@@ -260,15 +445,15 @@
      \end{itemize}
      So pressure $p$ at depth $z$ is
      \begin{displaymath}
-       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z
+       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z + p_{\textsf{air}}
      \end{displaymath}
-     How deep do we have to drill into a glacier before the ice pressure is 1 atmosphere?
+     How deep do we have to drill into a glacier before the ice pressure is 2 atmosphere?
 \end{frame}
 
 
-\begin{frame}{Depth for 1\,atm pressure?}
+\begin{frame}{Depth for 2\,atm pressure?}
     \begin{displaymath}
-       z = \frac{p}{\rho\cdot g} = ?
+       z = \frac{p-p_{\textsf{air}}}{\rho\cdot g} = ?
      \end{displaymath}
      \begin{itemize}
      \item  So pressure rises by 1\,atm for every \alert{$x$}\,meters of depth in a glacier
@@ -280,7 +465,7 @@
 \begin{frame}{Shear stress $\tau$}
   Total stress $t$ from ice column:
     \begin{displaymath}
-       t = \rho V g = \rho\,g\,h
+       t = \frac{\rho V g}{A} = \rho\,g\,h
      \end{displaymath}
      \begin{itemize}
      \item How much of this weight will contribute to shear deformation?
@@ -347,7 +532,7 @@
 \begin{frame}{Parallel Sided Slab}
   \vspace{-1em}
   \begin{figure}
-    \includegraphics[width=7.5cm]{figures/fig_3_11}
+    \includegraphics[width=7.5cm]{fig_3_11}
   \end{figure}
   \vspace{-1em}
   \begin{block}{Assumptions}
@@ -368,7 +553,7 @@
 \begin{equation*}
     \begin{array}{ccl}
       \frac{\partial v_x}{\partial z}  & = &  2\,A(T,p)\,\tau^{n-1}\tau \qquad \Rightarrow \\[.5em]
-      v_x (z) &  = & \int_{b}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
+      v_x (z) &  = & \int \limits_{b}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
 & = &\frac{2\,A}{n+1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(H^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
     \end{array}
   \end{equation*}
@@ -386,7 +571,7 @@ See script p. 4--10 for a derivation
   \vspace{-1em}
   \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/fig_channel}
+    \includegraphics[width=0.4\textwidth]{fig_channel}
     \label{fig:valley-glacier-coord}
   \end{figure}
   \begin{block}{Assumptions}
@@ -422,72 +607,321 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 \begin{frame}
   \frametitle{Longitudinal Profile of a Valley Glacier}
   \begin{figure}
-    \includegraphics[width=\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=\textwidth]{flow_acc_abl}
   \end{figure}
 \end{frame}
 
 \begin{frame}
   \frametitle{Evolution of the Glacier Surface}
   \begin{figure}
-    \includegraphics[width=.65\textwidth]{figures/flow_acc_abl}
+    \includegraphics[width=.75\textwidth]{flow_acc_abl}
   \end{figure}
   Derivation on p. 12--14. Assuming $\partial b / \partial t = 0$ and no basal melt:
   \begin{equation*}
-    \frac{\partial h}{\partial t} = - \underbrace{\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} + \underbrace{a_{\text{s}}}_{\text{climatic changes}}
+    \frac{\partial h}{\partial t} = \underbrace{-\nabla \cdot \mathbf{Q}}_{\text{dynamic changes}} \quad \underbrace{+B_{\text{clim}}}_{\text{climatic changes}}
   \end{equation*}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Evolution of the Glacier Surface}
- ``The spatial mass balance is the change of elevation with time
- (i.e., vertical velocity) at every point on the surface.``
- \emph{Konrad} (1999)
-\end{frame}
-
-\begin{frame}{Why is it so hard to predict the future of an ice
-    sheet?}
-  \vspace{-.5em}
-  \begin{block}{It's easy because}
-   \begin{itemize}
-    \item composed of a single, largely homogenous material
-    \item viscous flow is governed by the Navier-Stokes equations (19th century physics)
-    \item move very slowly (turbulence, Coriolis force, and other inertial effects can be ignored)
-   \end{itemize}
-  \end{block}
-  \begin{block}{It's so hard because}
-   \begin{itemize}
-    \item the stress resisting ice flow at the base can vary by orders of magnitude
-    \item ocean interactions could trigger instabilities
-    \item difficult to observe boundary condition
-  \end{itemize}
-  \end{block}
-  \note[item]{as Martin said on Thursday, boundary conditions are non-straightforward}
-\end{frame}
-
-\begin{frame}{Now and then}
-     \begin{figure}
-       \includegraphics[width=8.25cm]{figures/bed_elev_speeds}
-     \end{figure}
-\end{frame}
-
-
-\begin{frame}{Now and then}
- \begin{columns}[c]
-    \begin{column}{.24\linewidth}
-      \vspace{-.5cm}
+\begin{frame}{Why ice sheet modeling is easy}
+  \begin{columns}[c]
+    \begin{column}{.28\linewidth}
       \begin{figure}
-        EISMINT Greenland \\
-        \includegraphics[height=6.5cm]{figures/greencbar-SSL2}
-     \end{figure}
+        \includegraphics[width=\linewidth]{ggstokes}
+        \\ \scriptsize{G.~G.~Stokes}
+      \end{figure}
     \end{column}
-    \begin{column}{.24\linewidth}
-      \vspace{-.5cm}
-      \begin{figure}
-        today \\
-        \includegraphics[height=6.5cm]{figures/grn1km}
-     \end{figure}
+    \begin{column}{.67\linewidth}
+      \begin{itemize}[<+- | alert@+>]
+      \item composed of a single, largely homogeneous material
+      \item flow governed by the Stokes equations known since the mid-19th century
+      \item flows slowly: we can ignore turbulence, Coriolis and other inertial effects
+      \item no density/salinity stratification
+      \item most of what makes atmosphere and ocean flow interesting is missing
+      \end{itemize}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{On turbulence}
+  \begin{beamercolorbox}[rounded=true,shadow=true]{boxed}
+    ``I am an old man now, and when I die and go to heaven there are two matters on which I hope for enlightenment. One is quantum electrodynamics, and the other is the turbulent motion of fluids. And about the former I am rather optimistic.'' (O.~Reynolds)
+  \end{beamercolorbox}
+  \begin{itemize}
+  \item so what makes the flow of slow, cold, laminar ice interesting?
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Why ice sheet modeling is so hard}
+    \begin{columns}[c]<1-2>
+      \begin{column}{.28\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{storeglacier}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Boundary conditions}
+        \begin{itemize}
+        \item seaward margin boundary condition
+        \item basal boundary condition
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+    \begin{columns}[c]<1>
+      \begin{column}{.28\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{canale_grande_V05}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Initial conditions}
+        \begin{itemize}
+        \item ice thickness / subglacial topography is a first order constraint on ice flow
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+    \begin{columns}[c]<1>
+      \begin{column}{.3\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{bw_front_sm}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Computational costs}
+        \begin{itemize}
+        \item solving the Stokes equations is computationally very expensive
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Challenge: basal boundary condition}
+  \begin{columns}[c]
+    \begin{column}{.45\linewidth}
+      \begin{figure}
+        \scriptsize{basal resistance} \\
+        \includegraphics[width=\textwidth]{tauc}
+      \end{figure}
+    \end{column}
+    \begin{column}{.54\linewidth}
+      \begin{itemize}
+      \item stresses vary by orders of magnitude
+      \item basal hydrology, the glacier's ``plumbing system'' runs on a faster time scale than ice flow
+      \item despite more than 5 decades of research, we only have crude parametrizations
+      \item[$\Rightarrow$] Martin's inverse method lecture
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note[item]{First, stresses at the base vary by several orders of magnitude}
+  \note[item]{depend on many factors, most importantly on the presence or absence of water}
+  \note[item]{basal hydrology (the glacier's plumbing system) runs on a faster time scale than the ice flow itself}
+  \note[item]{but the sub-glacial environment is not easy accessible}
+  \note[item]{at the basal boundary, interactions between water flow, friction, heat flow, and sediment deformation is so complex that a deriving a theory from first principles is real challenge}
+\end{frame}
+
+
+\begin{frame}{Challenge: seaward margin boundary condition}
+      \begin{figure}
+        \includegraphics[width=.5\textwidth]{ice-shelf}
+      \end{figure}
+      \begin{itemize}
+      \item ocean circulation $\Rightarrow$ basal melt rates
+      \item calving mechanism
+      \item[$\Rightarrow$] Martin's tidewater glacier lecture
+      \end{itemize}
+      \note[item]{a big challenge is to understand how changing ocean currents and ocean temperatures affects sub-shelf basal melt rates}
+      \note[item]{how this can weaken a shelf, and potentially lead to break up}
+\end{frame}
+
+
+\begin{frame}{Why ice sheet modeling is so hard}
+    \begin{columns}[c]<1>
+      \begin{column}{.28\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{storeglacier}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Boundary conditions}
+        \begin{itemize}
+        \item seaward margin boundary condition
+        \item basal boundary condition
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+    \begin{columns}[c]<1-2>
+      \begin{column}{.28\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{canale_grande_V05}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Initial conditions}
+        \begin{itemize}
+        \item ice thickness / subglacial topography is a first order constraint on ice flow
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+    \begin{columns}[c]<1-3>
+      \begin{column}{.3\linewidth}
+        \begin{figure}
+          \includegraphics[width=\linewidth]{bw_front_sm}
+        \end{figure}
+      \end{column}
+      \begin{column}{.67\linewidth}
+        \begin{block}{Computational costs}
+        \begin{itemize}
+        \item solving the Stokes equations is computationally very expensive
+        \end{itemize}
+      \end{block}
+      \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Simplify the Stokes equations}
+  \begin{block}{Ice sheets are shallow}
+    \begin{itemize}
+    \item[$\Rightarrow$] Ed's lecture
+
+    \end{itemize}
+    \begin{center}
+      \includegraphics[width=0.4\textwidth]{green_transect} \\
+      \footnotesize{Figure by E. Bueler}
+    \end{center}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{Challenge: ice thickness}
+  \begin{columns}
+    \column[c]{1.25cm}
+    \includegraphics[width=\textwidth]{nasa-logo} \\
+    \includegraphics[width=\textwidth]{oib}
+    \column[c]{10cm}
+    \begin{itemize}
+    \item ice thickness is a leading order constraint on ice flow
+    \item but expensive to measure
+    \item NASA realized that collecting a lot more ice thickness measurements is crucial to make ice sheet models better
+    \item ice thickness measurements using the CReSIS radar became an important part of their Operation IceBridge mission (2009--today)
+    \end{itemize}
+  \end{columns}
+  \begin{figure}
+    \includegraphics[width=6cm]{canale_grande_V05}
+  \end{figure}
+\note[item]{ice thickness is the difference between ice upper surface and the subglacial topography}
+\end{frame}
+
+
+\begin{frame}{NASA Operation IceBridge}
+  \vspace{-0.74em}
+  \begin{columns}
+    \column[c]{4cm}
+    \begin{itemize}
+    \item additional flight lines since 2009
+    \end{itemize}
+    \column[c]{6cm}
+    \begin{figure}
+      \includegraphics[height=8cm]{greenland-bed-old-oib}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Zoom in to Jakobshavn Isbr{\ae}}
+  \begin{figure}
+    \small{old (2001) \hspace{5em} new (2014)}
+    \includegraphics[width=12cm]{jako_bed}
+ \end{figure}
+\end{frame}
+
+
+\begin{frame}{NASA Operation IceBridge}
+  \begin{columns}
+    \column[c]{8cm}
+    \begin{figure}
+      \small{old (2001) \hspace{4em} new (2014)}
+      \includegraphics[height=7.5cm]{greenland_bed}
+    \end{figure}
+    \column[c]{4cm}
+    \begin{itemize}
+    \item from 5\,km to 150\,m horizontal grid resolution
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{NASA Operation IceBridge}
+  \begin{figure}
+    \includegraphics[height=2.5cm]{nasa-logo} \qquad
+    \includegraphics[height=2.5cm]{oib} \qquad
+    \includegraphics[height=2.5cm]{1000-dollar-bills}
+  \end{figure}
+  \begin{itemize}
+  \item do NASA's OIB million\$ really make ice sheet models better?
+  \end{itemize}
+  \note[item]{so the multi million dollar question is}
+  \note[item]{does this investment pay off?}
+\end{frame}
+
+
+\begin{frame}{Observed flow speeds}
+\vspace{-0.74em}
+  \begin{columns}
+    \column[c]{5cm}
+    \begin{figure}
+      \includegraphics[width=\textwidth]{greenland-obs-overview}
+    \end{figure}
+    \column[c]{5cm}
+    \only<1>{Jakobshavn Isbr{\ae}}
+    \includegraphics<1>[width=\textwidth]{jakobshavn-obs-nogate}
+    \only<1>{\\ {} }
+  \end{columns}
+  \note[item]{let's look at JIB again}
+  \note[item]{observations show strongly channelized flow}
+  \note[item]{with high flow speeds in the center}
+\end{frame}
+
+
+\begin{frame}{Ice thickness and simulated flow speeds}
+\vspace{-0.74em}
+  \begin{columns}
+    \column[c]{5cm}
+    \begin{figure}
+      \includegraphics<1-2>[width=\textwidth]{greenland-obs-basal-overview}
+      \includegraphics<3-4>[width=\textwidth]{greenland-obs-basal-overview-mo14}
+    \end{figure}
+    \column[c]{5cm}
+    \only<1,3>{Jakobshavn Isbr{\ae}}
+    \only<2>{no fast flow}
+    \only<4>{fast flow appears}
+    \includegraphics<1>[width=\textwidth]{jakobshavn-bed-5000m-ba01}
+    \includegraphics<2>[width=\textwidth]{jakobshavn-speed-exp-4500m-ba01}
+    \includegraphics<3>[width=\textwidth]{jakobshavn-bed-mo14}
+    \includegraphics<4>[width=\textwidth]{jakobshavn-speed-exp-600-v1.2-no-scale-no-gate}
+    \only<1>{\\ 5\,km, old data set (2001)}
+    \only<2,4>{\\ simulated surface speed}
+    \only<3>{\\ 600\,m, new data set (2014)}
+  \end{columns}
+  \note<1>[item]{now let's do a simualulation with the old ice thickness data}
+  \note<2>[item]{there isn't really any fast flow}
+  \note<3>[item]{now use the new ice thickness}
+  \note<4>[item]{and we get fast flow}
+\end{frame}
+
+
+\begin{frame}{Can we capture the present-day flow field?}
+  \begin{figure}
+    \includegraphics[height=7cm]{greenland-overview-3}
+  \end{figure}
+  \note[item]{first time capturing the flow field for the right reason}
+  \note[item]{this is quite a break through in ice sheet modeling}
+  \note[item]{though not a surprising one}
+  \note[item]{it just confirms what students learn in glaciology 100:}
+  \note[item]{ice flows downhill}
 \end{frame}
 
 \end{document}

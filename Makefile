@@ -47,12 +47,12 @@ dynamics-script: dynamics-script.tex $(figures)
 	pdflatex dynamics-script
 	pdflatex dynamics-script
 
-dynamics-slides: dynamics-slides-2016.tex $(figures)  
-	pdflatex dynamics-slides-2016
-	pdflatex dynamics-slides-2016
+dynamics-slides: dynamics-slides.tex $(figures)  
+	pdflatex dynamics-slides
+	pdflatex dynamics-slides
 
-dynamics-slides-handout: dynamics-slides-2016.tex $(figures)  
-	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides-2016.tex > dynamics-slides-handout.tex	
+dynamics-slides-handout: dynamics-slides.tex $(figures)  
+	sed -e "s/]{beamer}/,handout]{beamer}/" -e "s/headline,//" < dynamics-slides.tex > dynamics-slides-handout.tex	
 	pdflatex dynamics-slides-handout
 	pdflatex dynamics-slides-handout
 	@pdfnup --nup 2x2 --delta "1cm 1cm" dynamics-slides-handout.pdf
