@@ -1,3 +1,4 @@
+
 \documentclass[hide notes,intlimits,unknownkeysallowed]{beamer}
 
 \mode<presentation>
@@ -100,15 +101,15 @@
 \begin{tikzpicture}
 \node[drop shadow,rounded corners,text width=\textwidth,fill=white, fill opacity=0.75,text opacity=1] \bgroup
 }{
-\egroup;\end{tikzpicture}} 
+\egroup;\end{tikzpicture}}
 
 \setbeamercolor{boxed}{fg=black,bg=uaf yellow}
 
 
 % title page
 \title[Glacier Dynamics] % (optional, use only with long paper titles)
-{Dynamics of Glaciers}
-\subtitle{McCarthy Summer School, June 2016}
+{The Philosophy of Glacier Motion}
+\subtitle{McCarthy Summer School, June 2018}
 
 \author[Aschwanden] % (optional, use only with lots of authors)
 {Andy Aschwanden}
@@ -163,6 +164,37 @@
     \item and some historical background
     \end{itemize}
 \end{frame}
+
+\setbeamertemplate{background canvas}
+  {
+     \tikz{\node[inner sep=0pt,opacity=.75] {\includegraphics[height=
+\paperheight,width=\paperwidth]{colle}};}
+} 
+
+\begin{frame}[plain]
+  \begin{transbox}
+    \begin{block}{What is a glacier?}
+      \begin{itemize}[<+- | alert@+>] % some control parameters
+      \item Artists, Tourists: beautiful landscape
+      \item Geographers: element of landscape
+      \item Geologists: soft rock, sediment
+      \item Hydrologists: water reservoir
+      \item Climatologists: subsystem of climate system, climate archive
+      \item Physicists: thermomechanical non-Newtonian fluid
+      \item Mathematicians: free boundary problem in fluid dynamics
+      \item Electrical engineers: one sided accessible dielectric
+      \item Glaciologists: part of the cryosphere
+      \end{itemize} 
+    \end{block}
+  \end{transbox}
+  \note[item]{Well, before we start talking about ice sheets, we need to ask the question: ``What is an ice sheet''?}
+  \note[item]{Depending on who you ask, you may get quite different answers.}
+\end{frame}
+
+\setbeamertemplate{background canvas}
+{
+%
+} 
 
 \begin{frame}
   \frametitle{What is a glacier?}
@@ -221,7 +253,7 @@
   }
   \begin{block}{In a nut shell:}
     \begin{itemize}
-    \item Well-described by continuum mechanics (Martin's lecture yesterday)
+    \item Well-described by continuum mechanics (Martin's lecture)
     \item The ice can deform as a viscous fluid
     \item The ice can slide over its substrate
     \end{itemize}
@@ -298,7 +330,7 @@
           \end{figure}
           \column[C]{7cm}
           acts as a lubricant at the base (sliding) \\
-          lecture on \alert{subglacial hydrology} by Gwenn Flowers
+          lecture on \alert{subglacial hydrology} by Matt Hoffman
           \\
           surging glaciers
         \end{columns}
@@ -387,6 +419,13 @@
   \end{columns}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{Measurements \& Observations}
+    \includegraphics[width=12cm]{philosophy}
+\end{frame}
+
+
 \begin{frame}{Forces}
   \begin{itemize}
   \item a force is a push or pull upon an object resulting from the object's interaction with another object
@@ -441,11 +480,11 @@
   mass $m = \rho V$
      \begin{itemize}
       \item $\rho$ = ice density $\approx$ 900\,kg\,m$^{-3}$
-      \item$V$ = Volume = Area $\times$ depth = $A \cdot z$
+      \item$V$ = Volume = Area $\times$ depth = $A \cdot h$
      \end{itemize}
-     So pressure $p$ at depth $z$ is
+     So pressure $p$ at depth $h$ is
      \begin{displaymath}
-       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot z \cdot g}{A} = \rho g z + p_{\textsf{air}}
+       p = \frac{m \cdot g}{A} = \frac{\rho \cdot A \cdot h \cdot g}{A} = \rho g h + p_{\textsf{air}}
      \end{displaymath}
      How deep do we have to drill into a glacier before the ice pressure is 2 atmosphere?
 \end{frame}
@@ -453,7 +492,7 @@
 
 \begin{frame}{Depth for 2\,atm pressure?}
     \begin{displaymath}
-       z = \frac{p-p_{\textsf{air}}}{\rho\cdot g} = ?
+       h = \frac{p-p_{\textsf{air}}}{\rho\cdot g} = ?
      \end{displaymath}
      \begin{itemize}
      \item  So pressure rises by 1\,atm for every \alert{$x$}\,meters of depth in a glacier
@@ -512,7 +551,7 @@
   \end{itemize}
   Can we then estimate glacier thickness ($z=h$) from its slope if we know $\tau_{b} \approx$ 1\,bar?
   \begin{displaymath}
-    \tau = \rho\,g\,z\,\sin{\alpha} \quad \Rightarrow \quad h \sim \frac{\tau_{b}}{\rho\,g\,\sin{\alpha}}
+    \tau = \rho\,g\,h\,\sin{\alpha} \quad \Rightarrow \quad h \sim \frac{\tau_{b}}{\rho\,g\,\sin{\alpha}}
   \end{displaymath}
 \end{frame}
 
@@ -553,8 +592,8 @@
 \begin{equation*}
     \begin{array}{ccl}
       \frac{\partial v_x}{\partial z}  & = &  2\,A(T,p)\,\tau^{n-1}\tau \qquad \Rightarrow \\[.5em]
-      v_x (z) &  = & \int \limits_{b}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
-& = &\frac{2\,A}{n+1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(H^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
+      v_x (z) &  = & \int \limits_{0}^{h} 2\,A\left(\rho\,g\,\sin{\alpha}\,z\right)^{n}\,dz \\[.5em]
+& = &\frac{2\,A}{n+1} \left(\rho\,g\,\sin{\alpha}\right)^{\alert{n}}\,\left(h^{\alert{n+1}} - \left(h-z\right)^{\alert{n+1}}\right)
     \end{array}
   \end{equation*}
 See script p. 4--10 for a derivation
@@ -784,11 +823,13 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Simplify the Stokes equations}
+
+\begin{frame}{1. Simplify the Stokes equations}
   \begin{block}{Ice sheets are shallow}
     \begin{itemize}
-    \item[$\Rightarrow$] Ed's lecture
-
+    \item below in red is a no-vertical-exaggeration cross section of Greenland at $71^\circ$
+      \small
+    \item green and blue: standard vertically-exaggerated cross section
     \end{itemize}
     \begin{center}
       \includegraphics[width=0.4\textwidth]{green_transect} \\
@@ -797,6 +838,15 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
   \end{block}
 \end{frame}
 
+\begin{frame}{2. High Performance Computing (HPC)}
+  \begin{block}{Exploit modern HPC through parallelism}
+    \begin{figure}
+      \includegraphics[width=5.5cm]{bw_front_sm}
+      \hfill
+      \includegraphics[width=5.5cm]{jason-parallel}
+    \end{figure}
+  \end{block}
+\end{frame}
 
 \begin{frame}{Challenge: ice thickness}
   \begin{columns}
