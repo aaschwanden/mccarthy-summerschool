@@ -6,7 +6,7 @@
 
 \usepackage{natbib}
 
-\bibliographystyle{agufull08}
+\bibliographystyle{gi-nsf}
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
 %% commands to facilitate units and temperature
@@ -19,10 +19,10 @@
 % definition of header and footer
 % ---------------------------------------------------------------------------------------
 
-\usepackage[automark,headsepline,footsepline]{scrpage2}
+\usepackage[automark,headsepline,footsepline]{scrlayer-scrpage}
 \clearscrheadings	
 \ihead{Thermodynamics of glaciers}
-\ohead{McCarthy Summer School 2018}
+\ohead{McCarthy Summer School 2022}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}	
 \setkomafont{pagenumber}{\normalfont\rmfamily}
@@ -63,7 +63,7 @@
 
 Air temperatures in Alaska was oscillating with a period of about 50 years and an amplitude of about 2$\,^\circ\text{C}$ between 1950 and 2000. 
 
-\paragraph{Question} How deep down would you be able to detect such temperature variation in stagnant ice if the accuracy of your temperature sensors are 0.02$\,\text{K}$ assuming an ice temperature of $-\cels{3}$?
+\paragraph{Question} How deep down would you be able to detect such temperature variation in stagnant ice if the accuracy of your temperature sensors are 0.02$\,\mathrm{K}$ assuming an ice temperature of $-\cels{3}$?
 
 \section{Cold content}
 
@@ -80,7 +80,7 @@ Carl decided that snow is much more interesting than glacier ice. On a sunny mor
 
 \section{Melting temperature depression}
 
-What is the pressure melting temperature at the base of Gornergletscher (Figure~\ref{fig:temp-profile-gorner})? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the meltwater? The pressure $p$ is the sum of the hydrostatic pressure and the atmospheric pressure, $p = \rho g H + p_{\text{atm}}$. Assume $p_{\text{atm}} = 75\,\text{kPa}$.
+What is the pressure melting temperature at the base of Gornergletscher (Figure~\ref{fig:temp-profile-gorner})? What does the Clausius-Clapeyron relation indicate in terms of air-saturation of the meltwater? The pressure $p$ is the sum of the hydrostatic pressure and the atmospheric pressure, $p = \rho g H + p_{\mathrm{atm}}$. Assume $p_{\mathrm{atm}} = 75\,\mathrm{kPa}$.
 
 \begin{figure}[tbhp]
  \centering
@@ -98,10 +98,10 @@ What is the pressure melting temperature at the base of Gornergletscher (Figure~
 \item What is the P\'eclet Number, and how is it useful?
 \item The coldest temperature ever recorded is -\cels{89} at Vostok in East Antarctica (in July 1983). The mean annual temperature is -\cels{55}. However, deep under the ice is lake Vostok, a lake of the size of lake Ontario. Calculate the minimum geothermal flux needed for a lake to form. Possibly relevant quantities:
   \begin{itemize}
-  \item Surface elevation $3488\,\text{m}$
-  \item Ice thickness $3300\,\text{m}$
-  \item Snow accumulation rate $2\,\text{cm}\,\text{a}^{-1}$ (water equivalent)
-  \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\text{W}\,\text{m}^{−1}\,\text{K}^{−1}$.
+  \item Surface elevation $3488\,\mathrm{m}$
+  \item Ice thickness $3300\,\mathrm{m}$
+  \item Snow accumulation rate $2\,\mathrm{cm}\,\mathrm{a}^{-1}$ (water equivalent)
+  \item A reasonable average thermal conductivity for the cold temperatures of the East Antarctic Ice Sheet is $k = 2.5\,\mathrm{W}\,\mathrm{m}^{-1}\,\mathrm{K}^{-1}$.
   \end{itemize}
 \end{enumerate}
 

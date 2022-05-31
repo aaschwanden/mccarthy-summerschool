@@ -8,7 +8,7 @@
 \usetikzlibrary{shapes,arrows,decorations.pathmorphing,calc}
 
 
-\bibliographystyle{agufull08}
+\bibliographystyle{gi-nsf}
 
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
@@ -70,7 +70,7 @@
 % definition of header and footer
 % ---------------------------------------------------------------------------------------
 
-\usepackage[automark,headsepline,footsepline]{scrpage2}
+\usepackage[automark,headsepline,footsepline]{scrlayer-scrpage}
 \clearscrheadings	% definition headings loeschen
 \ihead{Thermodynamics of Glaciers}
 \cfoot{\pagemark}
@@ -95,9 +95,9 @@
 \begin{document}
 \title{Thermodynamics of Glaciers\\[.5em]
 \rule[1.em]{\textwidth}{2pt}}
-\subtitle{McCarthy Summer School 2018}
+\subtitle{McCarthy Summer School 2022}
 
-\date{June 2018}
+\date{June 2022}
 
 \author{
   \small Andy Aschwanden\\[-.5em] 
@@ -922,7 +922,7 @@ stages.
 
 The specific enthalpy is often defined as $E = U + p/\rho$ where $U$
 is the specific internal energy and $p$ is the pressure.  (Note $E$
-and $U$ have SI units $\text{J}\,\text{kg}^{-1}$.) Here we use
+and $U$ have SI units $\text{J}\,\mathrm{kg}^{-1}$.) Here we use
 ``enthalpy'' synonymous with ``internal energy'', $E=U$, because we do
 not include the work associated with changing the volume, namely the
 $p/\rho$ term in the specific (per volume) case. The functional
@@ -933,10 +933,10 @@ is given by
 & E < E_{\text s}(p), \\ T_{\text m}(p), & E_{\text s}(p) \le E,
         \end{cases} \\
 \label{eq:omega-from-enthalpy} \omega(E,p) &= \begin{cases} 0, & E <
-E_{\text s}(p), \\ L^{-1} ( E-E_\text{s}(p) ), & E_{\text s}(p) \le E,
+E_{\text s}(p), \\ L^{-1} ( E-E_\mathrm{s}(p) ), & E_{\text s}(p) \le E,
         \end{cases}
-\end{align} where $E_{\text{s}}(p)$ is the enthalpy of $\omega=0$ ice
-at the pressure-melting temperature $T_{\text{m}}(p)$. Schematic plots
+\end{align} where $E_{\mathrm{s}}(p)$ is the enthalpy of $\omega=0$ ice
+at the pressure-melting temperature $T_{\mathrm{m}}(p)$. Schematic plots
 of temperature and water content as functions of enthalpy are shown in
 Figure~\ref{fig:enthalpy-function}, with points $E_{\text s}$ and
 $E_{\text l}(p) = E_{\text w}(T_{\text m}(p),p) = E_{\text s}(p) + L$
@@ -962,10 +962,10 @@ E\right) = - \Div \bq + Q
 \end{equation} with
 \begin{equation}\label{eq:enthalpy-flux} {\mathbf q} = \left\{
     \begin{array}{rl} - K_{\text i}(E)\, \nabla E, & \qquad
-\text{cold},\\ - k(E,p) \nabla T_{\text m}(p) - K_0 \nabla E, & \qquad
-\text{temperate},
+\mathrm{cold},\\ - k(E,p) \nabla T_{\text m}(p) - K_0 \nabla E, & \qquad
+\mathrm{temperate},
     \end{array} \right.
-\end{equation} where $K_{\text{i}}$ and $K_0$ are the enthalpy
+\end{equation} where $K_{\mathrm{i}}$ and $K_0$ are the enthalpy
 diffusivity of cold and temperate ice, respectively, and $k$ is the
 heat conductivity expressed in terms of enthalpy.
 

@@ -14,10 +14,9 @@
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage{multimedia}
+\usepackage{textcomp,mathcomp}
 %\usepackage{hyperref}
-\usepackage{gensymb}
 
 % Some useful commands (from ELB)
 \newcommand{\bD}{\mathbf{D}}
@@ -48,8 +47,8 @@
 
 
 % Some useful commands (from MPL)
-\newcommand{\s}[1]{\ensuremath{\,\text{#1}}}
-\newcommand{\unit}[1]{\ensuremath{\,\text{#1}}}
+\newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
 
 \newenvironment{transbox}{%
 \begin{tikzpicture}
@@ -258,8 +257,8 @@ b  \end{figure}
     \begin{transbox}
       \begin{itemize}
         \item uppermost part of Grenzgletscher, Monte Rosa, at an altitude of $\sim$ 4500\,m
-        \item mean annual air temperature of $\sim$-13\,\celsius
-        \item amplitude of $\sim$7\,\celsius
+        \item mean annual air temperature of $\sim$-13\,\textcelsius
+        \item amplitude of $\sim$7\,\textcelsius
       \end{itemize}
       \begin{columns}
         \column[c]{4cm}
@@ -618,12 +617,12 @@ b  \end{figure}
   \begin{block}{Temperature}
     \begin{equation}
       \label{eq:clausius-pure}
-      T_m = T_{\text{tp}} - \gamma\, (p - p_{\text{tp}})\,,
+      T_m = T_{\mathrm{tp}} - \gamma\, (p - p_{\mathrm{tp}})\,,
     \end{equation}
     \begin{itemize}
     \item $T_m$ \; melting point (line) temperature
-    \item $T_{\text{tp}}=273.16\unit{K}$ triple point temperature of water
-    \item $p_{\text{tp}}=611.73\unit{Pa}$ triple point pressure of water
+    \item $T_{\mathrm{tp}}=273.16\unit{K}$ triple point temperature of water
+    \item $p_{\mathrm{tp}}=611.73\unit{Pa}$ triple point pressure of water
     \item Temperature follows the pressure field
     \end{itemize}
   \end{block}

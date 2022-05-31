@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \usepackage{natbib}
 
-\bibliographystyle{agufull08}
+\bibliographystyle{gi-nsf}
 
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
@@ -61,17 +61,17 @@
 \newcommand{\rinv}{\frac{1}{r}}
 \newcommand{\ar}{r^{-1}\alpha}
 \newcommand{\stress}{\ensuremath{\text{\Large$\sigma$\normalsize}}}
-\newcommand{\devstress}{\ensuremath{\text{\Large$\tau$\normalsize}}}
+\newcommand{\devstress}{\ensuremath{\mathrm{\Large$\tau$\normalsize}}}
 
 
 % ---------------------------------------------------------------------------------------
 % definition of header and footer
 % ---------------------------------------------------------------------------------------
 
-\usepackage[automark,headsepline,footsepline]{scrpage2}
+\usepackage[automark,headsepline,footsepline]{scrlayer-scrpage}
 \clearscrheadings	
 \ihead{Glacier Dynamics}
-\ohead{McCarthy Summer School 2018}
+\ohead{McCarthy Summer School 2022}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}
 \setkomafont{pagenumber}{\normalfont\rmfamily}
@@ -94,7 +94,7 @@
 \begin{document}
 \title{Dynamics of Glaciers\\[.5em]
 \rule[1.em]{\textwidth}{2pt}
-\subtitle{McCarthy Summer School 2018}}
+\subtitle{McCarthy Summer School 2022}}
 
 \date{}
 
@@ -188,7 +188,7 @@ with itself gives
 %
 \begin{align}
   \qquad \qquad\epsdot_{ij}\epsdot_{ij} & = A^2 \tau^{2(n-1)}\sigma^{(d)}_{ij}\sigma^{(d)}_{ij}
-  \qquad \qquad (\text{multiply by }\frac{1}{2}) \notag\\
+  \qquad \qquad (\mathrm{multiply by }\frac{1}{2}) \notag\\
   \underbrace{\frac{1}{2}\epsdot_{ij}\epsdot_{ij}}_{\dot{\epsilon}^2} &
   = A^2
   \tau^{2(n-1)}\underbrace{\frac{1}{2}\sigma^{(d)}_{ij}\sigma^{(d)}_{ij}}_{\tau^2}
@@ -482,7 +482,7 @@ It follows that none of the quantities can change in these directions
 %
 \begin{equation}
   \label{eq:symmetry}
-  \frac{\partial \,(\cdot)}{\partial x} = 0 \qquad \text{and} \qquad
+  \frac{\partial \,(\cdot)}{\partial x} = 0 \qquad \mathrm{and} \qquad
   \frac{\partial \,(\cdot)}{\partial y} = 0\,.
 \end{equation}
 %
@@ -586,8 +586,8 @@ Using again Glen's flow law we also see that (Eq.~\ref{eq:symmetry}a)
 %
 \begin{equation*}
   \epsdot_{xx} = \frac{\partial v_x}{\partial x} \stackrel{!}{=} 0
-  \qquad \text{leads to } \quad \sigma^{(d)}_{xx} = 0
-  \qquad\text{and} \quad \sigma_{xx} = \sigma_m. 
+  \qquad \mathrm{leads to } \quad \sigma^{(d)}_{xx} = 0
+  \qquad\mathrm{and} \quad \sigma_{xx} = \sigma_m. 
 \end{equation*}
 %
 Therefore all diagonal components of the stress tensor are equal to the mean
@@ -655,7 +655,7 @@ and finally arrive at the velocity distribution in a parallel sided slab
 \begin{equation}
   \label{eq:parallel-slab-velocity}
  u(z) = v_x(z) = \underbrace{\frac{2A}{n+1} (\rho g \sin\alpha)^n \left( H^{n+1}-(H-z)^{n+1}
-  \right)}_{\text{deformation velocity}}\quad + \underbrace{u_b\rule[-1.9ex]{0ex}{1ex}}_{\text{sliding velocity}}
+  \right)}_{\mathrm{deformation velocity}}\quad + \underbrace{u_b\rule[-1.9ex]{0ex}{1ex}}_{\mathrm{sliding velocity}}
 \end{equation}
 %
 This equation is known as \emph{shallow ice equations}\index{shallow ice equations}, since it
@@ -698,7 +698,7 @@ perimeter this leads to
   \epsdot_{rr} = \epsdot_{xx} = \epsdot_{\varphi\varphi}= 0 
   \qquad \Longrightarrow \qquad &
   \sigma^{(d)}_{rr} = \sigma^{(d)}_{xx} = \sigma^{(d)}_{\varphi\varphi}= 0  \\
-  \text{and also} \qquad & \sigma^{(d)}_{r\varphi} = \sigma^{(d)}_{x\varphi} = 0
+  \mathrm{and also} \qquad & \sigma^{(d)}_{r\varphi} = \sigma^{(d)}_{x\varphi} = 0
 \end{align}
 %
 The second invariant of the deviatoric stress tensor is $\tau =
@@ -721,7 +721,7 @@ The channel radius $R$ is equivalent to the ice thickness $H$ in Equation
 %
 \begin{equation}
   \label{eq:velo-comp-channel-slab}
-  u_{\text{def, channel}} = \left( \frac{1}{2} \right)^n   u_{\text{def, slab}}\,.
+  u_{\mathrm{def, channel}} = \left( \frac{1}{2} \right)^n   u_{\mathrm{def, slab}}\,.
 \end{equation}
 %
 The flow velocity on the center line of a cylindrical channel is \textbf{eight
