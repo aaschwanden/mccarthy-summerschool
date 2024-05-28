@@ -20,7 +20,7 @@
 \usepackage[automark,headsepline,footsepline]{scrlayer-scrpage}
 \clearscrheadings	
 \ihead{Dynamics and thermodynamics of glaciers}
-\ohead{McCarthy Summer School 2022}
+\ohead{McCarthy Summer School 2024}
 \cfoot{\pagemark}
 \setkomafont{pagehead}{\normalfont}	
 \setkomafont{pagenumber}{\normalfont\rmfamily}
