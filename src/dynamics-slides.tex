@@ -382,12 +382,30 @@
 
 \begin{frame}
   \frametitle{The ``Hugi'' block}
+  \begin{columns}
+    \column[C]{4.25cm}
   \begin{figure}
-    \includegraphics<1>[width=8cm]{hugi-block-boulder-movement-1}
-    \includegraphics<2>[width=8cm]{hugi-block-boulder-movement-2}
-    \includegraphics<3>[width=8cm]{hugi-block-boulder-movement-3}
+    \includegraphics<1>[width=4cm]{hugi-block-boulder-movement-1}%
+    \includegraphics<2>[width=4cm]{hugi-block-boulder-movement-2}%
+    \includegraphics<3->[width=4cm]{hugi-block-boulder-movement-3}%
   \end{figure}
-  \end{frame}
+    \column[C]{7.75cm}
+  \begin{figure}
+    \includegraphics<1>[width=7cm]{glacier_flow_boulder_1}%
+    \includegraphics<2>[width=7cm]{glacier_flow_boulder_2}%
+    \includegraphics<3>[width=7cm]{glacier_flow_boulder_3}%
+    \includegraphics<4>[width=7cm]{glacier_flow_boulder_4}%
+  \end{figure}
+  \end{columns}
+  \visible<4>{\begin{block}{}
+      Between 1827--1836, J.~Hugi observed that a boulder moved $1315\,\text{m}$ downstream between 1827 and 1836
+      \begin{itemize}
+        \item we would interpret this as clear evidence of glacier flow
+        \item but back then, some people argued that a boulder slides on the glacier surface, the glacier itself is motionless
+      \end{itemize}
+  \end{block}}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{The ``Hugi'' block}
@@ -957,17 +975,17 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
   \begin{columns}
     \column[c]{5cm}
     \begin{figure}
-      \includegraphics<1-2>[width=\textwidth]{greenland-obs-basal-overview}
-      \includegraphics<3-4>[width=\textwidth]{greenland-obs-basal-overview-mo14}
+      \includegraphics<1-2>[width=\textwidth]{greenland-obs-basal-overview}%
+      \includegraphics<3-4>[width=\textwidth]{greenland-obs-basal-overview-mo14}%
     \end{figure}
     \column[c]{5cm}
     \only<1,3>{Jakobshavn Isbr{\ae}}
     \only<2>{no fast flow}
     \only<4>{fast flow appears}
-    \includegraphics<1>[width=\textwidth]{jakobshavn-bed-5000m-ba01}
-    \includegraphics<2>[width=\textwidth]{jakobshavn-speed-exp-4500m-ba01}
-    \includegraphics<3>[width=\textwidth]{jakobshavn-bed-mo14}
-    \includegraphics<4>[width=\textwidth]{jakobshavn-speed-exp-600-v1.2-no-scale-no-gate}
+    \includegraphics<1>[width=\textwidth]{jakobshavn-bed-5000m-ba01}%
+    \includegraphics<2>[width=\textwidth]{jakobshavn-speed-exp-4500m-ba01}%
+    \includegraphics<3>[width=\textwidth]{jakobshavn-bed-mo14}%
+    \includegraphics<4>[width=\textwidth]{jakobshavn-speed-exp-600-v1.2-no-scale-no-gate}%
     \only<1>{\\ 5\,km, old data set (2001)}
     \only<2,4>{\\ simulated surface speed}
     \only<3>{\\ 600\,m, new data set (2014)}
