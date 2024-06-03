@@ -94,7 +94,11 @@
 \begin{document}
 \title{Dynamics of Glaciers\\[.5em]
 \rule[1.em]{\textwidth}{2pt}
-\subtitle{McCarthy Summer School 2022}}
+\subtitle{McCarthy Summer School 2024
+\end{document}
+\begin{document}
+
+}}
 
 \date{}
 
@@ -188,7 +192,7 @@ with itself gives
 %
 \begin{align}
   \qquad \qquad\epsdot_{ij}\epsdot_{ij} & = A^2 \tau^{2(n-1)}\sigma^{(d)}_{ij}\sigma^{(d)}_{ij}
-  \qquad \qquad (\mathrm{multiply by }\frac{1}{2}) \notag\\
+  \qquad \qquad (\textrm{multiply by }\frac{1}{2}) \notag\\
   \underbrace{\frac{1}{2}\epsdot_{ij}\epsdot_{ij}}_{\dot{\epsilon}^2} &
   = A^2
   \tau^{2(n-1)}\underbrace{\frac{1}{2}\sigma^{(d)}_{ij}\sigma^{(d)}_{ij}}_{\tau^2}
@@ -362,7 +366,7 @@ the volume.  In compact tensor notation they read
 \begin{subequations}
   \label{eq:force-balance}
   \begin{align}
-    \mathbf{\nabla} \bsigma + \mathbf{b}&= \mathbf{0}\,,
+    \mathbf{\nabla} \cdot \bsigma + \mathbf{b}&= \mathbf{0}\,,
   \end{align}
 %
 The same equations rewritten in index notation (summation convention)
@@ -586,8 +590,8 @@ Using again Glen's flow law we also see that (Eq.~\ref{eq:symmetry}a)
 %
 \begin{equation*}
   \epsdot_{xx} = \frac{\partial v_x}{\partial x} \stackrel{!}{=} 0
-  \qquad \mathrm{leads to } \quad \sigma^{(d)}_{xx} = 0
-  \qquad\mathrm{and} \quad \sigma_{xx} = \sigma_m. 
+  \qquad \textrm{leads to } \quad \sigma^{(d)}_{xx} = 0
+  \qquad\textrm{and} \quad \sigma_{xx} = \sigma_m. 
 \end{equation*}
 %
 Therefore all diagonal components of the stress tensor are equal to the mean
@@ -655,7 +659,7 @@ and finally arrive at the velocity distribution in a parallel sided slab
 \begin{equation}
   \label{eq:parallel-slab-velocity}
  u(z) = v_x(z) = \underbrace{\frac{2A}{n+1} (\rho g \sin\alpha)^n \left( H^{n+1}-(H-z)^{n+1}
-  \right)}_{\mathrm{deformation velocity}}\quad + \underbrace{u_b\rule[-1.9ex]{0ex}{1ex}}_{\mathrm{sliding velocity}}
+  \right)}_{\textrm{deformation velocity}}\quad + \underbrace{u_b\rule[-1.9ex]{0ex}{1ex}}_{\textrm{sliding velocity}}
 \end{equation}
 %
 This equation is known as \emph{shallow ice equations}\index{shallow ice equations}, since it
@@ -698,7 +702,7 @@ perimeter this leads to
   \epsdot_{rr} = \epsdot_{xx} = \epsdot_{\varphi\varphi}= 0 
   \qquad \Longrightarrow \qquad &
   \sigma^{(d)}_{rr} = \sigma^{(d)}_{xx} = \sigma^{(d)}_{\varphi\varphi}= 0  \\
-  \mathrm{and also} \qquad & \sigma^{(d)}_{r\varphi} = \sigma^{(d)}_{x\varphi} = 0
+  \textrm{and also} \qquad & \sigma^{(d)}_{r\varphi} = \sigma^{(d)}_{x\varphi} = 0
 \end{align}
 %
 The second invariant of the deviatoric stress tensor is $\tau =
@@ -721,7 +725,7 @@ The channel radius $R$ is equivalent to the ice thickness $H$ in Equation
 %
 \begin{equation}
   \label{eq:velo-comp-channel-slab}
-  u_{\mathrm{def, channel}} = \left( \frac{1}{2} \right)^n   u_{\mathrm{def, slab}}\,.
+  u_{\textrm{def, channel}} = \left( \frac{1}{2} \right)^n   u_{\textrm{def, slab}}\,.
 \end{equation}
 %
 The flow velocity on the center line of a cylindrical channel is \textbf{eight
