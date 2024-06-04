@@ -119,14 +119,13 @@ The most widely used flow relation for glacier ice is
 \citep{Glen1955,Steinemann1954}
 %  
 \begin{equation}
-  \label{eq:Glen} \epsdot_{ij} = A \tau^{n-1}\sigma^{(d)}_{ij}.
+  \label{eq:Glen} \epsdot_{ij} = A \tau^{n-1}\sigma^{(d)}_{ij},
 \end{equation}
 %
-with $n\sim 3$, and where $\epsdot_{ij}$ and $\sigma^{(d)}_{ij}$ are
-the strain rate tensor and the deviatoric stress tensor, respectively.
-The rate factor $A = A(T)$ depends on temperature and other parameters
+where $\epsdot_{ij}$ and $\sigma^{(d)}_{ij}$ are the strain rate tensor and the deviatoric stress tensor, respectively. $n \in [1, 4]$ is the exponent of the flow, with $n=3$ the most commonly used value.
+The rate factor $A = A(T,\ldots)$ depends on temperature and other parameters
 like water content, impurity content and crystal size.  The quantity
-$\tau$ is the second invariant of the deviatoric stress tensor.
+$\tau$ is the second invariant of the deviatoric stress tensor, $\tau = \frac{1}{2}\sigma^{(d)}_{ij}\sigma^{(d)}_{ji}$.
 %
 Several properties of Equation (\ref{eq:Glen}) are noteworthy:
 \begin{itemize}
@@ -143,6 +142,7 @@ Several properties of Equation (\ref{eq:Glen}) are noteworthy:
   \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} +
   \frac{\partial v_z}{\partial z} = 0
   \]
+  Incompressibility is a pretty good assumptions anywhere in a glacier execpt for firn.
 \item A \emph{Newtonian viscous fluid}, like water, is characterized by
   the \emph{viscosity} $\eta$
   \begin{equation}
