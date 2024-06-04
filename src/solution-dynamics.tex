@@ -3,12 +3,15 @@
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
 \usepackage{listings}
+\usepackage{bm}
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
 %% commands to facilitate units and temperature
 \newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
 \newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
 \newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
+
+\newcommand{\epsdot}{\dot{\varepsilon}}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,decorations.pathmorphing,calc}
@@ -90,8 +93,10 @@ and the vertically-average velocity by
 \item because the glacier is shielded from ablation and accumulation (i.e. $a_{\textrm{s}} =0$), the glaciers slowly things and spreads under its own weight.
 \end{enumerate}
 
-\section{Ice thickness}
-
-Depending on your choice of the flow law exponent $n$, the errors can be up to 34--46\,\% ($n=3$), see python script for Excerise 1.
-
+\section{Scale Analysis}
+\paragraph{1.} To demonstrate the equivalency, we use the index notation:
+\begin{eqnarray}
+  \nabla \cdot \bm{\sigma}^{(d)} &=& \nabla \cdot \left(2 \eta \epsdot\right) =  \left(2 \eta \epsdot_{ij}\right)_{,j} =  \left( 2\eta \frac{1}{2}\left(v_{i,j} + v_{j,i} \right) \right)_{,j} = \eta \left( v_{i,jj} + v_{j,ij}\right) + \left(v_{i,j} + v_{j,i} \right) \eta_{,j} \\
+  & = & \eta \Delta \bm{v} + \eta \nabla \cdot \bm{v} + \left(\nabla \bm{v} + \nabla \bm{v}^T \right) \nabla \eta
+\end{eqnarray} and because of incompressibility, the second term on the right hand side vanishes.
 \end{document}

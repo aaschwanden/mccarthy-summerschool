@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{gensymb}
 \usepackage{graphicx}
-
+\usepackage{bm}
 \usepackage{natbib}
 
 \bibliographystyle{gi-nsf}
@@ -14,6 +14,12 @@
 \newcommand{\s}[1]{\ensuremath{\,\mathrm{#1}}}
 \newcommand{\cels}[1]{\ensuremath{#1^{\circ}\,\mathrm{C}}}
 
+\newcommand{\hbe}{\hat{\mathbf{e}}}
+%\newcommand{\define}[1]{{\textbf{#1}}\marginpar{\psshadowbox[framearc=0.3,shadowsize=2pt]{\footnotesize #1}}}
+\newcommand{\define}[1]{{\textbf{#1}}\marginpar{\fbox{\footnotesize #1}}}
+\newcommand{\epsdot}{\dot{\varepsilon}}
+\newcommand{\bsigma}{\mbox{\boldmath$\sigma$\unboldmath}}
+\newcommand{\bepsdot}{\mbox{\boldmath$\epsdot$\unboldmath}}
 
 % ---------------------------------------------------------------------------------------
 % definition of header and footer
@@ -103,9 +109,38 @@ where $\nabla \cdot \mathbf{Q}$ and $a_{\textrm s}$ are the horizontal flux dive
 \item The 1912 eruption of Katmai volcano, Alaska, covered a nearby glacier completely with debris, thereby effectively shielding the glacier from ablation and accumulation. What will happen to this glacier? 
 \end{enumerate}
 
-\section{Ice thickness}
+\section{Scale analysis}
 
-Because ice thickness is the most important control on ice flow, NASA's Operation IceBridge has been mapping ice thickness in Greenland's outlet glaciers since 2008 with an annual budget of $\approx$\$10,000,000. If you assume an uncertainty in ice thickness of 10\,\%, what would be the uncertainty in flow speeds? Hint: assume a parallel side slab. In the interior of Greenland, uncertainties in ice thickness where no measurements are available may be as high as 20\,\% \citep{Brinkerhoff2016}.
+You are asked to review a manuscript about a new glacier / ice-sheet model. The novelty of the model is that it solves the Navier-Stokes equations instead of the Stokes equations. The incompressible Navier Stokes equations are given by:
+\begin{eqnarray}
+  \nabla \cdot \bm{v} & = & 0 \\
+  \rho \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} & = & - \nabla p + \eta \Delta \bm{v} + \left( \nabla \bm{v} + \nabla \bm{v}^T\right) \cdot \nabla \eta + \rho \bm{g} - 2\rho\Omega\times \bm{v},
+\end{eqnarray}
+where $\rho$ is density, $\bm{v}$ is velocity, $p$ is pressure, $\eta$ is ice viscosity, $\bm{g}$ is acceleration due to gravity, and $\Omega$ is angular velocity. After describing the model implementation, the authors apply the model to Storglaci{\ae}ren, a small valley glacier in northern Sweden (despite the fact that "stor" means "big" in Swedish). 
+
+\begin{center}
+\begin{tabular}{lccccc}
+\hline
+Froude number & Fr & $\frac{\text{acceleration}}{\text{gravitational force}}$ & $\frac{U}{\sqrt{GL}}$ \\[.25em]
+\hline
+Rossby number & Ro & $\frac{\text{acceleration}}{\text{Coriolis force}}$ & $\frac{U}{2 \Omega L}$   \\[.25em]
+\hline
+Reynolds number & Re & $\frac{\text{acceleration}}{\text{viscous force}}$ & $\frac{\rho U L}{\eta}$ \\[.25em]
+\hline
+\end{tabular}        
+\end{center}
+
+\begin{enumerate}
+\item Comparing the above equation to the script, we note that $$\nabla \cdot \bm{\sigma}^{(d)} \equiv  \eta \Delta \bm{v} + \left( \nabla \bm{v} + \nabla \bm{v}^T\right) \cdot \nabla \eta $$ must hold. Show that the two formulations are equivalent by using $\nabla \cdot \bm{\sigma}^{(d)} = \nabla \cdot \left(2\eta \epsdot\right)$ and $\epsdot = \frac{1}{2}\left(\nabla \bm{v} + \nabla \bm{v}^{T}\right)$.
+  
+\item Perform a scale analysis to convince the authors that the acceleration term on the left-hand side and the Coriolis term are small compared to the pressure gradient term and can thus be neglected for Storglaci{\ae}ren. 
+
+\item Recently, NASA announced that they found evidence of an ice sheet covering the planet Lamuella in a galaxy far, far away. The following is known so far: very low gravity ($g\approx$1\,m/s), it spins around its axis very quickly ($\Omega\approx 2\pi$/hr), the ice cover is very thin ($[H]\approx 100$\,m), long ($[L]\approx 10,000$\,km) and flows fast ($[U]\approx 10,000$\,m/yr). Is the Coriolis term relevant to model the flow of this ice sheet? Did NASA really find glacier ice, or is it more likely a different fluid?
+\end{enumerate}
+
+%% \section{Ice thickness}
+
+%% Because ice thickness is the most important control on ice flow, NASA's Operation IceBridge has been mapping ice thickness in Greenland's outlet glaciers since 2008 with an annual budget of $\approx$\$10,000,000. If you assume an uncertainty in ice thickness of 10\,\%, what would be the uncertainty in flow speeds? Hint: assume a parallel side slab. In the interior of Greenland, uncertainties in ice thickness where no measurements are available may be as high as 20\,\% \citep{Brinkerhoff2016}.
 
 \bibliography{thermobib}
 \end{document}
