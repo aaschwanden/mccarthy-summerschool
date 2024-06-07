@@ -251,22 +251,89 @@
   \begin{block}{In a nut shell:}
     \begin{itemize}
     \item Well-described by continuum mechanics (Martin's lecture)
-    \item The ice can deform as a viscous fluid
+    \item The ice can deform as a \alert{viscous} fluid
     \item The ice can slide over its substrate or the substrate deforms
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}{From Navier Stokes to Stokes}
-  \begin{block}{Navier Stokes Equation}
+\begin{frame}{About viscosity $\eta$}
+    \begin{columns}
+      \column[C]{6cm}
+      \begin{figure}
+        \includegraphics[height=3cm]{rhine_river}
+      \end{figure}
+      \column[C]{6cm}
+      \begin{figure}
+        \includegraphics[height=3cm]{forno}
+      \end{figure}
+  \end{columns}
+    \begin{columns}
+      \column[C]{6cm}
+      \begin{itemize}
+        \item Newtonian fluid
+        \item viscosity is constant ($10^{-3}$Pa\,s)
+      \end{itemize}
+      \column[C]{6cm}
+      \begin{itemize}
+      \item non-Newtonian fluid
+        \item viscosity depends on temperature, water content, impurities, and on \alert{stress state}
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Viscosity vs Glaciology}
+  \begin{block}{Engineering and computational fluid dynamics (CFD)}
+    Deformation causes stresses
   \begin{equation}
-    \rho \underbrace{\frac{\textrm{d} {\bm{v}}}{\textrm{d} t}}_{acceleration} =  \underbrace{-\nabla p}_{pressure} +  \underbrace{\nabla \cdot \bm{\sigma}^{(d)}}_{viscous}  + \underbrace{\rho\bm{g}}_{gravity} + \underbrace{\rho\bm{f}}_{Coriolis}
+  \bm{\sigma}^{(d)} = 2 \eta \bm{\epsdot}
   \end{equation}
-  %% \begin{equation}
-  %%   \rho \underbrace{\frac{\textrm{d} {\bm{v}}}{\textrm{d} t}}_{acceleration} =  \underbrace{-\frac{1}{\textrm{Re}}\nabla p}_{pressure} +  \underbrace{\frac{1}{\textrm{Re}}\nabla \cdot \bm{\tau}}_{viscous}  + \underbrace{\frac{1}{Fr}\rho\bm{g}}_{gravity} + \underbrace{\frac{1}{Ro}\rho\bm{f}}_{Coriolis}
-  %% \end{equation}
   \end{block}
-  \begin{block}{Assumptions / Scale Analysis}\vspace{0.5em}
+  \begin{block}{Glaciology}
+    Stresses cause deformation
+  \begin{equation}
+  \bm{\epsdot} = A \bm{\tau}^{n-1}  \bm{\sigma}^{(d)}
+  \end{equation}
+  \end{block}
+  \alert{$\Rightarrow$} This can be confusing to ``outsiders''. The viscosity is given by
+  \begin{equation}
+    \eta = \frac{1}{2 A(T,\omega,\ldots) \sigma_{\mathrm{e}}^{n-1}}
+  \end{equation}
+\end{frame}
+
+\begin{frame}{From Navier Stokes to Stokes}
+  \begin{block}{From the (incompressible) Navier Stokes Equations}
+    \begin{eqnarray}
+      \nabla \cdot \bm{v} & = & 0 \\
+    \rho \underbrace{\frac{\textrm{d} {\bm{v}}}{\textrm{d} t}}_{acceleration} & = & \underbrace{-\nabla p}_{pressure} +  \underbrace{\nabla \cdot \bm{\sigma}^{(d)}}_{viscous}  + \underbrace{\rho\bm{g}}_{gravity} + \underbrace{\rho\bm{f}}_{Coriolis}
+  \end{eqnarray}
+  \end{block}
+  \begin{block}{to the (incompressible) Stokes Equation}
+    \begin{eqnarray}
+      \nabla \cdot \bm{v} & = & 0 \\
+      \underbrace{\nabla \cdot \bm{\tau}}_{viscous} & = & - \underbrace{\rho\bm{g}}_{gravity}
+    \end{eqnarray}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Scale Analysis}
+  \begin{block}{Typical values}
+    \begin{tabular}{lccc}
+      & & glacier & ice sheet \\[.25em]
+  \hline
+  horizontal extent & L & 10\,km & 1,000\,km \\[.25em]
+  \hline
+  horizontal velocity & U & 10 \,m\,yr$^{-1}$ & 100\,m\,yr$^{-1}$ \\[.25em]
+  \hline
+  viscosity & $\eta$ & $10^{12}$\,Pa\,s & $10^{12}$\,Pa\,s \\[.25em]
+  \hline
+  gravity & G & \multicolumn{2}{c}{10\,m\,s$^{-1}$}\\[.25em]
+  \hline
+  pressure & P & \multicolumn{2}{c}{no natural scale} \\[.25em]
+  \hline
+\end{tabular}        
+  \end{block}
+  \begin{block}{Dimensionless numbers}\vspace{0.5em}
 \begin{tabular}{lccccc}
 \hline
 Froude number & Fr & $\frac{\text{acceleration}}{\text{gravitational force}}$ & $\frac{U}{\sqrt{GL}}$ \\[.25em]
@@ -277,10 +344,15 @@ Reynolds number & Re & $\frac{\text{acceleration}}{\text{viscous force}}$ & $\fr
 \hline
 \end{tabular}        
   \end{block}
-  \begin{block}{Stokes Equation}
-\begin{equation}
-  \underbrace{\nabla \cdot \bm{\tau}}_{viscous} = - \underbrace{\rho\bm{g}}_{gravity}
-\end{equation}
+\end{frame}
+
+\begin{frame}{Scaled Navier Stokes Equation}
+  \begin{eqnarray}
+    \nabla \cdot \bm{v}^* & = & 0 \\
+    \frac{\textrm{d} {\bm{v}^*}}{\textrm{d} t^*} & = & -\frac{1}{Re}\nabla p^* +  \frac{1}{Re}\nabla \cdot \bm{\sigma}^{(d)^*}  + \frac{1}{Fr}\bm{g}^* + \frac{1}{Ro}\bm{f}^*
+  \end{eqnarray}
+  \begin{block}{Note}
+    Greve and Blatter scale the pressure gradient by the overburden pressure $\rho g H$ instead of the viscous stress.
   \end{block}
 \end{frame}
 
@@ -311,42 +383,11 @@ Reynolds number & Re & $\frac{\text{acceleration}}{\text{viscous force}}$ & $\fr
   \end{equation*}
 \begin{block}{Noteworthy}
 \begin{itemize}
-\item this is an \alert{exact} solution
+\item this is an \alert{exact} solution of the incompressible Navier Stokes Equations.
 \item horizontal velocity profile is \alert{parabolic}
 \item pressure is \alert{hydrostatic}
 \end{itemize}
 \end{block}
-\end{frame}
-
-\begin{frame}{About viscosity $\eta$}
-    \begin{columns}
-      \column[C]{6cm}
-      \begin{figure}
-        \includegraphics[height=3cm]{rhine_river}
-      \end{figure}
-      \column[C]{6cm}
-      \begin{figure}
-        \includegraphics[height=3cm]{forno}
-      \end{figure}
-  \end{columns}
-    \begin{columns}
-      \column[C]{6cm}
-      \begin{itemize}
-        \item Newtonian fluid
-        \item viscosity is constant ($10^{-3}$Pa\,s)
-      \end{itemize}
-      \column[C]{6cm}
-      \begin{itemize}
-      \item non-Newtonian fluid
-        \item viscosity depends on temperature, water content, impurities, and on \alert{stress state}
-      \end{itemize}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Viscosity vs Glaciology}
-  \begin{equation}
-    \eta = \frac{1}{2 A(T,\omega,\ldots) \sigma_{\mathrm{e}}^{n-1}}
-  \end{equation}
 \end{frame}
 
 \begin{frame}{Flow of a Glacier in a Semi-Circular Valley}
@@ -734,21 +775,21 @@ v_{x, \text{channel}} = \left(\frac{1}{2}\right)^{n} v_{x, \text{slab}}
 \end{frame}
 
 
-\begin{frame}{A Recipe}
-  A recipe to calculate the flow velocities from given stresses, strain rates, symmetry conditions and
-  boundary conditions
-  \begin{enumerate}
-  \item determine all components of the stress tensor $\sigma_{ij}$
-    exploiting the symmetries, and using the flow law
-  \item calculate the mean stress $\sigma_m$
-  \item calculate the deviatoric stress tensor $\sigma^{(d)}_{ij}$
-  \item calculate the effective shear stress (second invariant) $\tau$
-  \item calculate the strain rates $\epsdot_{ij}$ from $\tau$ and
-    $\sigma^{(d)}_{ij}$ using  the flow law
-  \item integrate the strain rates to obtain velocities
-  \item insert boundary conditions
-  \end{enumerate}
-\end{frame}
+%% \begin{frame}{A Recipe}
+%%   A recipe to calculate the flow velocities from given stresses, strain rates, symmetry conditions and
+%%   boundary conditions
+%%   \begin{enumerate}
+%%   \item determine all components of the stress tensor $\sigma_{ij}$
+%%     exploiting the symmetries, and using the flow law
+%%   \item calculate the mean stress $\sigma_m$
+%%   \item calculate the deviatoric stress tensor $\sigma^{(d)}_{ij}$
+%%   \item calculate the effective shear stress (second invariant) $\tau$
+%%   \item calculate the strain rates $\epsdot_{ij}$ from $\tau$ and
+%%     $\sigma^{(d)}_{ij}$ using  the flow law
+%%   \item integrate the strain rates to obtain velocities
+%%   \item insert boundary conditions
+%%   \end{enumerate}
+%% \end{frame}
 
 
 
